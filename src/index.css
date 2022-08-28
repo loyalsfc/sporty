@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,78 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header{
+  background-color: #070b18;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 50px;
+  /* position: sticky; */
+  /* top: 0; */
+}
+.navigation-item{
+  display: inline;
+  list-style-type: none;
+  font-size: 0.6rem;
+  color: #f1f2f3;
+  margin: 0 10px;
+  cursor: default;
+}
+.join-us{
+  font-size: 0.6rem;
+  padding: 5px 10px;
+  font-weight: 600;
+  background-image: linear-gradient(135deg, #933556, #32417a);
+  color: #f1f2f3;
+}
+.banner{
+  height: 90vh;
+  background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 60%,rgba(50, 65, 122, 0.1)), url('https://o7dkx1gd2bwwexip1qwjpplu-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/GettyImages-1141722200-1600x800.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 15px 50px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+.banner-title{
+  color: #f1f2f3;
+  font-size: 0.8rem;
+  margin: 20px 0 10px;
+}
+.banner-tagline{
+  max-width: 300px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 20px 0 40px;
+  color: #f1f2f3;
+  line-height: 1.7rem;
+}
+.banner-tagline span{
+  color: #933556;
+}
+.banner-text{
+ font-size: 0.6rem;
+ font-weight: 600;
+ color: #f1f2f3;
+ max-width: 400px; 
+ margin: 20px 0;
+ line-height: 1rem;
+}
+.flags-container{
+  background-color: #04172d;
+  padding: 15px 50px;
+}
+.flags-wrapper{
+  display: flex;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+.flags-wrapper::-webkit-scrollbar{
+  display: none;
+}
+.country-flags{
+  margin: 0 10px;
 }

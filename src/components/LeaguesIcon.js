@@ -1,0 +1,34 @@
+import React, {useEffect, useState} from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+
+
+
+function LeaguesIcon(){
+    const key = '5e3582a7d8d1a741f870124c02aaa88abb97f126b697a05112d549c4302c9c7e';
+    const [leaguesData, setleaguesData] = useState([]);
+    const selectedCountries = ["England", "Spain", "France", "Germany", "Italy", "Netherland", "Mexico", "Russia", "Portugal", "Saudi Arabia", "Brazil", "Turkey", "Slovenia", "Austria", "Poland", "Bulgaria", "Scotland", "Greece", "Norway"]
+    
+    useEffect(()=>{
+        fetch(`https://apiv3.apifootball.com/?action=get_countries&APIkey=${key}`)
+        .then((res, req) => res.json())
+        .then(data => setleaguesData(data))
+    }, [])
+
+    let flags = leaguesData.map(items => {
+        if(selectedCountries.includes(items.country_name)){
+            return <img src={items.country_logo} width={40} height={20} key={items.country_id} className='country-flags' />
+        }
+    })
+
+    return(
+        <div className="flags-container">
+            <div className="flags-wrapper">
+                {flags}
+            </div>
+        </div>
+    )
+}
+
+export default LeaguesIcon
