@@ -90,3 +90,12 @@ header{
 .country-flags{
   margin: 0 10px;
 }
+.our-service{
+  padding: 15px 50px;
+}
+.service-wrapper{
+  padding: 10px;
+  width: 150px;
+  font-size: 0.6rem;
+  box-shadow: 0 4px 8px 0 rgba(50, 65, 122, 0.2), 0 6px 20px 0 rgba(50, 65, 122, 0.19);
+}

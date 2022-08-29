@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import LeaguesIcon from "../components/LeaguesIcon";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Ourservice from "../components/Ourservice";
 
 export default function Homepage(){
     useEffect(()=>{
@@ -21,6 +22,9 @@ export default function Homepage(){
                 <p data-aos="fade-left" className="banner-text" data-aos-delay="200">Football is the world's most popular ball game in numbers of participants and spectators. It is the most interesting and engaging as well as one of the oldest games in the world. At Sporty, we bring to you accurate and timely updates on football leagues, tournaments and teams.</p>
             </section>
             <LeaguesIcon />
+            <section className="our-service">
+                <Ourservice />
+            </section>
         </main>
     )
 }
