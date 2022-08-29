@@ -93,9 +93,56 @@ header{
 .our-service{
   padding: 15px 50px;
 }
+.section-title{
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #933556;
+}
 .service-wrapper{
-  padding: 10px;
-  width: 150px;
-  font-size: 0.6rem;
+  padding: 35px 10px 10px;
+  width: 120px;
+  font-size: 0.5rem;
+  font-weight: 500;
   box-shadow: 0 4px 8px 0 rgba(50, 65, 122, 0.2), 0 6px 20px 0 rgba(50, 65, 122, 0.19);
+  position: relative;
+  margin: 0 5px 5px;
+}
+.services-container{
+  display: flex;
+}
+.service-wrapper > i{
+  font-size: 1.8rem;
+  color: #933556;
+}
+.fa-futbol{
+  color: #933556;
+}
+.service-title {
+  margin: 10px 0;
+}
+.round-design{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #04172d;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: -1;
+}
+
+.testimonials{
+  background-color: #070b18;
+  padding: 15px 50px;
+}
+.testimonial-container{
+  display: flex;
+}
+.testimonial-wrapper{
+  width: 30%;
+  margin: 1.5%;
+  background-color: #6963ff;
+  border-radius: 20px;
+  padding: 10px;
 }

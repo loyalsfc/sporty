@@ -3,6 +3,7 @@ import LeaguesIcon from "../components/LeaguesIcon";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Ourservice from "../components/Ourservice";
+import Testimonials from "../components/Testimonials";
 
 export default function Homepage(){
     useEffect(()=>{
@@ -23,7 +24,33 @@ export default function Homepage(){
             </section>
             <LeaguesIcon />
             <section className="our-service">
-                <Ourservice />
+                <h3 data-aos="slide-up" className="section-title">Our Service</h3>
+                <div className="services-container">
+                    <Ourservice 
+                        icon="fa-futbol" 
+                        title="Live Score" 
+                        content="We provide live football matches of all major leagues in the world"
+                    />
+                    <Ourservice 
+                        icon="fa-bullseye" 
+                        title="Player Stats" 
+                        content="Get access to players statistics which includes, goal scored, assist, rating etc."
+                    />
+                    <Ourservice 
+                        icon="fa-square-rss" 
+                        title="Football News" 
+                        content="Timely and confirmed football news across competitions and leagues."
+                    />
+                    <Ourservice 
+                        icon="fa-arrow-up-right-dots" 
+                        title="Standings" 
+                        content="We provide leagues standing across Europe top five leagues and beyonds"
+                    />
+                </div>
+            </section>
+            <section className="testimonials">
+                <h3 data-aos="slide-up" className="section-title">Testimonials</h3>
+                <Testimonials />
             </section>
         </main>
     )
