@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
+import { Link } from "react-router-dom"
 import Aos from "aos";
 import "aos/dist/aos.css";
-
 
 
 
@@ -18,14 +18,16 @@ function LeaguesIcon(){
 
     let flags = leaguesData.map(items => {
         if(selectedCountries.includes(items.country_name)){
-            return <img src={items.country_logo} width={40} height={20} key={items.country_id} className='country-flags' />
+            return <Link to={items.country_id} key={items.country_id}>
+                        <img src={items.country_logo} width={40} height={20} className='country-flags' />
+                    </Link>
         }
     })
 
     return(
         <div className="flags-container">
             <div className="flags-wrapper">
-                {flags}
+               {flags}
             </div>
         </div>
     )
