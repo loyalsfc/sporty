@@ -7,7 +7,7 @@ import Testimonials from "../components/Testimonials";
 
 export default function Homepage(){
     useEffect(()=>{
-        Aos.init({ duration: 1000 });
+        Aos.init({ duration: 1000, once: true });
     })
     return (
         <main>
@@ -21,7 +21,7 @@ export default function Homepage(){
                     Accurate and Timely <span>Football News</span> for you
                 </h2>
                 <p data-aos="fade-left" className="banner-text" data-aos-delay="200">Football is the world's most popular ball game in numbers of participants and spectators. It is the most interesting and engaging as well as one of the oldest games in the world. At Sporty, we bring to you accurate and timely updates on football leagues, tournaments and teams.</p>
-                <button data-aos="fade-left" className="join-us">Get Started</button>
+                <button data-aos="fade-left" className="get-started">Get Started</button>
             </section>
             <LeaguesIcon />
             <section className="our-service">

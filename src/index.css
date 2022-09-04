@@ -3,12 +3,10 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: 'Oxanium', cursive;
+  /* font-size: 1rem; */
 }
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,13 +27,11 @@ header{
 .navigation-item{
   display: inline;
   list-style-type: none;
-  font-size: 0.6rem;
   color: #f1f2f3;
   margin: 0 10px;
   cursor: default;
 }
 .join-us{
-  font-size: 0.6rem;
   padding: 5px 10px;
   font-weight: 600;
   background-image: linear-gradient(135deg, #933556, #32417a);
@@ -53,28 +49,34 @@ header{
 }
 .banner-title{
   color: #f1f2f3;
-  font-size: 0.8rem;
-  margin: 20px 0 10px;
+  font-size: 1rem;
+  margin: 4.5rem 0 2.5rem;  
+  font-weight: 400;
 }
 .banner-tagline{
-  max-width: 300px;
-  font-size: 1.6rem;
-  font-weight: 400;
-  margin: 20px 0 40px;
+  max-width: 500px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 2.5rem;
   color: #f1f2f3;
-  line-height: 1.7rem;
+  line-height: 3.6rem;
 }
 .banner-tagline span{
   color: #933556;
 }
 .banner-text{
- font-size: 0.6rem;
- font-weight: 600;
+ font-weight: 400;
  color: #f1f2f3;
- max-width: 400px; 
- margin: 20px 0;
- line-height: 1rem;
+ max-width: 600px; 
+ line-height: 1.5rem;
 }
+.get-started{
+  margin-top: 2.5rem;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+}
+
 .flags-container{
   background-color: #04172d;
   padding: 15px 50px;
@@ -96,36 +98,36 @@ header{
 }
 .section-title{
   text-align: center;
-  font-size: 1rem;
+  font-size: 2rem;
   margin-bottom: 15px;
   color: #933556;
 }
 .service-wrapper{
-  padding: 35px 10px 10px;
-  width: 120px;
-  font-size: 0.5rem;
+  padding: 2.5rem 1rem 1rem;
+  /* width: 120px; */
+  font-size: 1.25rem;
   font-weight: 500;
   box-shadow: 0 4px 8px 0 rgba(50, 65, 122, 0.2), 0 6px 20px 0 rgba(50, 65, 122, 0.19);
   position: relative;
-  margin: 0 5px 5px;
+  margin: 0 1rem 1rem;
 }
 .services-container{
   display: flex;
   justify-content: space-around;
 }
 .service-wrapper > i{
-  font-size: 1.8rem;
+  font-size: 3rem;
   color: #933556;
 }
 .fa-futbol{
   color: #933556;
 }
 .service-title {
-  margin: 10px 0;
+  margin: 1.2rem 0;
 }
 .round-design{
-  height: 2rem;
-  width: 2rem;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
   background-color: #04172d;
   position: absolute;
@@ -146,21 +148,19 @@ header{
   margin: 1.5%;
   background-color: #6963ff;
   border-radius: 5px;
-  padding: 15px 10px 10px;
-  font-size: 0.5rem;
-  /* font-weight: 500; */
+  padding: 1.2rem;
+  line-height: 1.5rem;
   color: #f1f2f3;
 }
 .testimonial-image{
   margin: 10px 0 0;
   border-radius: 50%;
   overflow: hidden;
-  width: 20px;
-  height: 20px;
+  width: 3rem;
+  height: 3rem;
 }
 
 .footer-wrapper{
-  font-size: 0.4rem;
   text-align: center;
   color: #f1f2f3;
   padding: 5px;
@@ -178,10 +178,10 @@ header{
   justify-content: space-evenly;
 }
 .leagues-wrap{
-  width: 120px;
+  width: 240px;
   border: 2px solid #070b18;
   margin: 1rem;
-  padding: 7px;
+  padding: 1rem;
   border-radius: 15px 0 15px 0;
   text-align: center;
 }
@@ -198,19 +198,89 @@ header{
   margin: auto;
 }
 .leagues-title{
-  font-size: 0.7rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .league-season{
-  font-size: 0.6rem;
   font-weight: bold;
   margin-top: 0.3rem;
 }
 .country-logo{
-  height: 1rem;
+  height: 1.8rem;
   margin: 0 10px;
+}
 
+.standing{
+  padding: 15px 50px;
+}
+
+table{
+  width: 650px;
+  max-width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+.table-team{
+  width: 35%;
+}
+.teams{
+  text-align: left;
+}
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+table tr:hover {
+  background-color: #ddd;
+}
+table th {
+  padding: 1rem 0;
+  background-color: #070b18;
+  color: white;
+}
+.breadcrumb{
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+.breadcrumb li{
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+.search-wrapper{
+  background-color: #070b18;
+  padding: 0.5rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.search-league{
+  font-size: 1rem;
+  padding: 0.25rem;
+  width: 100%;
+  border: none;
+}
+.search-league:focus{
+  outline: none;
+}
+.fa-magnifying-glass{
+  color: #070b18;
+  background-color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
 }

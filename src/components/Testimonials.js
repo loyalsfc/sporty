@@ -29,7 +29,7 @@ function Testimony(props){
         <div data-aos="slide-up" data-aos-delay={props.delay} className="testimonial-wrapper">
             <p className="testimonial-content">{props.content}</p>
             <div className="testimonial-image">
-                <img src={props.image} height={20} width={20} />
+                <img src={props.image} height={48} width={48} />
             </div>
         </div>
     )

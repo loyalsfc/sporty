@@ -20,7 +20,7 @@ function Leagues(){
                     <img 
                         className="leagues-logo" 
                         src={items.league_logo == "" ? "https://dictionary.cambridge.org/images/thumb/footba_noun_002_14598.jpg?version=5.0.250" : items.league_logo} 
-                        height={80} 
+                        height={160} 
                         alt="League Icon"
                     />
                     <div className="league-season">{items.league_season}</div>

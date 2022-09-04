@@ -19,7 +19,7 @@ function LeaguesIcon(){
     let flags = leaguesData.map(items => {
         if(selectedCountries.includes(items.country_name)){
             return <Link to={items.country_id} key={items.country_id}>
-                        <img src={items.country_logo} width={40} height={20} className='country-flags' />
+                        <img src={items.country_logo} width={100} height={50} className='country-flags' />
                     </Link>
         }
     })
