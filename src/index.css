@@ -263,6 +263,9 @@ table th {
   background-color: #070b18;
   padding: 0.5rem;
   display: flex;
+}
+.search-container{
+  background-color: #070b18;
   margin-bottom: 1rem;
 }
 .search-league{
@@ -283,4 +286,22 @@ table th {
   justify-content: center;
   align-items: center;
   padding: 0.25rem;
+}
+
+.search-result{
+  color: #f1f2f3;
+  padding: 0 1rem;
+}
+.search-result > div {
+  padding: 1rem;
+  border-bottom: 1px solid #6963ff;
+  cursor: pointer;
+}
+.search-result > div:hover {
+  background-color: #04172d;
+}
+@media screen and (max-width: 500px){
+  .d-none{
+    display: none;
+  }
 }
