@@ -17,7 +17,12 @@ function Standing(){
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_leagues&country_id=&APIkey=${key}`)
         .then((res, req) => res.json())
-        .then(data => setLeagues(data))
+        .then(data =>{
+            setLeagues(data.filter(data => {
+                if(data.country_name.toLowerCase() === "intl" || data.country_name.replaceAll(' ', '') === "Worldcup" || data.league_name.includes('Cup') || data.league_name.includes('Women')) return
+                return data
+            }))
+        })
     },[])
 
     const teams = stand.map(item => {
@@ -38,13 +43,15 @@ function Standing(){
 
     function getLeagueId(event){
         setLeagueId(event.target.getAttribute("data-league-id"))
+        setSearches('')
+
     }
 
     function handleChange(event){
         setleaguesSearch(event.target.value)
         const searchedResult = leagues.filter(league => league.league_name.toLowerCase().includes(event.target.value.toLowerCase()))
         setSearches(searchedResult.map(result => {
-            if(event.target.value != ""){
+            if(event.target.value !== ""){
                 return <div 
                             key={result.league_id} 
                             data-league-id={result.league_id}
@@ -75,7 +82,10 @@ function Standing(){
                         name="search-league" 
                         className="search-league" 
                         onChange={handleChange}
-                        onBlur={()=>{setleaguesSearch("")}}
+                        onBlur={()=>{
+                            setleaguesSearch("")
+                            // setTimeout(setSearches(""), 2000);
+                        }}
                         value={leaguesSearch}
                     />
                     <i className="fa-solid fa-magnifying-glass"></i>
