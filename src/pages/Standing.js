@@ -1,29 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {Context} from '../Context'
 
 function Standing(){
-    const key = '5e3582a7d8d1a741f870124c02aaa88abb97f126b697a05112d549c4302c9c7e'
     const [stand, setStand] = useState([]);
-    const [leagues, setLeagues] = useState([]);
-    const [leaguesSearch, setleaguesSearch] = useState('');
-    const [searches, setSearches] = useState('');
-    const [leagueId, setLeagueId] =  useState (152)
+    const {leagueId, handleChange, setleaguesSearch, leaguesSearch, searches, key} = useContext(Context)
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_standings&league_id=${leagueId}&APIkey=${key}`)
         .then((res, req) => res.json())
         .then(data => setStand(data))
     },[leagueId])
-
-    useEffect(()=>{
-        fetch(`https://apiv3.apifootball.com/?action=get_leagues&country_id=&APIkey=${key}`)
-        .then((res, req) => res.json())
-        .then(data =>{
-            setLeagues(data.filter(data => {
-                if(data.country_name.toLowerCase() === "intl" || data.country_name.replaceAll(' ', '') === "Worldcup" || data.league_name.includes('Cup') || data.league_name.includes('Women')) return
-                return data
-            }))
-        })
-    },[])
 
     const teams = stand.map(item => {
         return(
@@ -40,28 +26,6 @@ function Standing(){
             </tr>
         )
     })
-
-    function getLeagueId(event){
-        setLeagueId(event.target.getAttribute("data-league-id"))
-        setSearches('')
-
-    }
-
-    function handleChange(event){
-        setleaguesSearch(event.target.value)
-        const searchedResult = leagues.filter(league => league.league_name.toLowerCase().includes(event.target.value.toLowerCase()))
-        setSearches(searchedResult.map(result => {
-            if(event.target.value !== ""){
-                return <div 
-                            key={result.league_id} 
-                            data-league-id={result.league_id}
-                            onClick={getLeagueId}
-                        >
-                            {result.country_name + " " + result.league_name}
-                        </div>
-            }
-        }))
-    }
 
     return(
         <div className="standing">
