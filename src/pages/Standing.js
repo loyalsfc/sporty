@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 import {Context} from '../Context'
 
 function Standing(){
@@ -14,7 +15,7 @@ function Standing(){
     const teams = stand.map(item => {
         return(
             <tr key={item.overall_league_position}>
-                <td className="table-team teams">{item.team_name}</td>
+                <td className="table-team teams"><Link to={item.team_id}>{item.team_name}</Link></td>
                 <td>{item.overall_league_payed}</td>
                 <td className="d-none">{item.overall_league_W}</td>
                 <td className="d-none">{item.overall_league_D}</td>

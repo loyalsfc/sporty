@@ -305,3 +305,82 @@ table th {
     display: none;
   }
 }
+
+.clubs-wrapper{
+  padding: 15px 50px;
+  color: #070b18; 
+}
+.club-info{
+  margin: -15px -50px 0;
+  padding: 3rem 50px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #070b18;
+  background-color: #933556;
+}
+.image-wrapper{
+  background-color: #f1f2f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  margin-right: 3rem;
+}
+.club-info > img {
+  height: 10rem;
+  width: 10rem;
+}
+.club-info{
+  font-size: 3rem;
+  color: #f1f2f3;
+}
+.club-info p{
+  font-size: 1.6rem;
+}
+.club-players-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.player-wrap{
+  width: 23%;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+  margin: 1%;
+  padding: 1rem;
+}
+.player-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #070b18;
+  overflow: hidden;
+  min-height: 80px;
+}
+.player-header img{
+  width: 35%;
+}
+.player-header-info{
+  font-size: 1.2rem;
+}
+.player-stat p{
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+.view-player{
+  margin: 1.5rem 0 -1rem;
+  border: none !important;
+}
+.view-player:hover{
+  color: #933556;
+  cursor: pointer;
+}
+.team-squad{
+  text-align: center;
+  font-size: 2rem;
+  color: #070b18;
+  margin: 2rem;
+}

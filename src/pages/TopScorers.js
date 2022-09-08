@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
+import { Link } from "react-router-dom";
 import {Context} from "../Context"
 
 function TopScorers(){
@@ -8,16 +9,14 @@ function TopScorers(){
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueId}&APIkey=${key}`)
         .then((res, req) => res.json())
-        .then(data => setTopScorersData(data))
-
-        fetch(``)
+        .then(data => {setTopScorersData(data);console.log(data)})
     },[leagueId])
 
     let topScorers = topScorersData.map((item, index) => {
         return(
             <tr key={item.player_key}>
                 <td>{index + 1}</td>
-                <td className="table-team teams">{item.player_name}</td>
+                <td className="table-team teams"><Link to={'' + item.player_key + ''}>{item.player_name}</Link></td>
                 <td>{item.team_name}</td>
                 <td className="">{item.goals}</td>
                 <td className="">{item.penalty_goals}</td>
