@@ -384,3 +384,28 @@ table th {
   color: #070b18;
   margin: 2rem;
 }
+
+.player-statistics-container{
+  padding: 1rem 3.2rem;
+}
+.player-statistics-hero.club-info{
+  padding: 3rem 3rem 0;
+  background-image: linear-gradient(135deg, #933556, #32417a);
+}
+.player-statistics-container .player-image-wrapper{
+  overflow: hidden;
+  padding: 3rem 1rem 0;
+  /* height: 100%; */
+  /* width: fit-content; */
+  background-color: #fff;
+  border-radius: 50% 50% 0 0;
+  display: flex;
+  margin-right: 3rem;
+  /* align-items: flex-end; */
+}
+.player-image-wrapper img {
+  height: 40vh;
+}
+.player-statistics-body{
+  display: flex;
+}
