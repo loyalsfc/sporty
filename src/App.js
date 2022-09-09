@@ -18,8 +18,8 @@ function App() {
         <Route path=':countryId' element={<Leagues/>} />
         <Route path='standing' element={<Standing />}/>
         <Route path='top-scorers' element={<TopScorers />} />
-        <Route path="standing/:clubId" element={<Club />} />
-        <Route path="/top-scorers/:playerKey" element={<PlayerStatistics />} />
+        <Route path="clubs/:clubId" element={<Club />} />
+        <Route path="/players/:playerKey" element={<PlayerStatistics />} />
       </Routes>
       <Footer />
     </>

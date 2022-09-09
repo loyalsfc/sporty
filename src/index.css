@@ -395,17 +395,61 @@ table th {
 .player-statistics-container .player-image-wrapper{
   overflow: hidden;
   padding: 3rem 1rem 0;
-  /* height: 100%; */
-  /* width: fit-content; */
   background-color: #fff;
   border-radius: 50% 50% 0 0;
   display: flex;
   margin-right: 3rem;
-  /* align-items: flex-end; */
+  min-width: 250px;
 }
 .player-image-wrapper img {
   height: 40vh;
+  width: 100%;
 }
 .player-statistics-body{
   display: flex;
+  align-items:flex-start;
+  padding: 2rem 0;
+}
+.player-statistics-details{
+  width: 30%;
+  margin-right: 2rem;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 30%);
+}
+.player-statistics-main{
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* padding: 1rem; */
+  padding-left: 2rem;
+  border-left: 3px solid #ddd;
+}
+.player-statistics-main > div {
+  width: 45%;
+  margin: 0 5%  2rem 0;
+}
+.player-statistics-body .player-stat{
+  border: 0.5px solid #ddd;
+}
+.player-stat > :last-child{
+  border-bottom: none;  
+}
+
+.h4 {
+  padding: 0.7rem;
+  border-bottom: 0.5px solid #ddd;
+  border-top: 3px solid #933556;
+  color: #070b18
+}
+.player-statistics-body .player-stat > p, .apperance > p{
+  padding: 0.5rem;
+}
+p > span {
+  font-weight: 600;
+}
+.apperance{
+  margin-top: 1rem;
+}
+.apperance .h4{
+  border-top: none;
 }

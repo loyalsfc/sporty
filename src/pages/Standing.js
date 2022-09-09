@@ -15,7 +15,7 @@ function Standing(){
     const teams = stand.map(item => {
         return(
             <tr key={item.overall_league_position}>
-                <td className="table-team teams"><Link to={item.team_id}>{item.team_name}</Link></td>
+                <td className="table-team teams"><Link to={`../clubs/${item.team_id}`}>{item.team_name}</Link></td>
                 <td>{item.overall_league_payed}</td>
                 <td className="d-none">{item.overall_league_W}</td>
                 <td className="d-none">{item.overall_league_D}</td>

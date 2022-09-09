@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../Context"
+import { Link } from "react-router-dom"
 
 function Club(){
     const { key } = useContext(Context)
@@ -21,6 +22,7 @@ function Club(){
     const playsersStat = players.map(player =>{
         return <Squad
             key={player.player_key} 
+            playerKey = {player.player_id}
             number={player.player_number} 
             playerName={player.player_name} 
             image={player.player_image} 
@@ -56,7 +58,7 @@ function Club(){
     )
 }
 
-function Squad({number, playerName, image, position, country, apperance, cleanSheet}){
+function Squad({number, playerName, image, position, country, apperance, cleanSheet, playerKey}){
     return(
         <div className="player-wrap">
             <div className="player-header">
@@ -73,7 +75,7 @@ function Squad({number, playerName, image, position, country, apperance, cleanSh
                 <p>Goals <span className="m-auto">{cleanSheet}</span> </p>
                 <p className="view-player">
                     <span></span> 
-                    <span className="m-auto">View Player  <i className="fa-solid fa-arrow-right"></i></span> 
+                    <span className="m-auto"><Link to={`../players/${playerKey}`}> View Player  <i className="fa-solid fa-arrow-right"></i> </Link> </span> 
                 </p>
             </div>
         </div>

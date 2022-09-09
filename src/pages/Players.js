@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import { Context } from "../Context";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 function PlayerStatistics(){
     const {key} = useContext(Context)
@@ -17,7 +18,7 @@ function PlayerStatistics(){
 
     const playerInfo = playerStat.map(stat => {
         return (
-            <Statistics 
+            <Statistics key={stat.player_key} 
                 image = {stat.player_image}
                 number = {stat.player_name}
                 playerName = {stat.player_number}
@@ -47,11 +48,15 @@ function PlayerStatistics(){
                 dribble = {stat.player_dribble_attempts === "" ? 0 : stat.player_dribble_attempts}
                 hit_woodwork = {stat.player_woordworks === "" ? 0 : stat.player_woordworks}
                 shot = {stat.player_shots_total === "" ? 0 : stat.player_shots_total}
+                rating = {stat.player_rating}
+                apperance = {stat.player_match_played}
+                apperance_from_bench = {stat.player_substitutes_on_bench}
+                minutes_played= {stat.player_minutes}
+                team_id = {stat.team_key}
             />
         )
     })
 
-    console.log(playerStat)
     return(
         <div className="">
             {playerInfo}
@@ -74,16 +79,22 @@ function Statistics(props){
             </div>
             <div className="player-statistics-body">
                 <div className="player-stat player-statistics-details">
-                    <p>Club <span>{props.team}</span></p>
+                    <p>Club <span><Link to={`../clubs/${props.team_id}`}>{props.team}</Link></span></p>
                     <p>Position <span>{props.position}</span></p>
                     <p>Age <span>{props.age}</span></p>
                     <p>Date of birth <span>{props.dob}</span></p>
+                    <p>player Rating <span>{props.rating}</span></p>
+                    <div className="apperance">
+                        <h4 className="h4">Apperance</h4>
+                        <p>Apperance <span>{props.apperance}({props.apperance_from_bench})</span></p>
+                        <p>Minutes Played <span>{props.minutes_played} min</span></p>
+                    </div>
                 </div>
-                <div>
+                <div className="player-statistics-main">
                     <div className="player-stat attack-statistics">
-                        <h4>Attack</h4>
+                        <h4 className="h4">Attack</h4>
                         <p>Goals <span>{props.goals}</span></p>
-                        <p>Goals per match <span>{(props.goals / props.match_played).toFixed(2)}</span></p>
+                        <p>Goals per match <span>{props.match_played === "0" ? "0" : (props.goals / props.match_played)}</span></p>
                         <p>Penalty Scored <span>{props.penalty}</span></p>
                         <p>Penalty Won <span>{props.penalty_won}</span></p>
                         <p>Dribble <span>{props.dribble}({props.dribble_completed})</span></p>
@@ -91,20 +102,20 @@ function Statistics(props){
                         <p>Hit woordwork <span>{props.hit_woodwork}</span></p>
                     </div>
                     <div className="player-stat player-discipline">
-                        <h4>Team Play</h4>
+                        <h4 className="h4">Team Play</h4>
                         <p>Assists <span>{props.assist}</span></p>
                         <p>Passes <span>{props.passes}({props.passes_completed})</span></p>
-                        <p>Key <span>{props.chance}</span></p>
+                        <p>Key Passes <span>{props.chance}</span></p>
                         <p>Crosses <span>{props.cross}</span></p>
                     </div>
                     <div className="player-stat player-discipline">
-                        <h4>Discipline</h4>
+                        <h4 className="h4">Discipline</h4>
                         <p>Yello cards <span>{props.yellow_card}</span></p>
                         <p>Red cards <span>{props.red_card}</span></p>
                         <p>Fouls <span>{props.fouls}</span></p>
                     </div>
                     <div className="player-stat player-discipline">
-                        <h4>Defence</h4>
+                        <h4 className="h4">Defence</h4>
                         <p>Tackles <span>{props.tackle}</span></p>
                         <p>Blocks <span>{props.block_shot}</span></p>
                         <p>Interceptions <span>{props.interception}</span></p>

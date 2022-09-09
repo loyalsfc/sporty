@@ -16,8 +16,8 @@ function TopScorers(){
         return(
             <tr key={item.player_key}>
                 <td>{index + 1}</td>
-                <td className="table-team teams"><Link to={'' + item.player_key + ''}>{item.player_name}</Link></td>
-                <td>{item.team_name}</td>
+                <td className="table-team teams"><Link to={'../players/' + item.player_key + ''}>{item.player_name}</Link></td>
+                <td><Link to={`../clubs/${item.team_key}`}> {item.team_name}</Link></td>
                 <td className="">{item.goals}</td>
                 <td className="">{item.penalty_goals}</td>
                 <td className="">{item.assists === "" ? 0 : item.assists}</td>
