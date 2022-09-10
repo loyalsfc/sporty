@@ -25,9 +25,11 @@ function LeaguesIcon(){
     })
 
     return(
-        <div className="flags-container">
-            <div className="flags-wrapper">
-               {flags}
+        <div className="flags-container bg-primary py-1">
+            <div className="container mx-auto">
+                <div className="flags-wrapper">
+                    {flags}
+                </div>
             </div>
         </div>
     )

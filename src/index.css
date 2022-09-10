@@ -16,13 +16,46 @@ code {
     monospace;
 }
 
-header{
+.bg-primary{
   background-color: #070b18;
+}
+.py-1{
+  padding: 1rem 0;
+}
+header{
+  overflow: hidden;
+  position: relative;
+}
+nav{
   display: flex;
   justify-content: space-between;
-  padding: 15px 50px;
-  /* position: sticky; */
-  /* top: 0; */
+  align-items: center;
+}
+.mobile-menu{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 1;
+  transition: linear 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-menu .navigation-item{
+  display: block;
+  margin: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.fa-xmark{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.p-left{
+  left: 0;
 }
 .navigation-item{
   display: inline;
@@ -31,21 +64,31 @@ header{
   margin: 0 10px;
   cursor: default;
 }
+.navigation-item a{
+  color: #f1f2f3;
+}
+.navigation-item:hover, .navigation-item a:hover{
+  color: #933556;
+  padding-bottom: 0.7rem;
+  border-bottom: 1.5px solid #933556;
+
+}
 .join-us{
   padding: 5px 10px;
   font-weight: 600;
   background-image: linear-gradient(135deg, #933556, #32417a);
   color: #f1f2f3;
+  border: none;
+}
+.fa-bars, .fa-xmark{
+  color: #f1f2f3;
+  font-size: 1.5rem;
 }
 .banner{
   height: 90vh;
   background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 60%,rgba(50, 65, 122, 0.1)), url('https://o7dkx1gd2bwwexip1qwjpplu-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/GettyImages-1141722200-1600x800.jpg');
   background-size: cover;
   background-position: center;
-  padding: 15px 50px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 .banner-title{
   color: #f1f2f3;
@@ -76,11 +119,6 @@ header{
   padding: 1rem 2rem;
   font-weight: 600;
 }
-
-.flags-container{
-  background-color: #04172d;
-  padding: 15px 50px;
-}
 .flags-wrapper{
   display: flex;
   overflow-x: scroll;
@@ -93,9 +131,7 @@ header{
 .country-flags{
   margin: 0 10px;
 }
-.our-service{
-  padding: 15px 50px;
-}
+
 .section-title{
   text-align: center;
   font-size: 2rem;
@@ -300,11 +336,6 @@ table th {
 .search-result > div:hover {
   background-color: #04172d;
 }
-@media screen and (max-width: 500px){
-  .d-none{
-    display: none;
-  }
-}
 
 .clubs-wrapper{
   padding: 15px 50px;
@@ -452,4 +483,54 @@ p > span {
 }
 .apperance .h4{
   border-top: none;
+}
+
+/* Responsiveness  */
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.container {
+  width: 100%;
+  padding:  0.5rem;
+  padding:  0.5rem;
+}
+.d-sm{
+  display: none;
+}
+@media screen and (min-width: 640px) { 
+   .container{
+    max-width: 640px;
+   }
+}
+@media screen and (min-width: 768px) { 
+  .container{
+    max-width: 768px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container{
+    max-width: 1024px;
+  }
+}
+@media screen and (min-width: 1200px) { 
+  .container{
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .d-sm{
+    display: block;
+  }
+  .d-md{
+    display: none;
+  }
+  .banner-title{
+    margin-top: 2.5rem;  
+  }
+  .banner{
+    background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 100%,rgba(50, 65, 122, 0.1)), url('https://o7dkx1gd2bwwexip1qwjpplu-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/GettyImages-1141722200-1600x800.jpg');
+  }
+  
 }
