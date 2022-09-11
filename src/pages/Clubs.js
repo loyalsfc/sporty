@@ -36,7 +36,7 @@ function Club(){
     return(
         <div className="clubs-wrapper">
             <div className="club-info">
-                {clubInfo.length && 
+                {clubInfo.length ?
                 <>
                     <div className="image-wrapper">
                         <img src={clubInfo[0].team_badge} />
@@ -45,13 +45,13 @@ function Club(){
                             <h3>{clubInfo[0].team_name}</h3>
                             <p>Coach: {clubInfo[0].coaches[0].coach_name}</p>
                     </div>
-                </>
+                </> : ""
                 }
             </div>
             <div className="club-players-container">
                 <h3 className="team-squad">Squad</h3>
                 <div className="club-players-wrap">
-                    {clubInfo.length && playsersStat}
+                    {clubInfo.length ? playsersStat : ""}
                 </div>
             </div>
         </div>

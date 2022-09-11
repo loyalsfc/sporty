@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import {Context} from "../Context"
+import DummyTable from "../components/DummyTable";
 
 function TopScorers(){
     const {key, leagueId, handleChange, setleaguesSearch, searches, leaguesSearch, leagueName} = useContext(Context)
@@ -19,58 +20,60 @@ function TopScorers(){
                 <td className="table-team teams"><Link to={'../players/' + item.player_key + ''}>{item.player_name}</Link></td>
                 <td><Link to={`../clubs/${item.team_key}`}> {item.team_name}</Link></td>
                 <td className="">{item.goals}</td>
-                <td className="">{item.penalty_goals}</td>
-                <td className="">{item.assists === "" ? 0 : item.assists}</td>
+                <td className="d-sm-none">{item.penalty_goals}</td>
+                <td className="d-sm-none">{item.assists === "" ? 0 : item.assists}</td>
             </tr>
         )
     })
 
     return(
         <div className="standing">
-            <ul className="breadcrumb">
-                <li>Top Scorers</li>
-                {topScorersData.length &&
-                    <>
-                        <li>{leagueName}</li>
-                        <li>2022/2023</li>
-                    </>
-                }
-            </ul>
-            <div className="search-container">
-                <div className="search-wrapper">
-                    <input 
-                        type="text" 
-                        id="search-league" 
-                        name="search-league" 
-                        className="search-league" 
-                        onChange={handleChange}
-                        onBlur={()=>{
-                            setleaguesSearch("")
-                        //     // setTimeout(setSearches(""), 2000);
-                        }}
-                        value={leaguesSearch}
-                    />
-                    <i className="fa-solid fa-magnifying-glass"></i>
+            <div className="container mx-auto">
+                <ul className="breadcrumb">
+                    <li>Top Scorers</li>
+                    {topScorersData.length ?
+                        <>
+                            <li>{leagueName}</li>
+                            <li>2022/2023</li>
+                        </> : ""
+                    }
+                </ul>
+                <div className="search-container">
+                    <div className="search-wrapper">
+                        <input 
+                            type="text" 
+                            id="search-league" 
+                            name="search-league" 
+                            className="search-league" 
+                            onChange={handleChange}
+                            onBlur={()=>{
+                                setleaguesSearch("")
+                            //     // setTimeout(setSearches(""), 2000);
+                            }}
+                            value={leaguesSearch}
+                        />
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div className="search-result">
+                        {searches}
+                    </div>
                 </div>
-                <div className="search-result">
-                    {searches}
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="">Pos</th>
+                            <th className="table-team">Player Name</th>
+                            <th className="">Team</th>
+                            <th className="">Goals</th>
+                            <th className="d-sm-none">Penalty Goals</th>
+                            <th className="d-sm-none">Assist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {topScorersData.length ? topScorers : <DummyTable length={15} />}
+                    </tbody>
+                </table>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th className="">Pos</th>
-                        <th className="table-team">Player Name</th>
-                        <th className="">Team</th>
-                        <th className="">Goals</th>
-                        <th className="">Penalty Goals</th>
-                        <th className="">Assist</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {topScorers}
-                </tbody>
-            </table>
         </div>
     )  
 }

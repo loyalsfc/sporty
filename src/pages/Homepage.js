@@ -53,9 +53,11 @@ export default function Homepage(){
                     </div>
                 </div>
             </section>
-            <section className="testimonials">
-                <h3 data-aos="slide-up" className="section-title">Testimonials</h3>
-                <Testimonials />
+            <section className="testimonials bg-primary">
+                <div className="container mx-auto">
+                    <h3 data-aos="slide-up" className="section-title">Testimonials</h3>
+                    <Testimonials />
+                </div>
             </section>
         </main>
     )
