@@ -331,11 +331,6 @@ table th {
 .search-result > div:hover {
   background-color: #04172d;
 }
-
-.clubs-wrapper{
-  padding: 15px 50px;
-  color: #070b18; 
-}
 .club-info{
   margin: -15px -50px 0;
   padding: 3rem 50px;
@@ -343,6 +338,10 @@ table th {
   align-items: center;
   border-bottom: 2px solid #070b18;
   background-color: #933556;
+}
+.d-flex-center{
+  display: flex;
+  align-items: center;
 }
 .image-wrapper{
   background-color: #f1f2f3;
@@ -354,7 +353,7 @@ table th {
   width: 12rem;
   margin-right: 3rem;
 }
-.club-info > img {
+.club-info img {
   height: 10rem;
   width: 10rem;
 }
@@ -374,6 +373,7 @@ table th {
   border-radius: 5px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
   margin: 1%;
+  position: relative;
   padding: 1rem;
 }
 .player-header{
@@ -399,10 +399,19 @@ table th {
 .view-player{
   margin: 1.5rem 0 -1rem;
   border: none !important;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1rem
 }
-.view-player:hover{
+.view-player a{
+  color: #070b18;
+}
+.view-player a:hover{
   color: #933556;
   cursor: pointer;
+}
+.player-stat-goal{
+  margin-bottom: 3rem;
 }
 .team-squad{
   text-align: center;
@@ -410,13 +419,21 @@ table th {
   color: #070b18;
   margin: 2rem;
 }
-
-.player-statistics-container{
-  padding: 1rem 3.2rem;
-}
-.player-statistics-hero.club-info{
-  padding: 3rem 3rem 0;
+.player-statistics-hero{
+  padding: 3rem 0 0;
   background-image: linear-gradient(135deg, #933556, #32417a);
+  margin: auto;
+  border-bottom: 2px solid black;
+}
+.player-statistics-hero .club-info{
+  background: unset;
+  border: unset;
+}
+.player-club a {
+  color: #070b18;
+}
+.player-club a:hover{
+  text-decoration: underline;
 }
 .player-statistics-container .player-image-wrapper{
   overflow: hidden;
@@ -531,14 +548,49 @@ p > span {
     width: 100%;
     margin-bottom: 2rem;
   }
-  .testimonial-wrapper{
-    width: 100%;
+  .sm-w-100{
+    width: 100% !important;
   }
   .table-team{
     width: 50%;
   }
   .d-sm-none{
     display: none;
+  }
+  .club-info {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .image-wrapper{
+    margin: auto;
+  }
+  .player-image-wrapper {
+    margin-right: 0;
+    margin: auto !important;
+    min-width: unset;
+  }
+  .player-image-wrapper img {
+    height: 30vh;
+    width: 100%;
+  }
+  .player-name-wrapper{
+    width: 100%;
+  }
+  .sm-flex-column{
+    flex-direction: column;
+  }
+  .player-statistics-main{
+    padding-left: unset;
+    border: unset;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 768px) { 
+  .club-info {
+    font-size: 1.5rem;
+  }
+  .player-wrap{
+    width: 48%;
   }
 }
 @media screen and (max-width: 1024px) {

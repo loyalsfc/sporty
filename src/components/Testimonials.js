@@ -26,7 +26,7 @@ function Testimonials(props){
 
 function Testimony(props){
     return (
-        <div data-aos="slide-up" data-aos-delay={props.delay} className="testimonial-wrapper">
+        <div data-aos="slide-up" data-aos-delay={props.delay} className="testimonial-wrapper sm-w-100">
             <p className="testimonial-content">{props.content}</p>
             <div className="testimonial-image">
                 <img src={props.image} height={48} width={48} />

@@ -36,22 +36,26 @@ function Club(){
     return(
         <div className="clubs-wrapper">
             <div className="club-info">
-                {clubInfo.length ?
-                <>
-                    <div className="image-wrapper">
-                        <img src={clubInfo[0].team_badge} />
-                    </div>
-                        <div>
-                            <h3>{clubInfo[0].team_name}</h3>
-                            <p>Coach: {clubInfo[0].coaches[0].coach_name}</p>
-                    </div>
-                </> : ""
-                }
+                <div className="container mx-auto d-flex-center sm-flex-column">
+                    {clubInfo.length ?
+                    <>
+                        <div className="image-wrapper">
+                            <img src={clubInfo[0].team_badge} />
+                        </div>
+                            <div>
+                                <h3>{clubInfo[0].team_name}</h3>
+                                <p>Coach: {clubInfo[0].coaches[0].coach_name}</p>
+                        </div>
+                    </> : ""
+                    }
+                </div>
             </div>
             <div className="club-players-container">
-                <h3 className="team-squad">Squad</h3>
-                <div className="club-players-wrap">
-                    {clubInfo.length ? playsersStat : ""}
+                <div className="container mx-auto">
+                    <h3 className="team-squad">Squad</h3>
+                    <div className="club-players-wrap ">
+                        {clubInfo.length ? playsersStat : ""}
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,7 +64,7 @@ function Club(){
 
 function Squad({number, playerName, image, position, country, apperance, cleanSheet, playerKey}){
     return(
-        <div className="player-wrap">
+        <div className="player-wrap sm-w-100">
             <div className="player-header">
                 <div className="player-header-info">
                     <p>{number}</p>
@@ -72,7 +76,7 @@ function Squad({number, playerName, image, position, country, apperance, cleanSh
             <div className="player-stat">
                 <p>Nationality <span className="m-auto">{country}</span> </p>
                 <p>Apperance <span className="m-auto">{apperance}</span> </p>
-                <p>Goals <span className="m-auto">{cleanSheet}</span> </p>
+                <p className="player-stat-goal">Goals <span className="m-auto">{cleanSheet}</span> </p>
                 <p className="view-player">
                     <span></span> 
                     <span className="m-auto"><Link to={`../players/${playerKey}`}> View Player  <i className="fa-solid fa-arrow-right"></i> </Link> </span> 
