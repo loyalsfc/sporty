@@ -33,6 +33,16 @@ function Club(){
         />
     })
 
+    function DummySquad(){
+        let squads = []
+        for(let i = 0; i <= 20; i++){
+            squads.push(
+                <Squad />
+            )
+        }
+        return squads
+    }
+
     return(
         <div className="clubs-wrapper">
             <div className="club-info">
@@ -46,7 +56,7 @@ function Club(){
                                 <h3>{clubInfo[0].team_name}</h3>
                                 <p>Coach: {clubInfo[0].coaches[0].coach_name}</p>
                         </div>
-                    </> : ""
+                    </> : <div className="image-wrapper"></div>
                     }
                 </div>
             </div>
@@ -54,7 +64,7 @@ function Club(){
                 <div className="container mx-auto">
                     <h3 className="team-squad">Squad</h3>
                     <div className="club-players-wrap ">
-                        {clubInfo.length ? playsersStat : ""}
+                        {clubInfo.length ? playsersStat : <DummySquad />}
                     </div>
                 </div>
             </div>

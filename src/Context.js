@@ -10,17 +10,20 @@ function ContextProvider(props){
     const [leaguesSearch, setleaguesSearch] = useState('');
     const [leagueName, setLeagueName] = useState('Premier League');
 
-
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_leagues&country_id=&APIkey=${key}`)
         .then((res, req) => res.json())
         .then(data =>{
             setLeagues(data.filter(data => {
-                if(data.country_name.toLowerCase() === "intl" || data.country_name.replaceAll(' ', '') === "Worldcup" || data.league_name.includes('Cup') || data.league_name.includes('Women')) return
+                if(data.country_name.toLowerCase() === "intl" || data.country_name.replaceAll(' ', '') === "Worldcup" || data.league_name.includes('Cup') || data.league_name.includes('Women') || data.league_name.includes('Co')|| data.league_name.includes('Supercopa')) return
                 return data
             }))
         })
     },[])
+
+    document.querySelector('body').onClick = () => {
+        console.log('Hello World')
+    }
 
     function getLeagueId(event){
         setLeagueId(event.target.getAttribute("data-league-id"))

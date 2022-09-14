@@ -14,8 +14,6 @@ function PlayerStatistics(){
         .then(data => setPlayerStat([data[data.length - 1]]))
     },[])
 
-    console.log(playerStat)
-
     const playerInfo = playerStat.map(stat => {
         return (
             <Statistics key={stat.player_key} 
@@ -59,7 +57,7 @@ function PlayerStatistics(){
 
     return(
         <div className="">
-            {playerInfo}
+            {playerStat.length ? playerInfo : <Statistics />}
         </div>
 
     )
