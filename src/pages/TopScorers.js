@@ -4,13 +4,13 @@ import {Context} from "../Context"
 import DummyTable from "../components/DummyTable";
 
 function TopScorers(){
-    const {key, leagueId, handleChange, setleaguesSearch, searches, leaguesSearch, leagueName} = useContext(Context)
+    const {key, leagueId, handleChange, setleaguesSearch, searches, setSearches, leaguesSearch, leagueName} = useContext(Context)
     const [topScorersData, setTopScorersData] = useState([])
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueId}&APIkey=${key}`)
         .then((res, req) => res.json())
-        .then(data => {setTopScorersData(data);console.log(data)})
+        .then(data => setTopScorersData(data))
     },[leagueId])
 
     let topScorers = topScorersData.map((item, index) => {
@@ -25,6 +25,12 @@ function TopScorers(){
             </tr>
         )
     })
+
+    window.onclick = function(event){
+        if(event.target != document.querySelector('.search-result') && searches != ''){
+            setSearches("");
+        }
+    }
 
     return(
         <div className="standing">
@@ -48,7 +54,6 @@ function TopScorers(){
                             onChange={handleChange}
                             onBlur={()=>{
                                 setleaguesSearch("")
-                            //     // setTimeout(setSearches(""), 2000);
                             }}
                             value={leaguesSearch}
                         />

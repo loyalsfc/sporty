@@ -4,7 +4,6 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Oxanium', cursive;
-  /* font-size: 1rem; */
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -140,6 +139,43 @@ nav{
   margin-bottom: 15px;
   color: #933556;
 }
+
+.numbers-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(180deg, #933556, #070b18);
+}
+.numbers-wrapper{
+  display: flex;
+}
+.number-icon{
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-size: 2rem;
+  color: #070b18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+h4.numbers{
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 150%;
+  color: #fff;
+}
+.numbers-text{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  color: #E0E0E0;
+}
+
 .service-wrapper{
   padding: 2.5rem 1rem 1rem;
   width: 23%;
@@ -148,7 +184,6 @@ nav{
   box-shadow: 0 4px 8px 0 rgba(50, 65, 122, 0.2), 0 6px 20px 0 rgba(50, 65, 122, 0.19);
   position: relative;
   margin: 0 1% 1%;
-  /* margin: 0 1rem 1rem; */
 }
 .services-container{
   display: flex;
@@ -157,9 +192,6 @@ nav{
 }
 .service-wrapper > i{
   font-size: 3rem;
-  color: #933556;
-}
-.fa-futbol{
   color: #933556;
 }
 .service-title {
@@ -224,7 +256,6 @@ nav{
 }
 .leagues-wrap:hover{
   box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.3);
-  /* box-shadow: 0 4px 8px 0 rgba(50, 65, 122, 0.2), 0 6px 20px 0 rgba(50, 65, 122, 0.19); */
 }
 .leagues-wrap > a{
   color: #070b18;
@@ -251,7 +282,6 @@ nav{
 }
 
 table{
-  /* width: 650px; */
   width: 100%;
   margin: auto;
   border-collapse: collapse;
@@ -307,7 +337,7 @@ table th {
   width: 100%;
   border: none;
 }
-.search-league:focus{
+.search-league:focus, .newsletter-email{
   outline: none;
 }
 .fa-magnifying-glass{
@@ -464,7 +494,6 @@ table th {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  /* padding: 1rem; */
   padding-left: 2rem;
   border-left: 3px solid #ddd;
 }
@@ -521,13 +550,20 @@ p > span {
   background-color: rgba(0, 0, 0, 0.8);
   top: 0%;
   z-index: 1;
+  transform: scale(0);
+  transition: ease-in-out 0.3s;
+}
+.active-modal{
+  transform: scale(1);
 }
 .modal-content{
+  border-radius: 0.3rem;
   background-color: #fff;
-  max-width: 400px;
-  padding: 1rem;
+  max-width: 300px;
+  padding: 1.5rem;
   position: relative;
   text-align: center;
+  color: #070b18;
 }
 span.close{
   position: absolute;
@@ -539,6 +575,59 @@ span.close{
 .bell-icon{
   font-size: 6rem;
   color: #933556;
+}
+.footer-wrapper .navigation-item{
+  margin: 0.4rem;
+}
+
+.footer-wrapper .navigation-item:hover, .footer-wrapper .navigation-item > a:hover{
+  color: #6963ff;
+  padding-bottom: unset;
+  border-bottom: none;
+  text-decoration: underline;
+}
+.social-icons i{
+  color: #6963ff;
+  margin:  0 1rem 1rem;
+  font-size: 1.6rem;
+}
+.input-wrapper{
+  background-color: #933556;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+}
+.input-wrapper i{
+  color: #f1f2f3; 
+  font-size: 1.4rem;
+  width: 15%;
+}
+.input-wrapper input{
+  height: 2rem;
+  border: none;
+  width: 85%;
+  padding: 0.3rem;
+}
+.subscribe-button{
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  background-color: #933556;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
+} 
+.subscribe-button:hover{
+  background-color: #fff;
+  color: #933556;
+  border: 0.1rem solid #933556;
+  padding: 0.4rem;
+}
+.subscribe-content{
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
 }
 @media screen and (min-width: 640px) { 
    .container{
@@ -618,14 +707,6 @@ span.close{
   .join-us{
     font-size: 1.2rem;
   }
-}
-@media screen and (max-width: 768px) { 
-  /* .club-info {
-    font-size: 1.5rem;
-  }
-  .player-wrap{
-    width: 48%;
-  } */
 }
 @media screen and (max-width: 1024px) {
   .service-wrapper{

@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import { Context } from "../Context";
 import { Link, useParams } from "react-router-dom"
 
 function Leagues(){
-    const key = '5e3582a7d8d1a741f870124c02aaa88abb97f126b697a05112d549c4302c9c7e';
+    const {key} = useContext(Context);
     let { countryId } = useParams();
     const [competitions, setCompetitions] = useState([]);
 
@@ -11,11 +12,9 @@ function Leagues(){
         .then((res, req) => res.json())
         .then(data => setCompetitions(data))
     }, [])
-    console.log(competitions)
     let compete = competitions.map(items => {
         return(
             <div className="leagues-wrap" key={items.league_id}>
-                <Link to={items.league_id}>
                     <h4 className="leagues-title">{items.league_name}</h4>
                     <img 
                         className="leagues-logo" 
@@ -24,7 +23,6 @@ function Leagues(){
                         alt="League Icon"
                     />
                     <div className="league-season">{items.league_season}</div>
-                </Link>
             </div>
         )
     })

@@ -5,7 +5,7 @@ import DummyTable from "../components/DummyTable";
 
 function Standing(){
     const [stand, setStand] = useState([]);
-    const {leagueId, handleChange, setleaguesSearch, leaguesSearch, searches, key} = useContext(Context)
+    const {leagueId, handleChange, setleaguesSearch, leaguesSearch, searches, key, setSearches} = useContext(Context)
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_standings&league_id=${leagueId}&APIkey=${key}`)
@@ -29,6 +29,12 @@ function Standing(){
         )
     })
 
+    window.onclick = function(event){
+        if(event.target != document.querySelector('.search-result') && searches != ''){
+            setSearches("");
+        }
+    }
+
     return(
         <div className="standing">
             <div className="container mx-auto">
@@ -51,7 +57,6 @@ function Standing(){
                             onChange={handleChange}
                             onBlur={()=>{
                                 setleaguesSearch("")
-                                // setTimeout(setSearches(""), 2000);
                             }}
                             value={leaguesSearch}
                         />

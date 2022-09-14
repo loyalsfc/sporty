@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import { Context } from "../Context";
 import { Link } from "react-router-dom"
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -6,7 +7,7 @@ import "aos/dist/aos.css";
 
 
 function LeaguesIcon(){
-    const key = '5e3582a7d8d1a741f870124c02aaa88abb97f126b697a05112d549c4302c9c7e';
+    const {key} = useContext(Context)
     const [leaguesData, setleaguesData] = useState([]);
     const selectedCountries = ["England", "Spain", "France", "Germany", "Italy", "Netherland", "Mexico", "Russia", "Portugal", "Saudi Arabia", "Brazil", "Turkey", "Slovenia", "Austria", "Poland", "Bulgaria", "Scotland", "Greece", "Norway"]
     
