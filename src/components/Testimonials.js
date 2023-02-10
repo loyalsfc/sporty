@@ -1,5 +1,4 @@
 import React from "react";
-import Aos from "aos";
 import "aos/dist/aos.css";
 
 function Testimonials(props){
@@ -29,7 +28,7 @@ function Testimony(props){
         <div data-aos="slide-up" data-aos-delay={props.delay} className="testimonial-wrapper sm-w-100">
             <p className="testimonial-content">{props.content}</p>
             <div className="testimonial-image">
-                <img src={props.image} height={48} width={48} />
+                <img src={props.image} height={48} width={48} alt="User"/>
             </div>
         </div>
     )

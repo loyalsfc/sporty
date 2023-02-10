@@ -21,10 +21,6 @@ function ContextProvider(props){
         })
     },[])
 
-    document.querySelector('body').onClick = () => {
-        console.log('Hello World')
-    }
-
     function getLeagueId(event){
         setLeagueId(event.target.getAttribute("data-league-id"))
         setLeagueName(event.target.getAttribute("data-league-name"))

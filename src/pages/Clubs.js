@@ -16,7 +16,7 @@ function Club(){
             setClubInfo(data)
             setPlayers(data[0].players)
         })
-    },[])
+    },[clubId, key])
 
     console.log(players)
     const playsersStat = players.map(player =>{
@@ -50,7 +50,7 @@ function Club(){
                     {clubInfo.length ?
                     <>
                         <div className="image-wrapper">
-                            <img src={clubInfo[0].team_badge} />
+                            <img src={clubInfo[0].team_badge} alt="Team badge"/>
                         </div>
                             <div>
                                 <h3>{clubInfo[0].team_name}</h3>
@@ -81,7 +81,7 @@ function Squad({number, playerName, image, position, country, apperance, cleanSh
                     <h4>{playerName}</h4>
                     <span>{position}</span>
                 </div>
-                <img src={image} />
+                <img src={image} alt="Player"/>
             </div>
             <div className="player-stat">
                 <p>Nationality <span className="m-auto">{country}</span> </p>

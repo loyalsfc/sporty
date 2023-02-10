@@ -11,7 +11,7 @@ function TopScorers(){
         fetch(`https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueId}&APIkey=${key}`)
         .then((res, req) => res.json())
         .then(data => setTopScorersData(data))
-    },[leagueId])
+    },[leagueId, key])
 
     let topScorers = topScorersData.map((item, index) => {
         return(
@@ -27,7 +27,7 @@ function TopScorers(){
     })
 
     window.onclick = function(event){
-        if(event.target != document.querySelector('.search-result') && searches != ''){
+        if(event.target !== document.querySelector('.search-result') && searches !== ''){
             setSearches("");
         }
     }

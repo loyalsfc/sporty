@@ -11,7 +11,7 @@ function Standing(){
         fetch(`https://apiv3.apifootball.com/?action=get_standings&league_id=${leagueId}&APIkey=${key}`)
         .then((res, req) => res.json())
         .then(data => setStand(data))
-    },[leagueId])
+    },[leagueId, key])
 
     const teams = stand.map(item => {
         return(
@@ -30,7 +30,7 @@ function Standing(){
     })
 
     window.onclick = function(event){
-        if(event.target != document.querySelector('.search-result') && searches != ''){
+        if(event.target !== document.querySelector('.search-result') && searches !== ''){
             setSearches("");
         }
     }

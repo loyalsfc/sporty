@@ -12,7 +12,7 @@ function PlayerStatistics(){
         fetch(`https://apiv3.apifootball.com/?action=get_players&player_id=${playerKey}&APIkey=${key}`)
         .then((res, req) => res.json())
         .then(data => setPlayerStat([data[data.length - 1]]))
-    },[])
+    },[playerKey, key])
 
     const playerInfo = playerStat.map(stat => {
         return (
@@ -69,7 +69,7 @@ function Statistics(props){
             <div className="player-statistics-hero  py-1">
                 <div className="container mx-auto club-info">
                     <div className="player-image-wrapper">
-                        <img src={props.image} />
+                        <img src={props.image} alt="Player "/>
                     </div>
                     <div className="player-name-wrapper">
                         <h1>{props.number}</h1>
@@ -95,7 +95,7 @@ function Statistics(props){
                         <div className="player-stat attack-statistics sm-w-100">
                             <h4 className="h4">Attack</h4>
                             <p>Goals <span>{props.goals}</span></p>
-                            <p>Goals per match <span>{props.match_played === "0" ? "0" : (props.goals / props.match_played)}</span></p>
+                            <p>Goals per match <span>{props.match_played === "0" ? "0" : (props.goals / props.match_played).toFixed(2)}</span></p>
                             <p>Penalty Scored <span>{props.penalty}</span></p>
                             <p>Penalty Won <span>{props.penalty_won}</span></p>
                             <p>Dribble <span>{props.dribble}({props.dribble_completed})</span></p>

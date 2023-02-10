@@ -8,7 +8,7 @@ function Header(){
     }
 
     window.onclick = function(event) {
-        if (event.target == document.querySelector('#newsletter-modal')) {
+        if (event.target === document.querySelector('#newsletter-modal')) {
           showModal();
         }
     }
