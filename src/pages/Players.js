@@ -2,11 +2,14 @@ import React, {useEffect, useState, useContext} from "react";
 import { Context } from "../Context";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom"
+import blank_portrait from '../assets/images/blank_portrait.png'
+
 
 function PlayerStatistics(){
     const {key} = useContext(Context)
     const { playerKey } = useParams()
     const [playerStat, setPlayerStat] = useState([]);
+    const [playerImage, setPlayerImage] = useState("");
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_players&player_id=${playerKey}&APIkey=${key}`)
@@ -14,10 +17,28 @@ function PlayerStatistics(){
         .then(data => setPlayerStat([data[data.length - 1]]))
     },[playerKey, key])
 
+    useEffect(()=>{
+        checkImage();
+    },[playerStat])
+
+    function checkImage() {
+        const url = playerStat[0]?.player_image
+        const image = new Image();
+        image.onload = function() {
+            if (this.width > 0) {
+                setPlayerImage(url);
+            }
+        }
+        image.onerror = function() {
+            setPlayerImage(blank_portrait)
+        }
+        image.src = url;
+    }
+
     const playerInfo = playerStat.map(stat => {
         return (
             <Statistics key={stat.player_key} 
-                image = {stat.player_image}
+                image = {playerImage}
                 number = {stat.player_name}
                 playerName = {stat.player_number}
                 yellow_card = {stat.player_yellow_cards}

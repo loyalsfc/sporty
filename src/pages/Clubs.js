@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../Context"
 import { Link } from "react-router-dom"
+import blank_portrait from '../assets/images/blank_portrait.png'
 
 function Club(){
     const { key } = useContext(Context)
@@ -18,7 +19,6 @@ function Club(){
         })
     },[clubId, key])
 
-    console.log(players)
     const playsersStat = players.map(player =>{
         return <Squad
             key={player.player_key} 
@@ -72,16 +72,35 @@ function Club(){
     )
 }
 
-function Squad({number, playerName, image, position, country, apperance, cleanSheet, playerKey}){
+function Squad({number, playerName, image: player_image, position, country, apperance, cleanSheet, playerKey}){
+    const [playerImage, setPlayerImage] = useState("")
+
+    useEffect(()=>{
+        checkImage();
+    },[])
+
+    function checkImage() {
+        const image = new Image();
+        image.onload = function() {
+            if (this.width > 0) {
+                setPlayerImage(player_image);
+            }
+        }
+        image.onerror = function() {
+            setPlayerImage(blank_portrait)
+        }
+        image.src = player_image;
+    }
+    
     return(
         <div className="player-wrap sm-w-100">
             <div className="player-header">
                 <div className="player-header-info">
                     <p>{number}</p>
-                    <h4>{playerName}</h4>
+                    <h4 className="player-name">{playerName}</h4>
                     <span>{position}</span>
                 </div>
-                <img src={image} alt="Player"/>
+                <img src={playerImage} alt="Player"/>
             </div>
             <div className="player-stat">
                 <p>Nationality <span className="m-auto">{country}</span> </p>

@@ -417,9 +417,12 @@ table th {
 }
 .player-header img{
   width: 35%;
+  flex-shrink: 0;
 }
 .player-header-info{
   font-size: 1.2rem;
+  flex: 1;
+  overflow: hidden;
 }
 .player-stat p{
   padding: 0.5rem 0;
@@ -628,6 +631,11 @@ span.close{
 .subscribe-content{
   font-size: 0.8rem;
   margin: 0.5rem 0;
+}
+.player-name{
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
 }
 @media screen and (min-width: 640px) { 
    .container{
