@@ -15,7 +15,7 @@ function Footer(props){
                 <i className="fa-brands fa-facebook"></i>
                 <i className="fa-brands fa-instagram"></i>
             </div>
-            <div>All right reserve @Sporty</div>
+            <div>All right reserve @Sporty 2024</div>
         </div>
     )
 }

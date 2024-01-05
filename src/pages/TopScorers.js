@@ -2,9 +2,10 @@ import React, {useState, useEffect, useContext} from "react";
 import { Link } from "react-router-dom";
 import {Context} from "../Context"
 import DummyTable from "../components/DummyTable";
+import Search from "../components/search";
 
 function TopScorers(){
-    const {key, leagueId, handleChange, setleaguesSearch, searches, setSearches, leaguesSearch, leagueName} = useContext(Context)
+    const {key, leagueId, leagueName} = useContext(Context)
     const [topScorersData, setTopScorersData] = useState([])
 
     useEffect(()=>{
@@ -26,12 +27,6 @@ function TopScorers(){
         )
     })
 
-    window.onclick = function(event){
-        if(event.target !== document.querySelector('.search-result') && searches !== ''){
-            setSearches("");
-        }
-    }
-
     return(
         <div className="standing">
             <div className="container mx-auto">
@@ -44,25 +39,7 @@ function TopScorers(){
                         </> : ""
                     }
                 </ul>
-                <div className="search-container">
-                    <div className="search-wrapper">
-                        <input 
-                            type="text" 
-                            id="search-league" 
-                            name="search-league" 
-                            className="search-league" 
-                            onChange={handleChange}
-                            onBlur={()=>{
-                                setleaguesSearch("")
-                            }}
-                            value={leaguesSearch}
-                        />
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <div className="search-result">
-                        {searches}
-                    </div>
-                </div>
+                <Search />
                 <table>
                     <thead>
                         <tr>

@@ -37,7 +37,7 @@ function Club(){
         let squads = []
         for(let i = 0; i <= 20; i++){
             squads.push(
-                <Squad />
+                <Squad key={i} />
             )
         }
         return squads
