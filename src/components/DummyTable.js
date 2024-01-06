@@ -1,6 +1,6 @@
 import React from "react";
 
-function DummyTable({length}){
+function DummyTable({length, page}){
     let dummytable = []
     for(let i = 0; i <= length; i++){
         dummytable.push(
@@ -11,9 +11,11 @@ function DummyTable({length}){
                 <td className="d-sm-none"></td>
                 <td className="d-sm-none"></td>
                 <td className="d-sm-none"></td>
-                <td className="d-sm-none"></td>
-                <td></td>
-                <td></td>
+                {page !== "top-scorer" && <>
+                    <td className="d-sm-none"></td>
+                    <td></td>
+                    <td></td>
+                </>}
             </tr>
         )
     }

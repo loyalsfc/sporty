@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Logo from "../assets/images/logo.svg";
 import {Link} from "react-router-dom";
 
 function Header(){
+    const modalContent = useRef(null)
     function handleClick(){
         document.querySelector('.mobile-menu').classList.toggle('p-left');
     }
 
-    window.onclick = function(event) {
-        if (event.target === document.querySelector('#newsletter-modal')) {
-          showModal();
-        }
-    }
-
     function showModal(){
-        document.querySelector('#newsletter-modal').classList.toggle('active-modal')
+        document.querySelector('#newsletter-modal').classList.toggle('show-modal')
+        setTimeout(()=>{
+            modalContent.current.classList.toggle("active-modal")
+        }, 1)
     }
 
     return(
@@ -23,7 +21,7 @@ function Header(){
                 <i className="fa-solid fa-xmark" onClick={handleClick}></i>
                 <Links clickHandler={handleClick} modalClick={showModal} />
             </div>
-                <Modal modalClick={showModal}/>
+                <Modal modalClick={showModal} modalContent={modalContent}/>
             <div className="container mx-auto">
                 <nav>
                     <Link to="/"><img src={Logo} alt="Logo" height={32} /></Link>
@@ -38,8 +36,12 @@ function Header(){
 function Links({classprop,clickHandler,modalClick}){
     return (
         <ul className={'navigation-menu ' + classprop} >
-            <li className="navigation-item" onClick={clickHandler}><Link to="standing">Standing</Link></li>
-            <li className="navigation-item" onClick={clickHandler}><Link to="top-scorers">Top Scorers</Link></li>
+            <li onClick={clickHandler} className="navigation-item">
+                <Link className="navigation-item" to="standing">Standing</Link>
+            </li>
+            <li onClick={clickHandler} className="navigation-item">
+                <Link className="navigation-item" to="top-scorers">Top Scorers</Link>
+            </li>
             <li className="navigation-item" onClick={clickHandler}>About Us</li>
             <li className="navigation-item" onClick={clickHandler}>Contact Us</li>
             <li className="navigation-item newsletter" onClick={clickHandler}>
@@ -49,17 +51,26 @@ function Links({classprop,clickHandler,modalClick}){
     )
 }
 
-function Modal({modalClick}){
+function Modal({modalClick, modalContent}){
     const [subscribed, setSubscribed] = useState(false);
-    function handleClick(){
+
+    function handleSubmit(e){
+        e.preventDefault()
         setSubscribed(true)
     }
+
+    function goBack(){
+        modalClick()
+        setSubscribed(false)
+    }
+
     return(
         <div id="newsletter-modal" className="modal">
-            <div className="modal-content show">
-                <span className="close" onClick={modalClick}><i className="fa-solid fa-circle-xmark"></i></span>
+            <div className="modal-background" onClick={goBack}/>
+            <div ref={modalContent} className="modal-content show">
+                <span className="close" onClick={goBack}><i className="fa-solid fa-circle-xmark"></i></span>
                 {!subscribed ?
-                <>    
+                <form onSubmit={handleSubmit}>    
                     <p className="bell-icon"><i className="fa-solid fa-bell"></i></p>
                     <h3 className="subscribe-header">Subscribe For Newsletter</h3>
                     <p className="subscribe-content">Stay up to date and join our newsletter to receive the latest updates</p>
@@ -67,13 +78,13 @@ function Modal({modalClick}){
                         <i className="fa-solid fa-envelope"></i>
                         <input type='email' className="newsletter-email" />
                     </div>
-                    <button className="subscribe-button" onClick={handleClick}>Subscribe</button>
-                </> :
+                    <button className="subscribe-button">Subscribe</button>
+                </form> :
                 <>
                     <p className="bell-icon"><i className="fa-solid fa-check"></i></p>
                     <h3 className="subscribe-header">THANKS FOR SUBSCRIBING</h3>
                     <p className="subscribe-content">Now we just need to confirm your email address - please click the link in the email we went you.</p>
-                    <button className="subscribe-button" onClick={modalClick}>Back to Sporty</button>
+                    <button className="subscribe-button" onClick={goBack}>Back to Sporty</button>
                 </>
             }
             </div>

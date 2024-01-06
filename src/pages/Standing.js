@@ -7,6 +7,7 @@ import Search from "../components/search";
 function Standing(){
     const [stand, setStand] = useState([]);
     const {leagueId, key} = useContext(Context)
+    const [leagueName, setLeagueName] = useState("Premier League")
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_standings&league_id=${leagueId}&APIkey=${key}`)
@@ -42,7 +43,7 @@ function Standing(){
                         </> : ""
                     }
                 </ul>
-                <Search/>
+                <Search setLeagueName={setLeagueName}/>
                 <table>
                     <thead>
                         <tr>

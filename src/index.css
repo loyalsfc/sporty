@@ -72,11 +72,18 @@ nav{
   border-bottom: 1.5px solid #933556;
 }
 .join-us{
-  padding: 5px 10px;
+  padding: 0.5rem 1.25rem;
   font-weight: 600;
   background-image: linear-gradient(135deg, #933556, #32417a);
   color: #f1f2f3;
   border: none;
+  border-radius: 0.25rem;
+  transition: all;
+  cursor: pointer;
+}
+.join-us:hover{
+  background-image: linear-gradient(135deg, #32417a, #933556);
+  transform: scale(1.05);
 }
 .newsletter:hover{
   border-bottom: unset;
@@ -87,7 +94,7 @@ nav{
 }
 .banner{
   height: 90vh;
-  background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 60%,rgba(50, 65, 122, 0.1)), url('https://o7dkx1gd2bwwexip1qwjpplu-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/GettyImages-1141722200-1600x800.jpg');
+  background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 60%,rgba(50, 65, 122, 0.1)), url('https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-size: cover;
   background-position: center;
 }
@@ -233,11 +240,14 @@ h4.numbers{
   text-align: center;
   color: #f1f2f3;
   padding: 5px;
+  padding-bottom: 1.25rem;
   color: #6963ff;
   border-top: 1.5px solid #6963ff;
   background-color: #070b18;
 }
-
+.copyright{
+  font-size: 0.75rem;
+}
 .competitions-wrapper{
   padding: 15px 50px;
 }
@@ -547,17 +557,22 @@ p > span {
   width: 100%;
   height: 100vh;
   position: fixed;
-  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
   top: 0%;
   z-index: 1;
-  transform: scale(0);
-  transition: ease-in-out 0.3s;
+  display: none;
 }
-.active-modal{
-  transform: scale(1);
+.modal-background{
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.show-modal{
+  display: flex;
 }
 .modal-content{
   border-radius: 0.3rem;
@@ -567,6 +582,11 @@ p > span {
   position: relative;
   text-align: center;
   color: #070b18;
+  transform: scale(0);
+  transition: ease-in-out 0.3s;
+}
+.active-modal{
+  transform: scale(1) !important;
 }
 span.close{
   position: absolute;
@@ -669,7 +689,7 @@ span.close{
     margin-top: 2.5rem;  
   }
   .banner{
-    background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 100%,rgba(50, 65, 122, 0.1)), url('https://o7dkx1gd2bwwexip1qwjpplu-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/GettyImages-1141722200-1600x800.jpg');
+    background: linear-gradient(90deg, rgba(50, 65, 122, 0.8) 100%,rgba(50, 65, 122, 0.1)), url('https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   }
   .service-wrapper{
     width: 100%;

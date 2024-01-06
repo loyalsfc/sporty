@@ -1,13 +1,12 @@
 import React, { useContext, useRef, useState } from 'react'
 import { Context } from '../Context'
 
-function Search() {
+function Search({setLeagueName}) {
     const searchRef = useRef(null)
     const [leaguesSearch, setleaguesSearch] = useState('');
     const {leagues, setLeagueId} = useContext(Context)
     const [active, setActive] = useState(0);
     const [searches, setSearches] = useState('');
-    const [leagueName, setLeagueName] = useState('Premier League');
 
     function getLeagueId(event){
         setLeagueId(event.target.getAttribute("data-league-id"))
@@ -26,8 +25,9 @@ function Search() {
                 scrollUp()
             }
         } else if(event.code === "Enter"){
-            const selectedId = leagues.filter(filter).find((item, index) => active === index + 1).league_id
-            setLeagueId(selectedId);
+            const league = leagues.filter(filter).find((item, index) => active === index + 1)
+            setLeagueId(league.league_id);
+            setLeagueName(league.league_name)
             searchRef.current.blur()
             setActive(0);
         }

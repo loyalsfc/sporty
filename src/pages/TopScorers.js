@@ -5,8 +5,9 @@ import DummyTable from "../components/DummyTable";
 import Search from "../components/search";
 
 function TopScorers(){
-    const {key, leagueId, leagueName} = useContext(Context)
-    const [topScorersData, setTopScorersData] = useState([])
+    const {key, leagueId} = useContext(Context);
+    const [topScorersData, setTopScorersData] = useState([]);
+    const [leagueName, setLeagueName] = useState("Premier League")
 
     useEffect(()=>{
         fetch(`https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueId}&APIkey=${key}`)
@@ -39,7 +40,7 @@ function TopScorers(){
                         </> : ""
                     }
                 </ul>
-                <Search />
+                <Search setLeagueName={setLeagueName} />
                 <table>
                     <thead>
                         <tr>
@@ -52,7 +53,7 @@ function TopScorers(){
                         </tr>
                     </thead>
                     <tbody>
-                        {topScorersData.length ? topScorers : <DummyTable length={15} />}
+                        {topScorersData.length ? topScorers : <DummyTable length={15} page={"top-scorer"} />}
                     </tbody>
                 </table>
             </div>
