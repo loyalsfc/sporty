@@ -7,6 +7,7 @@ import Testimonials from "../components/Testimonials";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import Fixtures from "../components/fixtures";
 
 export default function Homepage(){
     useEffect(()=>{
@@ -34,6 +35,7 @@ export default function Homepage(){
                 <Numbers icon="futbol" number={1000} text="Clubs"/>
             </section>
             <LeaguesIcon />
+            <Fixtures />
             <section className="our-service py-1">
                 <div className="container mx-auto">
                     <h3 data-aos="slide-up" className="section-title">Our Service</h3>

@@ -745,3 +745,58 @@ span.close{
     width: 31%;
   }
 }
+
+.scores-wrapper{
+  background-color: #933556;
+}
+.scores-wrapper ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  /* gap: 1rem; */
+}
+.score-card{
+  padding: 1rem 0;
+  /* background-color: #070b18; */
+  color: #FFF;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #070b18;
+  position: relative;
+}
+.match-score{
+  display: block;
+  padding: 0 1rem;
+  width: 70px;
+}
+.match-teams{
+  display: block;
+  flex: 1;
+}
+.match-teams:nth-child(2){
+  text-align: right;
+}
+.match-teams:last-child{
+  text-align: left;
+}
+.live-match{
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: #00FF00;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+.match-status{
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}

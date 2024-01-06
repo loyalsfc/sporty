@@ -8,10 +8,13 @@ import Standing from './pages/Standing';
 import TopScorers from './pages/TopScorers';
 import Club from './pages/Clubs';
 import PlayerStatistics from './pages/Players';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Header />
       <Routes>
         <Route exact path='/' element={<Homepage/>} />
@@ -22,7 +25,7 @@ function App() {
         <Route path="/players/:playerKey" element={<PlayerStatistics />} />
       </Routes>
       <Footer />
-    </>
+    </QueryClientProvider>
   );
 } 
 
