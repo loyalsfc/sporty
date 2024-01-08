@@ -1,0 +1,124 @@
+.country_sidebar{
+    background-color: #222;
+    filter: drop-shadow(0px 4px 37px rgba(0, 0, 0, 0.25));
+    width: 250px;
+    border-radius: 0.25rem;
+    padding: 1rem 0.5rem;
+    color: #FFFFFF;
+    height: 100%;
+    overflow-y: scroll;
+}
+*::-webkit-scrollbar{
+    display: none;
+}
+.country_list{
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+.country_list:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.main-container{
+    flex: 1;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    overflow-y: scroll;
+}
+.hero-image{
+    display: block;
+    width: 100%;
+    aspect-ratio: 730 / 200;
+    border-radius: 0.25rem;
+    object-fit: cover;
+    object-position: top;
+}
+.main-content-container{
+    flex: 1;
+    padding-top: 1rem;
+}
+.main-content{
+    background-color: #222;
+    min-height: 100%;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+.main-content-header{
+    display: flex;
+    gap: 0.75rem;
+}
+.toggle-live, .matches-filter, .matches-search{
+    display: flex;
+    background-color: #2C2C2C;
+    border-radius: 10px;
+    padding: 0.25rem 0.5rem;
+}
+.toggle-live{
+    align-items: center;
+    justify-content: center;
+}
+.live-icon{
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 50%;
+    display: block;
+    background-color: #C3CC5A;
+}
+.live-text{
+    color: #C3CC5A;
+    display: block;
+    padding: 0 0.25rem;
+}
+.matches-search{
+    flex: 1;
+    align-items: center;
+}
+.match-search-input{
+    display: block;
+    margin-left: 0.75rem;
+}
+.match-search-placeholder{
+    display: none;
+}
+.match-search-input:placeholder-shown ~ label{
+    display: block;
+}
+.date-card-wrapper{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding: 1rem 0;
+}
+.date-card, .calender-wrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    background: #2C2C2C;
+    padding: 6px;
+    cursor: pointer;
+    transition: all;
+}
+.date-card:hover, .calender-wrapper:hover{
+    background-color: #42461e;
+}
+.calender-wrapper{
+    justify-content: center;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid #C3CC5A;
+}
+.calender-wrapper span{
+    font-size: 2rem;
+    display: grid;
+    place-content: center;
+    color: #C3CC5A;
+}
+.date-card.active{
+    color: #C3CC5A;
+    border: 1px solid #C3CC5A;
+}

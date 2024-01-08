@@ -9,22 +9,23 @@ import TopScorers from './pages/TopScorers';
 import Club from './pages/Clubs';
 import PlayerStatistics from './pages/Players';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Home from './pages/home';
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route exact path='/' element={<Homepage/>} />
+        <Route exact path='/' element={<Home/>} />
         <Route path=':countryId' element={<Leagues/>} />
         <Route path='standing' element={<Standing />}/>
         <Route path='top-scorers' element={<TopScorers />} />
         <Route path="clubs/:clubId" element={<Club />} />
         <Route path="/players/:playerKey" element={<PlayerStatistics />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </QueryClientProvider>
   );
 } 

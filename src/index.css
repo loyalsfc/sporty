@@ -9,12 +9,27 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+ul{
+  list-style: none;
+}
+input, select{
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+}
+input:focus, select:focus{
+  outline: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.home-page-wrapper{
+  display: flex;
+  height: 100vh;
+  padding: 1rem;
+  background-color: #303030;
+}
 .bg-primary{
   background-color: #070b18;
 }
@@ -747,7 +762,7 @@ span.close{
 }
 
 .scores-wrapper{
-  background-color: #933556;
+  
 }
 .scores-wrapper ul{
   display: flex;
@@ -772,13 +787,13 @@ span.close{
 .match-score{
   display: block;
   padding: 0 1rem;
-  width: 70px;
+  width: 80px;
 }
 .match-teams{
   display: block;
   flex: 1;
 }
-.match-teams:nth-child(2){
+.match-teams.home-team{
   text-align: right;
 }
 .match-teams:last-child{
