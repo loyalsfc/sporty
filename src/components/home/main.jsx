@@ -18,6 +18,7 @@ function Main() {
     tomrrow.setDate(tomrrow.getDate() + 1);
     const nextTomorrow = new Date();
     nextTomorrow.setDate(nextTomorrow.getDate() + 2);
+    
     return (
         <main className='main-container'>
             <div>
