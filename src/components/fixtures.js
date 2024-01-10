@@ -4,10 +4,13 @@ import { Context } from '../Context';
 import { getLiveScores } from '../utls/utils';
 import MatchFeatures from './fixtures/features';
 
-function Fixtures() {
+function Fixtures({from, to}) {
     const {key} = useContext(Context)
     const queryClient = useQueryClient();
-    const {isPending, isError, data, error} = useQuery({ queryKey: ['livematches'], queryFn: getLiveScores })
+    const {isPending, isError, data, error} = useQuery({ 
+        queryKey: ['livematches', `from=${from}&to=${to}`], 
+        queryFn: ()=>getLiveScores(`from=${from}&to=${to}`)
+    })
 
     if(isPending){
         return <p>Loading...</p>
@@ -16,8 +19,6 @@ function Fixtures() {
     if(isError){
         return <span>Error: {error.message}</span>
     }
-
-    // console.log(data.find(item => item.match_hometeam_name === "OH Leuven"))
 
     function groupByCountryId() {
         const groupedData = {

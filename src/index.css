@@ -761,7 +761,7 @@ span.close{
   }
 }
 .league-fixture-wrapper{
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px;
   border: 1px solid #171717;
   background: #2C2C2C;
   margin-bottom: 1.5rem;
@@ -773,7 +773,6 @@ span.close{
 }
 .score-card{
   padding: 1rem 0;
-  /* background-color: #070b18; */
   color: #FFF;
   font-weight: 500;
   width: 100%;
@@ -783,7 +782,7 @@ span.close{
   justify-content: center;
   position: relative;
 }
-.score-card:nth-child(even){
+.score-card-wrapper:nth-child(even){
   background: #222;
 }
 .match-score{
@@ -822,4 +821,10 @@ span.close{
   background: #000;
   padding: 1rem 0.75rem;
   font-size: 14px;
+}
+.text-white {
+  color: #FFF;
+}
+.text-white:hover{
+  text-decoration: underline;
 }

@@ -1,0 +1,58 @@
+.main-container{
+    flex: 1;
+}
+.match-card-wrapper{
+    background-color: #222;
+    padding: 1rem 1rem 0;
+    text-align: center;
+    border-radius: 0.25rem;
+}
+.club-detail{
+    font-weight: 600;
+    color: #C3CC5A;
+}
+.match-card-wrapper > .match-info {
+    gap: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.match-info-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.match-details-score{
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+.match-details-status{
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: block;
+}
+.color-primary{
+    color: #C3CC5A;
+}
+.match-buttons-wrapper{
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    gap: 1.25rem;
+}
+.match-buttons{
+    background-color: transparent;
+    border: none;
+    display: block;
+    width: fit-content;
+    padding: 0.25rem;
+    color: #FFF;
+    font-size: 0.875;
+    font-weight: 600;
+}
+.match-buttons.active{
+    color: #C3CC5A;
+    border-bottom: 2px solid #C3CC5A;
+}

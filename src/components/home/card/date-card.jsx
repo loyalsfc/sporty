@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DateCard({day, date, index, active}){
+function DateCard({day, date, index, active, setDate}){
     const formattedday = date.toLocaleDateString("en-US", {weekday: "long"})
     const formattedDate = date.toLocaleDateString("en-US", {
         day: "2-digit",
@@ -8,7 +8,7 @@ function DateCard({day, date, index, active}){
     });   
     
     return (
-        <li className={`date-card ${index === active ? "active" : ""}`}>
+        <li onClick={()=>setDate(date, index)} className={`date-card ${index === active ? "active" : ""}`}>
             <span>{day === "calc" ? formattedday : day}</span>
             <span>{formattedDate}</span>
         </li>
