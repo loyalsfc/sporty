@@ -1,5 +1,6 @@
 .main-container{
     flex: 1;
+    gap: 1rem;
 }
 .match-card-wrapper{
     background-color: #222;
@@ -55,4 +56,61 @@
 .match-buttons.active{
     color: #C3CC5A;
     border-bottom: 2px solid #C3CC5A;
+}
+.match-details-status.live-match-anim{
+    animation: changeColor 0.5s infinite;
+}
+
+@keyframes changeColor {
+    0%{color: #FFF;}
+    50%{color: #C3CC5A;}
+    100%{color: #FFF}
+}
+.match-info-item{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+    align-items: center;
+}
+.match-info-item:nth-child(even){
+    background: #2C2C2C;
+}
+.match-event-item{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+}
+.match-event-player-name{
+    flex: 1;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+.match-event-assist{
+    font-size: 0.75rem;
+}
+.match-event-player-name:last-child{
+    text-align: left;
+}
+.match-event-score{
+    display: block;
+    width: 75px;
+    text-align: center;
+}
+.match-info-wrapper{
+    background-color: #222;
+    min-height: 100%;
+    border: 1px solid #171717;
+    border-radius: 0.25rem;
+}
+.player-with-card{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.player-with-card.flex-start{
+    justify-content: flex-start;
 }

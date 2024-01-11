@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
 import { getLiveScores } from '../../utls/utils'
 import { useParams, useSearchParams } from 'react-router-dom'
 import './match.css'
 import MatchInfo from './matchInfo'
 import Matchscore from './matchscore'
 import TeamDetail from './teamDetail'
+import Info from './tabs/info'
 
 function Match() {
+    const [activeTab, setActiveTab] = useState("info")
     const {matchId} = useParams();
     const [searchParams] = useSearchParams();
     const matchDate = searchParams.get("date")
@@ -25,15 +27,11 @@ function Match() {
         return <span>Error: {error.message}</span>
     }
 
-    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score} = data[0]
-
-    console.log(data)
-
+    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score, cards, substitutions, goalscorer} = data[0]
     {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && <div className='live-match' />}
                                             
     return (
         <main className='main-container'>
-            <div>
                 <div className='match-card-wrapper'>
                     <div className='match-info'>
                         <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} />
@@ -57,6 +55,11 @@ function Match() {
                                     away_team_pk={match_awayteam_penalty_score}
                                 />
                             }
+                            {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" &&  <div>
+                                <h4>{league_name}</h4>
+                                <div className='match-details-score'><p>{match_hometeam_score}</p>:<p>{match_awayteam_score}</p></div>
+                                <span className='match-details-status live-match-anim'>{match_status}'</span>
+                            </div>}
                         </div>
                         <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} />
                     </div>
@@ -66,7 +69,10 @@ function Match() {
                         <button className='match-buttons'>Stats</button>
                     </div>
                 </div>
-            </div>
+
+                <div className='match-info-wrapper'>
+                    <Info matchStatus={match_status} scorers={goalscorer} substitutions={substitutions} cards={cards} />
+                </div>
         </main>
     )
 }
