@@ -1,0 +1,120 @@
+.pitch-container{
+    padding: 1.5rem;
+    background-color: #7ea56e;
+}
+.pitch-wrapper{
+    background-color: #27730a;
+    height: 700px;
+    border: 4px solid #FFF;
+    position: relative;
+    overflow: hidden;
+}
+.middle-line{
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #FFF;
+}
+.pitch-center-circle{
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid #FFF;
+    border-radius: 50%;
+}
+.pitch-kickoff-spot{
+    height: 0.75rem;
+    width: 0.75rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #FFF;
+}
+.pitch-box-eighteen{
+    width: 50%;
+    aspect-ratio: 7 / 2;
+    border: 4px solid #FFF;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.pitch-box-eighteen.top{
+    top: 0;
+    border-top: none;
+}
+.pitch-box-eighteen.down{
+    bottom: 0;
+    border-bottom: none;
+}
+.pitch-box-eighteen-arch{
+    width: 50%;
+    aspect-ratio: 2 / 1;
+    border: 4px solid #FFF;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.pitch-box-eighteen-arch.top{
+    top: 33%;
+    border-top-color: transparent;
+}
+.pitch-box-eighteen-arch.down{
+    bottom: 33%;
+    border-bottom-color: transparent;
+}
+.pitch-corner-flag{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 4px solid #FFF;
+    position: absolute;
+}
+.pitch-corner-flag.top{
+    top: -2.5rem;
+}
+.pitch-corner-flag.left{
+    left: -2.5rem;
+}
+.pitch-corner-flag.right{
+    right: -2.5rem;
+}
+.pitch-corner-flag.bottom{
+    bottom: -2.5rem;
+}
+.pitch-kickoff-spot.penalty.top{
+    top: 75%;
+}
+.pitch-kickoff-spot.penalty.down{
+    top: 25%;
+}
+.pitch-home-players-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+.pitch-home-player-positions{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.pitch-home-players-wrapper:first-child .pitch-home-player-positions{
+    align-items: start;
+}
+.pitch-home-player-positions > div:last-child, .pitch-home-player-positions > div:first-child{
+    align-self: center;
+}
+.pitch-home-players-wrapper:last-child .pitch-home-player-positions{
+    align-items: end;
+}
+/* .p */

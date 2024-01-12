@@ -7,6 +7,7 @@
     color: #FFFFFF;
     height: 100%;
     overflow-y: scroll;
+    display: block;
 }
 *::-webkit-scrollbar{
     display: none;
@@ -119,10 +120,14 @@
     display: grid;
     place-content: center;
     color: #C3CC5A;
-    font-size: 0.875;
-    font-weight: 600;
 }
 .date-card.active{
     color: #C3CC5A;
     border: 1px solid #C3CC5A;
+}
+
+@media screen and (max-width: 768px) {
+    .country_sidebar{
+        display: none;
+    }
 }

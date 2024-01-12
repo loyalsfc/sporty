@@ -13,7 +13,7 @@ function Sidebar() {
     if(isError){
         return <p>An error occured</p>
     }
-    console.log(data)
+    
     return (
         <div>
             <ul className='country_sidebar'>

@@ -7,6 +7,7 @@ import MatchInfo from './matchInfo'
 import Matchscore from './matchscore'
 import TeamDetail from './teamDetail'
 import Info from './tabs/info'
+import Lineup from './tabs/lineup'
 
 function Match() {
     const [activeTab, setActiveTab] = useState("info")
@@ -27,7 +28,7 @@ function Match() {
         return <span>Error: {error.message}</span>
     }
 
-    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score, cards, substitutions, goalscorer} = data[0]
+    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score, cards, substitutions, goalscorer, lineup, match_hometeam_system, match_awayteam_system} = data[0]
     {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && <div className='live-match' />}
                                             
     return (
@@ -64,14 +65,15 @@ function Match() {
                         <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} />
                     </div>
                     <div className='match-buttons-wrapper'>
-                        <button className='match-buttons active'>Match Info</button>
-                        <button className='match-buttons'>Line Up</button>
-                        <button className='match-buttons'>Stats</button>
+                        <button onClick={()=>setActiveTab("info")} className={`match-buttons ${activeTab === "info" && 'active'}`}>Match Info</button>
+                        <button onClick={()=>setActiveTab("lineup")} className={`match-buttons ${activeTab === "lineup" && 'active'}`}>Line Up</button>
+                        <button onClick={()=>setActiveTab("stats")} className={`match-buttons ${activeTab === "stats" && 'active'}`}>Stats</button>
                     </div>
                 </div>
 
                 <div className='match-info-wrapper'>
-                    <Info matchStatus={match_status} scorers={goalscorer} substitutions={substitutions} cards={cards} />
+                    {activeTab === "info" && <Info matchStatus={match_status} scorers={goalscorer} substitutions={substitutions} cards={cards} />}
+                    {activeTab === "lineup" && <Lineup lineup={lineup} match_hometeam_system={match_hometeam_system} match_awayteam_system={match_awayteam_system} />}
                 </div>
         </main>
     )
