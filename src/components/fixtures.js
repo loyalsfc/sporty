@@ -13,7 +13,7 @@ function Fixtures({from, to}) {
     })
 
     if(isPending){
-        return <p>Loading...</p>
+        return <div className='loader-wrapper'><p className='loader' /></div>
     }
 
     if(isError){
@@ -42,7 +42,6 @@ function Fixtures({from, to}) {
     }
 
     const sortContries = () => {
-        const contries = ["44", "Spain", "France", "Germany", "Italy", "Netherland", "Mexico", "Russia", "Portugal", "Turkey", "Austria", "Poland", "Brazil", "Scotland", "Greece", "Norway"];
         const sortedObject = [];
 
         for (const [key, value] of Object.entries(groupByCountryId())) {

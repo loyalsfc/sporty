@@ -62,7 +62,7 @@ function MatchFeatures({country_fixtures}) {
     return (
         <div>
             {Object.entries(groupByLeague()).map((item, index) => {
-                if(item[1].length === 0) return;
+                if(item[1].length === 0 || item[0].includes("Non League Div One")) return;
                 return (
                     <div key={index} className='league-fixture-wrapper'>
                         <h4 className="league_name_heading">

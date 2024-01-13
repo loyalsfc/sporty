@@ -672,6 +672,25 @@ span.close{
   white-space:nowrap;
   text-overflow: ellipsis;
 }
+.loader-wrapper{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+.loader{
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: 0.25rem solid #CCC7;
+  border-top-color: #FFF;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}
 @media screen and (min-width: 640px) { 
    .container{
     max-width: 640px;
