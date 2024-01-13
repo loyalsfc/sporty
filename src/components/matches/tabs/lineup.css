@@ -1,13 +1,17 @@
 .pitch-container{
-    padding: 1.5rem;
-    background-color: #7ea56e;
+    padding: 0.75rem 1.5rem;
+    background-color: #27730a;
+}
+.pitch-wrapper-border{
+    border: 4px solid rgba(255, 255, 255, 0.5);
 }
 .pitch-wrapper{
-    background-color: #27730a;
+    background-image: repeating-linear-gradient(180deg,#27730a,#27730a 10%,#0f4608 0,#0f4608 20%);
+    /* background-color: #27730a; */
     height: 700px;
-    border: 4px solid #FFF;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 .middle-line{
     height: 4px;
@@ -16,7 +20,7 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 .pitch-center-circle{
     height: 150px;
@@ -25,8 +29,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 4px solid #FFF;
+    border: 4px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
+    z-index: -1;
 }
 .pitch-kickoff-spot{
     height: 0.75rem;
@@ -36,15 +41,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 .pitch-box-eighteen{
     width: 50%;
     aspect-ratio: 7 / 2;
-    border: 4px solid #FFF;
+    border: 4px solid rgba(255, 255, 255, 0.5);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: -1;
 }
 .pitch-box-eighteen.top{
     top: 0;
@@ -57,7 +63,7 @@
 .pitch-box-eighteen-arch{
     width: 50%;
     aspect-ratio: 2 / 1;
-    border: 4px solid #FFF;
+    border: 4px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     border-left-color: transparent;
     border-right-color: transparent;
@@ -77,7 +83,7 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    border: 4px solid #FFF;
+    border: 4px solid rgba(255, 255, 255, 0.5);
     position: absolute;
 }
 .pitch-corner-flag.top{
@@ -102,6 +108,7 @@
     display: flex;
     flex-direction: column;
     height: 50%;
+    z-index: 10;
 }
 .pitch-home-player-positions{
     display: flex;
@@ -117,4 +124,96 @@
 .pitch-home-players-wrapper:last-child .pitch-home-player-positions{
     align-items: end;
 }
-/* .p */
+.pitch-player-number{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background-color: #4d1c11;
+    border: 1px solid #FFF;
+    position: relative;
+}
+.pitch-home-players-wrapper:last-child .pitch-player-number{
+    background-color: #091723;
+}
+.pitch-player-name{
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: block;
+    overflow: hidden;
+    padding: 0.25rem;
+}
+.pitch-player-yellow{
+    position: absolute;
+    right: -0.25rem;
+    top: -.25rem;
+}
+.pitch-player-red{
+    position: absolute;
+    right: -0.33rem;
+    top: -.35rem;
+}
+.pitch-player-goal{
+    position: absolute;
+    left: -0.25rem;
+    top: -.25rem;
+}
+.pitch-player-out, .pitch-player-in, .pitch-player-owngoal{
+    display: block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #D22B2B;
+}
+.pitch-player-in{
+    background-color: #0f4608;
+}
+.pitch-player-out.absolute{
+    position: absolute;
+    right: -0.25rem;
+    bottom: -0.25rem;
+}
+.pitch-player-owngoal{
+    position: absolute;
+    left: -0.25rem;
+    bottom: -0.25rem;
+}
+.border-0{
+    border-radius: 0;
+}
+.substition-item{
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    position: relative;
+}
+.substituted-player{
+    display: flex;
+    gap: 0.75rem;
+}
+.substitution-time{
+    width: 2.5rem;
+}
+.substitutions-container, .substitute-container{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid #171717;
+    background-image: repeating-linear-gradient(180deg,#222,#222 72px,#2C2C2C 0,#2C2C2C 144px);
+}
+.substitute-container{
+    background-image: repeating-linear-gradient(180deg,#222,#222 53px,#2C2C2C 0,#2C2C2C 106px);
+}
+.substition-item.subs{
+    gap: 0.5rem;
+}
+.invisible{
+    visibility: hidden;
+}
+.substituted-player-goals{
+    display: grid;
+    place-content: center;
+    font-size: 18px;
+}

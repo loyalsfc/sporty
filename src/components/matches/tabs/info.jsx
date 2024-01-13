@@ -1,4 +1,5 @@
 import React from 'react'
+import { Cards } from '../../icons/icons';
 
 function Info({matchStatus,scorers, cards}) {
     //merge scorers and cards information array
@@ -28,17 +29,13 @@ function Info({matchStatus,scorers, cards}) {
                                 <span className='match-event-player-name'>
                                     <span className='player-with-card'>
                                         {item?.home_fault}
-                                        {(item?.info === "home" || item.home_fault) && <svg height={15} width={10} viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg"> 
-                                            <rect x="10" y="10" width="80" height="130" fill={item.card === "yellow card" ? "#FFFF00" : "#FF0000"} />
-                                        </svg>}
+                                        {(item?.info === "home" || item.home_fault) && <Cards color={item.card === "yellow card" ? "#FFFF00" : "#FF0000"} />}
                                     </span>
                                 </span>
                                 <span className='match-event-score'></span>
                                 <span className='match-event-player-name'>
                                     <span className='player-with-card flex-start'>
-                                        {(item?.info === "away" || item.away_fault) && <svg height={15} width={10} viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg"> 
-                                            <rect x="10" y="10" width="80" height="130" fill={item.card === "yellow card" ? "#FFFF00" : "#FF0000"} />
-                                        </svg>}
+                                        {(item?.info === "away" || item.away_fault) && <Cards color={item.card === "yellow card" ? "#FFFF00" : "#FF0000"} />}
                                         {item?.away_fault}
                                     </span>
                                 </span>

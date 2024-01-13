@@ -73,7 +73,16 @@ function Match() {
 
                 <div className='match-info-wrapper'>
                     {activeTab === "info" && <Info matchStatus={match_status} scorers={goalscorer} substitutions={substitutions} cards={cards} />}
-                    {activeTab === "lineup" && <Lineup lineup={lineup} match_hometeam_system={match_hometeam_system} match_awayteam_system={match_awayteam_system} />}
+                    {activeTab === "lineup" && <Lineup 
+                        lineup={lineup} 
+                        match_hometeam_system={match_hometeam_system} 
+                        match_awayteam_system={match_awayteam_system} 
+                        home_team={match_hometeam_name}
+                        away_team={match_awayteam_name}
+                        cards={cards}
+                        goalscorer={goalscorer}
+                        substitutions={substitutions}
+                    />}
                 </div>
         </main>
     )
