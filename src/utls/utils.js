@@ -12,3 +12,9 @@ export const getCountries = async() => {
     const result = await res.json()
     return result
 }
+
+export const queryEndpoint = async(action) => {
+    const res = await fetch(`${base_url}?${action}&APIkey=${key}`);
+    const result = await res.json()
+    return result
+}

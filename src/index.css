@@ -686,7 +686,10 @@ span.close{
   border-top-color: #FFF;
   animation: spin 0.5s linear infinite;
 }
-
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 @keyframes spin {
     0%{rotate: 0deg;}
     100%{rotate: 360deg;}

@@ -50,13 +50,4 @@ function HomeLineup({system, starting_lineups, arrMethod, cards, goalscorer, sub
     )
 }
 
-function PlayerNumber({lineup_number}){
-    return(
-        <div className='pitch-player-number'>
-            <span className='pitch-player-yellow'><Cards color={'#FFFF00'} /></span>
-            {lineup_number}
-        </div>
-    )
-}
-
 export default HomeLineup

@@ -9,6 +9,9 @@ import TeamDetail from './teamDetail'
 import Info from './tabs/info'
 import Lineup from './tabs/lineup'
 import Stats from './tabs/stats'
+import dummyLogo from '../../assets/images/placeholder_club.png'
+import H2H from './tabs/h2h'
+
 
 function Match() {
     const [activeTab, setActiveTab] = useState("info")
@@ -22,18 +25,35 @@ function Match() {
     })
 
     if(isPending){
-        return <p>Loading...</p>
+        return (
+            <div className='match-card-wrapper'>
+                <div className='match-info'>
+                    <div className='club-detail'>
+                        <img className='' height={100} src={dummyLogo} />
+                        <p>loading</p>
+                    </div>
+                    <div className='club-detail'>
+                        <img className='' height={100} src={dummyLogo} />
+                        <p>loading</p>
+                    </div>
+                </div>
+                <div className='match-buttons-wrapper'>
+                        <button className={`match-buttons`}>Match Info</button>
+                        <button className={`match-buttons`}>Line Up</button>
+                        <button className={`match-buttons`}>Stats</button>
+                    </div>
+            </div>
+        )
     }
 
     if(isError){
         return <span>Error: {error.message}</span>
     }
 
-    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score, cards, substitutions, goalscorer, lineup, match_hometeam_system, match_awayteam_system, statistics} = data[0]
-    {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && <div className='live-match' />}
+    const {team_home_badge, team_away_badge, match_hometeam_name, match_awayteam_name, match_status, match_live, match_time, league_name, match_date, match_stadium, match_hometeam_score, match_awayteam_score, match_round, match_hometeam_penalty_score, match_awayteam_penalty_score, cards, substitutions, goalscorer, lineup, match_hometeam_system, match_awayteam_system, statistics, match_hometeam_id, match_awayteam_id} = data[0]
                                             
     return (
-        <main className='main-container'>
+        <>
                 <div className='match-card-wrapper'>
                     <div className='match-info'>
                         <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} />
@@ -69,6 +89,7 @@ function Match() {
                         <button onClick={()=>setActiveTab("info")} className={`match-buttons ${activeTab === "info" && 'active'}`}>Match Info</button>
                         {lineup.home.starting_lineups.length > 0 && <button onClick={()=>setActiveTab("lineup")} className={`match-buttons ${activeTab === "lineup" && 'active'}`}>Line Up</button>}
                         <button onClick={()=>setActiveTab("stats")} className={`match-buttons ${activeTab === "stats" && 'active'}`}>Stats</button>
+                        <button onClick={()=>setActiveTab("h2h")} className={`match-buttons ${activeTab === "h2h" && 'active'}`}>H2H</button>
                     </div>
                 </div>
 
@@ -85,8 +106,9 @@ function Match() {
                         substitutions={substitutions}
                     />}
                     {activeTab === "stats" && <Stats stats={statistics}/>}
+                    {activeTab === "h2h" && <H2H homeId={match_hometeam_id} awayId={match_awayteam_id}/>}
                 </div>
-        </main>
+        </>
     )
 }
 

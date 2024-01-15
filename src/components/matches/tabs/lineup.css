@@ -262,3 +262,60 @@
 .statistics-bar-percentage.ml-auto{
     margin-left: auto;
 }
+.h2h-date{
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: block;
+}
+.h2h-card-wrapper{
+    padding: 1rem;
+}
+.h2h-card-wrapper:nth-child(odd){
+    background-color: #2C2C2C;
+}
+.h2h-card-wrapper .score-card{
+    padding: 0.25rem;
+}
+.match-form-guide-card{
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+.h2h-match-score{
+    padding: 0;
+    width: 2rem;
+    display: block;
+    text-align: center;
+}
+.form-guide-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    background-color: #222;
+}
+.form-guide-list:first-child .match-form-guide-card{
+    flex-direction: row;
+}
+.match-form-guide-result{
+    height: 1.5rem;
+    width: 1.5rem;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    border-radius:50%;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+.match-form-guide-result.won{
+    background-color: #27730a;
+}
+.match-form-guide-result.loose{
+    background-color: #D22B2B;
+}
+.match-form-guide-result.draw{
+    background-color: #C3B3C5;
+}

@@ -6,9 +6,15 @@ import Match from '../components/matches/Match'
 function Matchdetails() {
     return (
         <div className='home-page-wrapper'>
-            <Sidebar />
-            <Match />
-            <News />
+            <aside className='country_sidebar_wrapper'>
+                <Sidebar />
+            </aside>
+            <main className='main-container'>
+                <Match />
+            </main>
+            <aside className='country_sidebar_wrapper'>
+                <News />
+            </aside>
         </div>
     )
 }

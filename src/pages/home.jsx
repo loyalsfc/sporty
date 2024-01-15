@@ -6,9 +6,14 @@ import Main from '../components/home/main'
 function Home() {
     return (
         <div className='home-page-wrapper'>
-            <Sidebar />
+            <aside className='country_sidebar_wrapper'>
+                <Sidebar />
+            </aside>
             <Main />
-            <News />
+            <aside className='country_sidebar_wrapper'>
+                <News />
+            </aside>
+
         </div>
     )
 }

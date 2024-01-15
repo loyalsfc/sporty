@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom'
 function Sidebar() {
     const {isPending, isError, data, error} = useQuery({ queryKey: ['countries'], queryFn: getCountries })
     if(isPending){
-        return <p>Loading...</p>
+        return (
+            <p>Loading...</p>
+        )
     }
 
     if(isError){
@@ -15,7 +17,6 @@ function Sidebar() {
     }
     
     return (
-        <div>
             <ul className='country_sidebar'>
                 <li className='country_list' >
                     <Link to="/" className='text-white'>Home</Link>
@@ -28,7 +29,6 @@ function Sidebar() {
                     )
                 })}
             </ul>
-        </div>
     )
 }
 
