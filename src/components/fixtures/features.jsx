@@ -70,17 +70,18 @@ function MatchFeatures({country_fixtures}) {
                         </h4>
                         <ul>
                             {item[1].map(item => {
+                                const {match_status, match_live} = item
                                 return (
                                     <li key={item.match_id} className='score-card-wrapper'>
                                         <Link  className='score-card' to={`/matches/${item.match_id}?date=${item.match_date}`}>
-                                            {item.match_live === "1" && item.match_status !== "Finished" && item.match_status !== "Half Time" && <div className='live-match' />}
-                                            {item.match_status === "Finished" && <span className='match-status'>FT</span>}
-                                            {item.match_status === "" && <span className='match-status'>{item.match_time}</span>}
-                                            {item.match_status === "Half Time" && <span className='match-status'>HT</span>}
-                                            {item.match_status === "Cancelled" && <span className='match-status'>Canc.</span>}
-                                            {item.match_status === "Postponed" && <span className='match-status'>Posp.</span>}
-                                            {item.match_status === "After Pen." && <span className='match-status'>Pen.</span>}
-                                            {item.match_status === "After ET" && <span className='match-status'>AET.</span>}
+                                            {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && match_status !== "After Pen." && <div className='live-match' />}
+                                            {match_status === "Finished" && <span className='match-status'>FT</span>}
+                                            {match_status === "" && <span className='match-status'>{item.match_time}</span>}
+                                            {match_status === "Half Time" && <span className='match-status'>HT</span>}
+                                            {match_status === "Cancelled" && <span className='match-status'>Canc.</span>}
+                                            {match_status === "Postponed" && <span className='match-status'>Posp.</span>}
+                                            {match_status === "After Pen." && <span className='match-status'>Pen.</span>}
+                                            {match_status === "After ET" && <span className='match-status'>AET.</span>}
                                             <span className='match-teams home-team'>{item.match_hometeam_name}</span> 
                                             <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
                                             <span className='match-teams'>{item.match_awayteam_name}</span>

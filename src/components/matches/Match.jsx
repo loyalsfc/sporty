@@ -77,7 +77,7 @@ function Match() {
                                     away_team_pk={match_awayteam_penalty_score}
                                 />
                             }
-                            {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" &&  <div>
+                            {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && match_status !== "After Pen." && <div>
                                 <h4>{league_name}</h4>
                                 <div className='match-details-score'><p>{match_hometeam_score}</p>:<p>{match_awayteam_score}</p></div>
                                 <span className='match-details-status live-match-anim'>{match_status}'</span>

@@ -59,6 +59,7 @@
     background-color: #2C2C2C;
     border-radius: 10px;
     padding: 0.25rem 0.5rem;
+    color: #FFF;
 }
 .toggle-live{
     align-items: center;
@@ -75,6 +76,15 @@
     color: #C3CC5A;
     display: block;
     padding: 0 0.25rem;
+}
+.toggle-live.active{
+    background-color: #C3CC5A;
+}
+.toggle-live.active .live-text{
+    color: #FFF;
+}
+.toggle-live.active .live-icon{
+    background-color: #FFF;
 }
 .matches-search{
     flex: 1;

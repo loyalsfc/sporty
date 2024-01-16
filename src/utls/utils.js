@@ -18,3 +18,7 @@ export const queryEndpoint = async(action) => {
     const result = await res.json()
     return result
 }
+
+export const formatDate = (date) => {
+    return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+}

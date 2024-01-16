@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom'
 
 function Sidebar() {
     const {isPending, isError, data, error} = useQuery({ queryKey: ['countries'], queryFn: getCountries })
+   
     if(isPending){
         return (
-            <p>Loading...</p>
+            <div className='loader-wrapper'><p className='loader' /></div>
         )
     }
 

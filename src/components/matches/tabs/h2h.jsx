@@ -21,7 +21,7 @@ function H2H({homeId, awayId}) {
 
     return (
         <div>
-            <section>
+            {data?.firstTeam_VS_secondTeam.length > 0 && <section>
                 <h4 className="league_name_heading border-0">Recent Meetings</h4>
                 <ul>
                     {data?.firstTeam_VS_secondTeam.map(item => {
@@ -44,7 +44,7 @@ function H2H({homeId, awayId}) {
                         )
                     })}
                 </ul>
-            </section>
+            </section>}
             <section>
                 <h4 className="league_name_heading border-0">Form Guide</h4>
                 <div className='form-guide-wrapper'>

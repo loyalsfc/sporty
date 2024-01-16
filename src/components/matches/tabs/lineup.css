@@ -295,7 +295,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
-    background-color: #222;
+    background-image: repeating-linear-gradient(180deg,#2C2C2C,#2C2C2C 48px,#222 0,#222 96px);
 }
 .form-guide-list:first-child .match-form-guide-card{
     flex-direction: row;
