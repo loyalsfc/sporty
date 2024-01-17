@@ -15,14 +15,30 @@
     display: none;
 }
 .country_list{
+    border-bottom: 1px solid #2C2C2C;
+}
+.country_list_link, .competition-list{
+    display: block;
     padding: 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;
     cursor: pointer;
-    border-bottom: 1px solid #2C2C2C;
 }
-.country_list:hover{
+.country_list_link:hover{
     background-color: rgba(255, 255, 255, 0.15);
+}
+.country-competitions{
+    font-size: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.competition-list{
+    border-bottom: 1px solid #222;
+}
+.competition-list:hover{
+    background-color: #222;
+}
+.selected-country{
+    color: #C3CC5A !important;
 }
 .main-container{
     flex: 1;

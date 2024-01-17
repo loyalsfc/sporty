@@ -29,7 +29,7 @@ function H2H({homeId, awayId}) {
                             <li key={item.match_id} className='h2h-card-wrapper'>
                                 <span className='h2h-date'>{new Date(item.match_date).toLocaleDateString("en-US", {day: "numeric", month: "long", year: "numeric", weekday: "long"})}</span>
                                 <div>
-                                    <Link  className='score-card' to={`/matches/${item.match_id}?date=${item.match_date}`}>
+                                    <Link  className='score-card' to={`/${item.country_id}/${item.league_id}/matches/${item.match_id}?date=${item.match_date}`}>
                                         {item.match_status === "Finished" && <span className='match-status'>FT</span>}
                                         {item.match_status === "Cancelled" && <span className='match-status'>Canc.</span>}
                                         {item.match_status === "Postponed" && <span className='match-status'>Posp.</span>}

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { queryEndpoint } from '../../utls/utils';
+import { useQuery } from '@tanstack/react-query';
 
 function getMainLeague(country_name){
     switch (country_name) {
@@ -40,6 +42,10 @@ function getSecondLeague(country_name){
 }
 
 function MatchFeatures({country_fixtures}) {
+    const {isPending, isError, data, error} = useQuery({ 
+        queryKey: ['countries', "action=get_countries"], 
+        queryFn: ()=> queryEndpoint("action=get_countries") 
+    })
     const [country, matches] = Object.entries(country_fixtures)[0]
 
     function groupByLeague() {
@@ -62,18 +68,24 @@ function MatchFeatures({country_fixtures}) {
     return (
         <div>
             {Object.entries(groupByLeague()).map((item, index) => {
-                if(item[1].length === 0 || item[0].includes("Non League Div One")) return;
+                const [competitionName, competitionMatches] = item;
+                if(competitionMatches.length === 0 || competitionName.includes("Non League")) return;
+                const countryId = data.find(item => item.country_name === country)?.country_id
                 return (
                     <div key={index} className='league-fixture-wrapper'>
-                        <h4 className="league_name_heading">
-                            <Link to={""} className='text-white'> {country} </Link> - <Link to={""} className='text-white'>{item[0]}</Link>
-                        </h4>
+                        <div>
+                            <h4 className="league_name_heading">
+                                <Link to={`/${countryId}`} className='text-white'> {country} </Link> 
+                                - 
+                                <Link to={`/${countryId}/${competitionMatches[0].league_id}`} className='text-white'>{competitionName}</Link>
+                            </h4>
+                        </div>
                         <ul>
-                            {item[1].map(item => {
+                            {competitionMatches.map(item => {
                                 const {match_status, match_live} = item
                                 return (
                                     <li key={item.match_id} className='score-card-wrapper'>
-                                        <Link  className='score-card' to={`/matches/${item.match_id}?date=${item.match_date}`}>
+                                        <Link  className='score-card' to={`/${item.country_id}/${item.league_id}/matches/${item.match_id}?date=${item.match_date}`}>
                                             {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && match_status !== "After Pen." && <div className='live-match' />}
                                             {match_status === "Finished" && <span className='match-status'>FT</span>}
                                             {match_status === "" && <span className='match-status'>{item.match_time}</span>}

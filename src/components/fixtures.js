@@ -4,10 +4,22 @@ import { formatDate, queryEndpoint } from '../utls/utils';
 import MatchFeatures from './fixtures/features';
 import { useSearchParams } from 'react-router-dom';
 
-function Fixtures({isLive}) {
+function Fixtures({isLive, countryId}) {
     const [searchParams] = useSearchParams();
     const date = searchParams.get("date")
-    const url = `action=get_events&from=${date ?? formatDate(new Date())}&to=${date ?? formatDate(new Date())}${isLive ? "&match_live=1" : ""}`
+    const fromDate = date ?? formatDate(new Date());
+    const toDate = date ?? formatDate(new Date())
+    const calculateDatePeriod = () => {
+        const date = new Date();
+        const currentMonth = date.getMonth() + 1;
+        const year = date.getFullYear()
+        const endOfMonth = new Date(year, currentMonth, 0).getDate();
+        return{
+            from: `${year}-${currentMonth.toString().padStart(2, "0")}-01`,
+            to: `${year}-${currentMonth.toString().padStart(2, "0")}-${endOfMonth}`,
+        }
+    }
+    const url = `action=get_events&from=${fromDate}&to=${toDate}${isLive ? "&match_live=1" : ""}${countryId ? `&country_id=${countryId}` : ""}`
     const {isPending, isError, data, error} = useQuery({ 
         queryKey: ['livematches', url], 
         queryFn: ()=>queryEndpoint(url)
@@ -17,8 +29,12 @@ function Fixtures({isLive}) {
         return <div className='loader-wrapper'><p className='loader' /></div>
     }
 
-    if(isError || !Array.isArray(data)){
+    if(isError){
         return <span>An error Occured</span>
+    }
+
+    if(!Array.isArray(data)){
+        return <p className='no-match'>No Match Available for selected queries</p>
     }
     
     const matches = isLive ? data.filter(item => item.match_status !== "Finished") : [...data]

@@ -21,8 +21,8 @@ function App() {
       {/* <Header /> */}
       <Routes>
         <Route exact path='/' element={<Home/>} />
-        <Route path=':countryId' element={<Leagues/>} />
-        <Route path='/matches/:matchId' element={<Matchdetails/>} />
+        <Route path='/:countryId' element={<Leagues/>} />
+        <Route path='/:countryId/:leagueId/matches/:matchId' element={<Matchdetails/>} />
         <Route path='/matches/live' element={<LiveMatch/>} />
         <Route path='standing' element={<Standing />}/>
         <Route path='top-scorers' element={<TopScorers />} />

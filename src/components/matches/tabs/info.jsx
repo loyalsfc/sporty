@@ -3,7 +3,8 @@ import { Cards } from '../../icons/icons';
 
 function Info({matchStatus,scorers, cards}) {
     //merge scorers and cards information array
-    const matchInfo = scorers.concat(cards).sort((a, b) => a.time - b.time).filter(item => item.score_info_time !== "Penalty");
+    const matchInfo = [...scorers, ...cards];
+    matchInfo.sort((a, b) => a.time - b.time).filter(item => item.score_info_time !== "Penalty");
     const penaltyShootouts = scorers.filter(item => item.score_info_time === "Penalty");
     return (
         <div>
