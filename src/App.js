@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Home from './pages/home';
 import Matchdetails from './pages/matchdetails';
 import LiveMatch from './pages/liveMatch';
+import Competition from './pages/competition';
 
 const queryClient = new QueryClient()
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home/>} />
         <Route path='/:countryId' element={<Leagues/>} />
+        <Route path='/:countryId/:leagueId' element={<Competition/>} />
         <Route path='/:countryId/:leagueId/matches/:matchId' element={<Matchdetails/>} />
         <Route path='/matches/live' element={<LiveMatch/>} />
         <Route path='standing' element={<Standing />}/>
