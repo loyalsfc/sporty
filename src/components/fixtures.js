@@ -69,6 +69,8 @@ function Fixtures({isLive, countryId}) {
         return sortedObject
     }
 
+    console.log(sortContries())
+
     return (
         <div className='scores-wrapper'>
             <div className='container mx-auto'>

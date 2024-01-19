@@ -1,8 +1,5 @@
-import React, {useEffect, useState, useContext} from "react";
-import { Context } from "../Context";
-import { useParams } from "react-router-dom"
+import React from "react";
 import News from "../components/home/news";
-import LiveMatches from "../components/live-matches/live-matches";
 import Sidebar from "../components/home/sidebar";
 import CountryCompetitions from "../components/country/country-competitions";
 

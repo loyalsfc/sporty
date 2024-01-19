@@ -847,6 +847,8 @@ span.close{
   background: #000;
   padding: 1rem 0.75rem;
   font-size: 14px;
+  display: flex;
+  justify-content: space-between;
 }
 .text-white {
   color: #FFF;

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { queryEndpoint } from '../../utls/utils'
 import { Link, useParams } from 'react-router-dom'
 import "./competition.css"
+import Result from './tabs/result'
 
 function CompetitionPage() {
     const {countryId, leagueId} = useParams();
@@ -25,49 +26,63 @@ function CompetitionPage() {
     console.log(competition)
     const {league_name, league_logo, league_season, country_id, country_name} = competition
     return (
-        <div>
+        <div className="league-wrapper">
             <h4>League {">"} {league_name}</h4>
-            <div>
-                <img src={league_logo} />
-                <div>
-                    <span>{league_name}</span>
-                    <span>season: {league_season}</span>
-                    <span>Country: <Link to={`/${country_id}`} className='text-white'>{country_name}</Link></span>
+            <div className='league-info-hero'>
+                <img className='league-logo' src={league_logo} />
+                <div className='league-info-items'>
+                    <p className='league-info-item'>
+                        <span>League:</span> 
+                        {league_name}
+                    </p>
+                    <p className='league-info-item'>
+                        <span>season:</span> 
+                        {league_season}
+                    </p>
+                    <p className='league-info-item'>
+                        <span>Country:</span> 
+                        <Link to={`/${country_id}`} className='text-white'>{country_name}</Link>
+                    </p>
                 </div>
             </div>
 
             <div>
                 <button 
-                    className={``} 
+                    className={`league-tab-button ${activeTab === "result" && "active"}`} 
                     onClick={()=>setActiveTab("result")}
                 >
                     Results
                 </button>
                 <button 
-                    className={``} 
+                    className={`league-tab-button ${activeTab === "fixtures" && "active"}`} 
                     onClick={()=>setActiveTab("fixtures")}
                 >
                     Fixtures
                 </button>
                 <button 
-                    className={``} 
+                    className={`league-tab-button ${activeTab === "standing" && "active"}`} 
                     onClick={()=>setActiveTab("standing")}
                 >
                     Standing
                 </button>
                 <button 
-                    className={``} 
+                    className={`league-tab-button ${activeTab === "teams" && "active"}`} 
                     onClick={()=>setActiveTab("teams")}
                 >
                     Teams
                 </button>
                 <button 
-                    className={``} 
+                    className={`league-tab-button ${activeTab === "top-scorers" && "active"}`} 
                     onClick={()=>setActiveTab("top-scorers")}
                 >
                     Top Scorers
                 </button>
             </div>
+
+            <div className='league-tab-content'>
+                {activeTab === "result" && <Result />}
+            </div>
+
         </div>
     )
 }

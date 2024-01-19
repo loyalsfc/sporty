@@ -1,0 +1,60 @@
+.league-wrapper{
+    /* background-color: #222; */
+    padding: 0 1rem;
+    border-radius: 0.25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.league-info-hero{
+    display: flex;
+    padding: 1rem 1rem 1rem 0;
+    gap: 3rem;
+    align-items: flex-start;
+}
+.league-logo{
+    box-shadow: 0px 11px 31px 0px rgba(55, 7, 61, 0.40);
+    display: block;
+    border-radius: 0.5rem;
+}
+.league-info-item{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+.league-info-item span{
+    font-size: 0.875rem;
+    color: #C3CC5A;   
+}
+.league-tab-button{
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background-color: #2C2C2C;
+    color: #FFF;
+    position: relative;
+    font-weight: 500;
+    cursor: pointer;
+}
+.league-tab-button::after{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 1px;
+    background-color: #222;
+}
+.league-tab-button:last-child::after, .league-tab-button.active::after{
+    display: none;
+}
+.league-tab-button.active{
+    background-color: #222;
+}
+.league-tab-content{
+    flex: 1;
+    background-color: #222;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+
+}

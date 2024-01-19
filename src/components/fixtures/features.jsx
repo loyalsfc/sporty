@@ -75,9 +75,12 @@ function MatchFeatures({country_fixtures}) {
                     <div key={index} className='league-fixture-wrapper'>
                         <div>
                             <h4 className="league_name_heading">
-                                <Link to={`/${countryId}`} className='text-white'> {country} </Link> 
-                                - 
-                                <Link to={`/${countryId}/${competitionMatches[0].league_id}`} className='text-white'>{competitionName}</Link>
+                                <div>
+                                    <Link to={`/${countryId}`} className='text-white'> {country} </Link> 
+                                    - 
+                                    <Link to={`/${countryId}/${competitionMatches[0].league_id}`} className='text-white'>{competitionName}</Link>
+                                </div>
+                                <span>{new Date(competitionMatches[0].match_date).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}</span>
                             </h4>
                         </div>
                         <ul>
