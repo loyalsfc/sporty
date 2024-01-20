@@ -319,14 +319,13 @@ table{
   text-align: left;
 }
 table td, table th {
-  border: 1px solid #ddd;
   padding: 8px;
 }
 table tr:nth-child(even){
-  background-color: #f2f2f2;
+  background-color: #2C2C2C;
 }
 table tr:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 table th {
   padding: 1rem 0;

@@ -1,16 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { formatDate, queryEndpoint } from '../../../utls/utils'
+import { queryEndpoint } from '../../../utls/utils'
 import MatchFeatures from '../../fixtures/features';
 
-function Result() {
-    const {countryId, leagueId} = useParams();
-    const {data: countries} = useQuery({ 
-        queryKey: ['countries', "action=get_countries"], 
-        queryFn: ()=> queryEndpoint("action=get_countries") 
-    })
-    const url = `action=get_events&from=2023-04-05&to=${formatDate(new Date())}&league_id=${leagueId}`
+function Result({url, countryName, title}) {
     const {data, isPending, isError, error} = useQuery({
         queryKey: ["get-league", url],
         queryFn: ()=> queryEndpoint(url)
@@ -20,14 +13,24 @@ function Result() {
         return <div className='loader-wrapper'><p className='loading'/></div>
     }
 
-    const countryName = countries.find(item => item.country_id === countryId).country_name;
+    console.log(data)
+
+    if(!Array.isArray(data)){
+        return (
+            <div>
+                <h4 className="league_name_heading border-0">{title}</h4>
+                <p className='no-upcoming'>No Upcoming Match Found</p>
+            </div>
+        )
+    }
+
     const formatData = {
         [countryName]: data.sort((a, b) => new Date(b.match_date) - new Date(a.match_date))
     }
 
     return (
         <div>
-            <h4 className="league_name_heading border-0">Latest Scores</h4>
+            <h4 className="league_name_heading border-0">{title}</h4>
             <MatchFeatures country_fixtures={formatData}/>
         </div>
     )
