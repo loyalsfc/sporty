@@ -22,3 +22,16 @@ export const queryEndpoint = async(action) => {
 export const formatDate = (date) => {
     return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 }
+
+export function checkImage(imageUrl, dummyImage, setImageState) {
+    const image = new Image();
+    image.onload = function() {
+        if (this.width > 0) {
+            setImageState(imageUrl);
+        }
+    }
+    image.onerror = function() {
+        setImageState(dummyImage)
+    }
+    image.src = imageUrl
+}

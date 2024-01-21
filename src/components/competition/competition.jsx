@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import "./competition.css"
 import Result from './tabs/result'
 import Standing from './tabs/standing'
+import Teams from './tabs/teams'
 
 function CompetitionPage() {
     const {countryId, leagueId} = useParams();
@@ -99,6 +100,7 @@ function CompetitionPage() {
                     title="Upcoming Fixtures"
                 />}
                 {activeTab === "standing" && <Standing leagueId={leagueId} standing={standing} />}
+                {activeTab === "teams" && <Teams leagueId={leagueId} />}
             </div>
 
         </div>
