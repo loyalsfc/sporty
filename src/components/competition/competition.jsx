@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useState } from 'react'
-import { formatDate, queryEndpoint } from '../../utls/utils'
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { checkImage, formatDate, queryEndpoint } from '../../utls/utils'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import "./competition.css"
+import dummyLogo from '../../assets/images/placeholder_club.png'
 import Result from './tabs/result'
 import Standing from './tabs/standing'
 import Teams from './tabs/teams'
+import TopScorers from './tabs/topscorer'
 
 function CompetitionPage() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeTab = searchParams.get("tab")
     const {countryId, leagueId} = useParams();
-    const [activeTab, setActiveTab] = useState("result");
 
     const url = `action=get_leagues&country_id=${countryId}`
     const {data, error, isError, isPending} = useQuery({
@@ -22,6 +25,12 @@ function CompetitionPage() {
         queryFn: ()=> queryEndpoint(`action=get_standings&league_id=${leagueId}`)
     })
 
+    const topScorerUrl = `action=get_topscorers&league_id=${leagueId}`
+    const {data: topScorer, isPending: isTopScorerPending, error: isTopScorerError} = useQuery({
+        queryKey:["top-scorer", topScorerUrl],
+        queryFn: ()=> queryEndpoint(topScorerUrl)
+    })
+
     if(isPending){
         return <div className='loader-wrapper'><p className='loader' /></div>
     }
@@ -30,7 +39,9 @@ function CompetitionPage() {
         return <span>Error: {error.message}</span>
     }
 
-    console.log(standing)
+    const setActiveTab = (tab) => {
+        setSearchParams({"tab": tab})
+    }
 
     const competition = data.find(item => item.league_id == leagueId);
     const {league_name, league_logo, league_season, country_id, country_name} = competition
@@ -38,7 +49,7 @@ function CompetitionPage() {
         <div className="league-wrapper">
             <h4>League {">"} {league_name}</h4>
             <div className='league-info-hero'>
-                <img className='league-logo' src={league_logo} />
+                <Logo />
                 <div className='league-info-items'>
                     <p className='league-info-item'>
                         <span>League:</span> 
@@ -57,7 +68,7 @@ function CompetitionPage() {
 
             <div>
                 <button 
-                    className={`league-tab-button ${activeTab === "result" && "active"}`} 
+                    className={`league-tab-button ${(activeTab === "result" || activeTab === null) && "active"}`} 
                     onClick={()=>setActiveTab("result")}
                 >
                     Results
@@ -80,16 +91,16 @@ function CompetitionPage() {
                 >
                     Teams
                 </button>
-                <button 
+                {Array.isArray(topScorer) && <button 
                     className={`league-tab-button ${activeTab === "top-scorers" && "active"}`} 
                     onClick={()=>setActiveTab("top-scorers")}
                 >
                     Top Scorers
-                </button>
+                </button>}
             </div>
 
             <div className='league-tab-content'>
-                {activeTab === "result" && <Result 
+                {(activeTab === "result" || activeTab === null) && <Result 
                     url={`action=get_events&from=2023-07-01&to=${formatDate(new Date())}&league_id=${leagueId}`} 
                     countryName={country_name}
                     title="Latest Scores"
@@ -101,10 +112,21 @@ function CompetitionPage() {
                 />}
                 {activeTab === "standing" && <Standing leagueId={leagueId} standing={standing} />}
                 {activeTab === "teams" && <Teams leagueId={leagueId} />}
+                {activeTab === "top-scorers" && <TopScorers data={topScorer}/> }
             </div>
 
         </div>
     )
+}
+
+function Logo({league_logo}){
+    const [leagueLogo, setLeagueLogo] = useState(dummyLogo)
+    
+    useEffect(()=>{
+        checkImage(league_logo, dummyLogo, setLeagueLogo)
+    },[league_logo])
+
+    return <img className='league-logo' src={leagueLogo} height={200}/>
 }
 
 export default CompetitionPage
