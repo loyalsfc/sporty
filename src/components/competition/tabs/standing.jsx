@@ -3,6 +3,44 @@ import { Link } from "react-router-dom";
 import DummyTable from "../../DummyTable";
 
 function Standing({leagueId, standing}){
+    return(
+        <div className="standing">
+            {standing[0].stage_name === "Group Stage" ? <GroupStage standing={standing} /> : <StandingTable title={'Team'} standing={standing} />}
+        </div>
+    )
+}
+
+function GroupStage({standing}){
+
+    function groupStanding() {
+        const groupedData = {};
+
+        standing.forEach(item => {
+          const group = item.league_round;
+            if (!groupedData[group]) {
+                groupedData[group] = [];
+            }
+            groupedData[group].push(item);
+        });
+      
+        return groupedData;
+    }
+
+    return(
+        <div>
+            {Object.entries(groupStanding()).map((item, index) => {
+                const [groupName, teamPosition] = item;
+                return(
+                    <div key={index}>
+                        <StandingTable title={groupName} standing={teamPosition} />
+                    </div>
+                )
+            })}
+        </div>
+    )
+}
+
+function StandingTable({standing, title}){
     const teams = standing?.map(item => {
         return(
             <tr key={item.overall_league_position}>
@@ -19,31 +57,25 @@ function Standing({leagueId, standing}){
         )
     })
 
-    console.log(standing)
-
     return(
-        <div className="standing">
-            <div className="container mx-auto">
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="table-team">Team</th>
-                            <th>P</th>
-                            <th className="d-sm-none">Won</th>
-                            <th className="d-sm-none">Drawn</th>
-                            <th className="d-sm-none">Lost</th>
-                            <th className="d-sm-none">+</th>
-                            <th className="d-sm-none">-</th>
-                            <th>GD</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {standing.length ? teams : <DummyTable length={20}/>}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th className="table-team">{title}</th>
+                    <th>P</th>
+                    <th className="d-sm-none">Won</th>
+                    <th className="d-sm-none">Drawn</th>
+                    <th className="d-sm-none">Lost</th>
+                    <th className="d-sm-none">+</th>
+                    <th className="d-sm-none">-</th>
+                    <th>GD</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {standing.length ? teams : <DummyTable length={4}/>}
+            </tbody>
+        </table>
     )
 }
 

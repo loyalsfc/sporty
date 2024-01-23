@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { queryEndpoint } from '../../../utls/utils'
-import MatchFeatures from '../../fixtures/features';
+import MatchFeatures from './competitionMatches'
 
-function Result({url, countryName, title}) {
+function Result({url, countryName, title, countryId, competitionName}) {
     const {data, isPending, isError, error} = useQuery({
         queryKey: ["get-league", url],
         queryFn: ()=> queryEndpoint(url)
@@ -24,14 +24,19 @@ function Result({url, countryName, title}) {
         )
     }
 
-    const formatData = {
-        [countryName]: data.sort((a, b) => new Date(b.match_date) - new Date(a.match_date))
-    }
-
     return (
         <div>
             <h4 className="league_name_heading border-0">{title}</h4>
-            <MatchFeatures country_fixtures={formatData}/>
+            <MatchFeatures 
+                matches={title === "Latest Scores" ? 
+                    data.sort((a, b) => new Date(b.match_date) - new Date(a.match_date)).filter(item => item.match_status !== "")
+                        : 
+                            data.filter(item => item.match_status === "")
+                }
+                countryId={countryId}
+                country={countryName}
+                competitionName={competitionName}
+            />
         </div>
     )
 }

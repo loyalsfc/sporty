@@ -31,7 +31,7 @@ function CompetitionPage() {
         queryFn: ()=> queryEndpoint(topScorerUrl)
     })
 
-    if(isPending){
+    if(isPending || isStandingPending ){
         return <div className='loader-wrapper'><p className='loader' /></div>
     }
 
@@ -104,11 +104,15 @@ function CompetitionPage() {
                     url={`action=get_events&from=2023-07-01&to=${formatDate(new Date())}&league_id=${leagueId}`} 
                     countryName={country_name}
                     title="Latest Scores"
+                    countryId={countryId}
+                    competitionName={league_name}
                 />}
                 {activeTab === "fixtures" && <Result 
                     url={`action=get_events&from=${formatDate(new Date())}&to=2024-06-30&league_id=${leagueId}`} 
                     countryName={country_name}
                     title="Upcoming Fixtures"
+                    countryId={countryId}
+                    competitionName={league_name}
                 />}
                 {activeTab === "standing" && <Standing leagueId={leagueId} standing={standing} />}
                 {activeTab === "teams" && <Teams leagueId={leagueId} />}
