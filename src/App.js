@@ -28,7 +28,7 @@ function App() {
         <Route path='/matches/live' element={<LiveMatch/>} />
         <Route path='standing' element={<Standing />}/>
         <Route path='top-scorers' element={<TopScorers />} />
-        <Route path="clubs/:clubId" element={<Club />} />
+        <Route path="/teams/:teamId" element={<Club />} />
         <Route path="/players/:playerKey" element={<PlayerStatistics />} />
       </Routes>
       {/* <Footer /> */}

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import { checkImage, queryEndpoint } from '../../../utls/utils'
 import dummyLogo from '../../../assets/images/placeholder_club.png'
+import { Link } from 'react-router-dom'
 
 
 function Teams({leagueId}) {
@@ -17,14 +18,14 @@ function Teams({leagueId}) {
         <div>
             <ul className='team-page-wrapper'>
                 {data?.map(item => {
-                    return <li key={item.team_key} className='team-wrapper'><Team badge={item.team_badge} /></li>
+                    return <li key={item.team_key} className='team-wrapper'><Team badge={item.team_badge} teamId={item.team_key} /></li>
                 })}
             </ul>
         </div>
     )
 }
 
-function Team({badge}){
+function Team({badge, teamId}){
     const [imageUrl, setImageUrl] = useState(dummyLogo);
 
     useEffect(()=>{
@@ -32,12 +33,12 @@ function Team({badge}){
     }, [badge])
     
     return (
-        <div className='team-content'>
+        <Link to={`/teams/${teamId}`} className='team-content'>
             <img
                 className='team-content-badge'
                 src={imageUrl}
             />
-        </div>
+        </Link>
     )
 }
 
