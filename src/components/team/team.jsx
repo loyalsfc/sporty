@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom"
 import blank_portrait from '../../assets/images/blank_portrait.png'
 import { useQuery } from "@tanstack/react-query";
-import { queryEndpoint } from "../../utls/utils";
+import { checkImage, formatDate, queryEndpoint } from "../../utls/utils";
+import dummyLogo from '../../assets/images/placeholder_club.png'
+import Matches from "./tabs/matches";
 
 function Team(){
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeTab = searchParams.get("tab")
     const { teamId } = useParams()
-    const activeTab = ""
     const url = `action=get_teams&team_id=${teamId}`
     const {data, isPending, isError, error} = useQuery({
         queryKey: ["team-info", url],
@@ -15,17 +18,20 @@ function Team(){
     })
 
     if(isError){
+        return <div className="flex-1"></div>
         console.log(error)   
     }
 
-    if(isPending) return;
+    if(isPending){
+        return <div className="flex-1"></div>
+    };
 
     console.log(data)
 
     const {team_country, team_name, team_key, team_founded, team_badge, coaches, venue} = data[0]
 
     const setActiveTab = (tab) => {
-
+        setSearchParams({"tab": tab})
     }
 
     const playsersStat = data?.map(player =>{
@@ -43,14 +49,14 @@ function Team(){
     })
 
     return(
-        <div className="league-wrapper">
-            <h4>League {">"} {team_name}</h4>
+        <div className="league-wrapper flex-1">
+            <h4 className="text-white">League {">"} {team_name}</h4>
             <div className='league-info-hero'>
                 <Logo />
-                <div className='league-info-items'>
+                <div className='league-info-items text-white'>
                     <p className='league-info-item'>
                         <span>Fonded:</span> 
-                        <span>Founded in {team_founded}</span>
+                        Founded in {team_founded}
                     </p>
                     <p className='league-info-item'>
                         <span>Manager:</span> 
@@ -58,11 +64,11 @@ function Team(){
                     </p>
                     <p className='league-info-item'>
                         <span>Arena/Stadium:</span> 
-                        <span>{venue.venue_name}, {venue.venue_address}, {venue.venue_city}</span>
+                        {venue.venue_name}, {venue.venue_address}, {venue.venue_city}
                     </p>
                     <p className='league-info-item'>
                         <span>Stadium Capacity:</span> 
-                        <span>{venue.venue_capacity}</span>
+                        {venue.venue_capacity}
                     </p>
                 </div>
             </div>
@@ -100,7 +106,15 @@ function Team(){
                 </button>}
             </div>
 
-            <div className='league-tab-content'></div>
+            <div className='league-tab-content'>
+                {(activeTab === "result" || activeTab === null) && <Matches
+                    url={`action=get_events&from=2023-07-01&to=${formatDate(new Date())}&team_id=${teamId}`} 
+                    // countryName={country_name}
+                    title="Latest Scores"
+                    // countryId={countryId}
+                    // competitionName={league_name}
+                />}
+            </div>
         </div>
     )
 }
