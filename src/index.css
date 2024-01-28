@@ -424,7 +424,6 @@ table th {
   flex-wrap: wrap;
 }
 .player-wrap{
-  width: 23%;
   border-radius: 5px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
   margin: 1%;
@@ -460,13 +459,6 @@ table th {
   position: absolute;
   bottom: 1.5rem;
   right: 1rem
-}
-.view-player a{
-  color: #070b18;
-}
-.view-player a:hover{
-  color: #933556;
-  cursor: pointer;
 }
 .player-stat-goal{
   margin-bottom: 3rem;
@@ -780,9 +772,6 @@ span.close{
   .service-wrapper{
     width: 48%;
     margin: 0 1% 2rem;
-  }
-  .player-wrap{
-    width: 31%;
   }
 }
 .league-fixture-wrapper{

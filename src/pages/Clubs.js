@@ -9,7 +9,9 @@ function Clubs() {
             <aside className='country_sidebar_wrapper'>
                 <Sidebar />
             </aside>
-            <Team />
+            <main className='main-container'>
+                <Team />
+            </main>
             <aside className='country_sidebar_wrapper'>
                 <News />
             </aside>

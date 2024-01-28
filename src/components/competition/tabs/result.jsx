@@ -13,8 +13,6 @@ function Result({url, countryName, title, countryId, competitionName}) {
         return <div className='loader-wrapper'><p className='loading'/></div>
     }
 
-    console.log(data)
-
     if(!Array.isArray(data)){
         return (
             <div>
