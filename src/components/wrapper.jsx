@@ -1,16 +1,15 @@
 import React from 'react'
-import Sidebar from '../components/home/sidebar'
-import News from '../components/home/news'
-import Match from '../components/matches/Match'
+import Sidebar from './home/sidebar'
+import News from './home/news'
 
-function Matchdetails() {
+function Wrapper({Main}) {
     return (
         <div className='home-page-wrapper'>
             <aside className='country_sidebar_wrapper'>
                 <Sidebar />
             </aside>
             <main className='main-container'>
-                <Match />
+                <Main />
             </main>
             <aside className='country_sidebar_wrapper'>
                 <News />
@@ -19,4 +18,4 @@ function Matchdetails() {
     )
 }
 
-export default Matchdetails
+export default Wrapper

@@ -3,16 +3,17 @@ import { Routes, Route } from "react-router-dom"
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
-import Leagues from './pages/Leagues';
 import Standing from './pages/Standing';
 import TopScorers from './pages/TopScorers';
-import Club from './pages/Clubs';
 import PlayerStatistics from './pages/Players';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Home from './pages/home';
-import Matchdetails from './pages/matchdetails';
-import LiveMatch from './pages/liveMatch';
-import Competition from './pages/competition';
+import Wrapper from './components/wrapper';
+import Team from './components/team/team'; 
+import CompetitionPage from './components/competition/competition';
+import Main from './components/home/main';
+import CountryCompetitions from './components/country/country-competitions';
+import LiveMatches from './components/live-matches/live-matches';
+import Match from './components/matches/Match';
 
 const queryClient = new QueryClient()
 
@@ -21,15 +22,15 @@ function App() {
     <QueryClientProvider client={queryClient}>
       {/* <Header /> */}
       <Routes>
-        <Route exact path='/' element={<Home/>} />
-        <Route path='/:countryId' element={<Leagues/>} />
-        <Route path='/:countryId/:leagueId' element={<Competition/>} />
-        <Route path='/:countryId/:leagueId/matches/:matchId' element={<Matchdetails/>} />
-        <Route path='/matches/live' element={<LiveMatch/>} />
+        <Route exact path='/' element={<Wrapper Main={Main}/>} />
+        <Route path='/:countryId' element={<Wrapper Main={CountryCompetitions}/>} />
+        <Route path='/:countryId/:leagueId' element={<Wrapper Main={CompetitionPage}/>} />
+        <Route path='/:countryId/:leagueId/matches/:matchId' element={<Wrapper Main={Match}/>} />
+        <Route path='/matches/live' element={<Wrapper Main={LiveMatches} />} />
         <Route path='standing' element={<Standing />}/>
         <Route path='top-scorers' element={<TopScorers />} />
-        <Route path="/teams/:teamId" element={<Club />} />
-        <Route path="/players/:playerKey" element={<PlayerStatistics />} />
+        <Route path="/teams/:teamId" element={<Wrapper Main={Team} />} />
+        <Route path="/players/:playerKey" element={<Wrapper Main={PlayerStatistics} />} />
       </Routes>
       {/* <Footer /> */}
     </QueryClientProvider>
