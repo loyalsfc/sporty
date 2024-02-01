@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import dummyLogo from '../../assets/images/placeholder_club.png'
+import { Link } from 'react-router-dom';
 
-function TeamDetail({club_badge, team_name}) {
+function TeamDetail({club_badge, team_name, teamId}) {
     const [clubImage, setClubImage] = useState(dummyLogo);
 
     useEffect(()=>{
@@ -22,10 +23,10 @@ function TeamDetail({club_badge, team_name}) {
     }
 
     return (
-        <div className='club-detail'>
+        <Link to={`/teams/${teamId}`} className='club-detail'>
             <img className='' height={100} src={clubImage} />
             <p>{team_name}</p>
-        </div>
+        </Link>
     )
 }
 

@@ -14,15 +14,16 @@ function Matches({url, matchType}) {
     }
 
     function groupByLeague() {
+        let match;
         if(matchType === "result"){
-            data.sort((a, b) => new Date(b.match_date) - new Date(a.match_date)).filter(item => item.match_status !== "")
+            match = data.sort((a, b) => new Date(b.match_date) - new Date(a.match_date)).filter(item => item.match_status !== "")
         } else {
-            data.filter(item => item.match_status === "")
+            match = data.filter(item => item.match_status === "")
         }
         const groupedData = {};
 
-        data.forEach(item => {
-          const leagueId = item.league_id;
+        match.forEach(item => {
+          const leagueId = item.league_name;
             if (!groupedData[leagueId]) {
                 groupedData[leagueId] = [];
             }

@@ -56,7 +56,7 @@ function Match() {
         <>
                 <div className='match-card-wrapper'>
                     <div className='match-info'>
-                        <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} />
+                        <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} teamId={match_hometeam_id} />
                         <div>
                             {(match_status === "" || match_status === "Cancelled" || match_status === "Postponed") && 
                                 <MatchInfo 
@@ -83,7 +83,7 @@ function Match() {
                                 <span className='match-details-status live-match-anim'>{match_status}'</span>
                             </div>}
                         </div>
-                        <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} />
+                        <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} teamId={match_awayteam_id} />
                     </div>
                     <div className='match-buttons-wrapper'>
                         <button onClick={()=>setActiveTab("info")} className={`match-buttons ${activeTab === "info" && 'active'}`}>Match Info</button>

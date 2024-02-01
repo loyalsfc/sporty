@@ -1,84 +1,79 @@
-import React, {useEffect, useState, useContext} from "react";
-import { Context } from "../Context";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom"
 import blank_portrait from '../assets/images/blank_portrait.png'
+import { useQuery } from "@tanstack/react-query";
+import { checkImage, queryEndpoint } from "../utls/utils";
 
 
 function PlayerStatistics(){
-    const {key} = useContext(Context)
-    const { playerKey } = useParams()
-    const [playerStat, setPlayerStat] = useState([]);
-    const [playerImage, setPlayerImage] = useState("");
+    const { playerKey } = useParams();
+    const url = `action=get_players&player_id=${playerKey}`;
+    const {data, isPending} = useQuery({
+        queryKey: ["player starts", url],
+        queryFn: ()=> queryEndpoint(url)
+    })
+    const [playerImage, setPlayerImage] = useState(blank_portrait);
 
     useEffect(()=>{
-        fetch(`https://apiv3.apifootball.com/?action=get_players&player_id=${playerKey}&APIkey=${key}`)
-        .then((res, req) => res.json())
-        .then(data => setPlayerStat([data[data.length - 1]]))
-    },[playerKey, key])
-
-    useEffect(()=>{
-        checkImage();
-    },[playerStat])
-
-    function checkImage() {
-        const url = playerStat[0]?.player_image
-        const image = new Image();
-        image.onload = function() {
-            if (this.width > 0) {
-                setPlayerImage(url);
-            }
+        if(data){
+            checkImage(data[0]?.player_image, blank_portrait, setPlayerImage);
         }
-        image.onerror = function() {
-            setPlayerImage(blank_portrait)
-        }
-        image.src = url;
+    },[data])
+
+    if(isPending){
+        return <Statistics />
     }
 
-    const playerInfo = playerStat.map(stat => {
-        return (
-            <Statistics key={stat.player_key} 
-                image = {playerImage}
-                number = {stat.player_name}
-                playerName = {stat.player_number}
-                yellow_card = {stat.player_yellow_cards}
-                red_card = {stat.player_red_cards}
-                fouls = {stat.player_fouls_committed === "" ? 0 : stat.player_fouls_committed}
-                team  = {stat.team_name}
-                position = {stat.player_type}
-                age = {stat.player_age}
-                dob = {stat.player_birthdate === "" ? 0 : stat.player_birthdate}
-                assist = {stat.player_assists === "" ? 0 : stat.player_assists}
-                passes = {stat.player_passes === "" ? 0 : stat.player_passes}
-                passes_completed = {stat.player_passes_accuracy === "" ? 0 : stat.player_passes_accuracy}
-                chance = {stat.player_key_passes === "" ? 0 : stat.player_key_passes}
-                cross = {stat.player_crosses_total === "" ? 0 : stat.player_crosses_total}
-                tackle  = {stat.player_tackles === "" ? 0 : stat.player_tackles}
-                block_shot = {stat.player_blocks === "" ? 0 : stat.player_blocks}
-                interception = {stat.player_interceptions === "" ? 0 : stat.player_interceptions}
-                clearance = {stat.player_clearances === "" ? 0 : stat.player_clearances}
-                duels = {stat.player_duels_total === "" ? 0 : stat.player_duels_total}
-                duel_won = {stat.player_duels_won === "" ? 0 : stat.player_duels_won}
-                goals = {stat.player_goals === "" ? 0 : stat.player_goals}
-                match_played = {stat.player_match_played === "" ? 0 : stat.player_match_played}
-                penalty = {stat.player_pen_scored === "" ? 0 : stat.player_pen_scored}
-                penalty_won = {stat.player_pen_won === "" ? 0 : stat.player_pen_won}
-                dribble_completed = {stat.player_dribble_succ === "" ? 0 : stat.player_dribble_succ}
-                dribble = {stat.player_dribble_attempts === "" ? 0 : stat.player_dribble_attempts}
-                hit_woodwork = {stat.player_woordworks === "" ? 0 : stat.player_woordworks}
-                shot = {stat.player_shots_total === "" ? 0 : stat.player_shots_total}
-                rating = {stat.player_rating}
-                apperance = {stat.player_match_played}
-                apperance_from_bench = {stat.player_substitutes_on_bench}
-                minutes_played= {stat.player_minutes}
-                team_id = {stat.team_key}
-            />
-        )
-    })
+    console.log(data)
+
+    // const playerInfo = data.pop()?.map(stat => {
+    //     return (
+            
+    //     )
+    // })
+    console.log(data)
+    const stat = data.pop();
+    console.log(stat)
 
     return(
         <div className="">
-            {playerStat.length ? playerInfo : <Statistics />}
+            <Statistics 
+                image = {playerImage}
+                number = {stat?.player_name}
+                playerName = {stat?.player_number}
+                yellow_card = {stat?.player_yellow_cards}
+                red_card = {stat?.player_red_cards}
+                fouls = {stat?.player_fouls_committed === "" ? 0 : stat?.player_fouls_committed}
+                team  = {stat?.team_name}
+                position = {stat?.player_type}
+                age = {stat?.player_age}
+                dob = {stat?.player_birthdate === "" ? 0 : stat?.player_birthdate}
+                assist = {stat?.player_assists === "" ? 0 : stat?.player_assists}
+                passes = {stat?.player_passes === "" ? 0 : stat?.player_passes}
+                passes_completed = {stat?.player_passes_accuracy === "" ? 0 : stat?.player_passes_accuracy}
+                chance = {stat?.player_key_passes === "" ? 0 : stat?.player_key_passes}
+                cross = {stat?.player_crosses_total === "" ? 0 : stat?.player_crosses_total}
+                tackle  = {stat?.player_tackles === "" ? 0 : stat?.player_tackles}
+                block_shot = {stat?.player_blocks === "" ? 0 : stat?.player_blocks}
+                interception = {stat?.player_interceptions === "" ? 0 : stat?.player_interceptions}
+                clearance = {stat?.player_clearances === "" ? 0 : stat?.player_clearances}
+                duels = {stat?.player_duels_total === "" ? 0 : stat?.player_duels_total}
+                duel_won = {stat?.player_duels_won === "" ? 0 : stat?.player_duels_won}
+                goals = {stat?.player_goals === "" ? 0 : stat?.player_goals}
+                match_played = {stat?.player_match_played === "" ? 0 : stat?.player_match_played}
+                penalty = {stat?.player_pen_scored === "" ? 0 : stat?.player_pen_scored}
+                penalty_won = {stat?.player_pen_won === "" ? 0 : stat?.player_pen_won}
+                dribble_completed = {stat?.player_dribble_succ === "" ? 0 : stat?.player_dribble_succ}
+                dribble = {stat?.player_dribble_attempts === "" ? 0 : stat?.player_dribble_attempts}
+                hit_woodwork = {stat?.player_woordworks === "" ? 0 : stat?.player_woordworks}
+                shot = {stat?.player_shots_total === "" ? 0 : stat?.player_shots_total}
+                rating = {stat?.player_rating}
+                apperance = {stat?.player_match_played}
+                apperance_from_bench = {stat?.player_substitutes_on_bench}
+                minutes_played= {stat?.player_minutes}
+                team_id = {stat?.team_key}
+            />
         </div>
 
     )
@@ -94,7 +89,7 @@ function Statistics(props){
                     </div>
                     <div className="player-name-wrapper">
                         <h1>{props.number}</h1>
-                        <h3>{props.playerName}</h3>
+                        <h4>{props.playerName}</h4>
                     </div>
                 </div>
             </div>
