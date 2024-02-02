@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './home/sidebar'
-import News from './home/news'
+import News from './news/news'
 import Header from './Header'
 
 function Wrapper({Main}) {

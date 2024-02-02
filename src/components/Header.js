@@ -22,7 +22,7 @@ function Header(){
                 <Links clickHandler={handleClick} modalClick={showModal} />
             </div>
                 <Modal modalClick={showModal} modalContent={modalContent}/>
-            <div className="container mx-auto">
+            <div className="mx-auto header-wrapper">
                 <nav>
                     <Link to="/"><img src={Logo} alt="Logo" height={32} /></Link>
                     <Links classprop="d-md"  modalClick={showModal}/>
@@ -37,16 +37,18 @@ function Links({classprop,clickHandler,modalClick}){
     return (
         <ul className={'navigation-menu ' + classprop} >
             <li onClick={clickHandler} className="navigation-item">
-                <Link className="navigation-item" to="standing">Standing</Link>
+                <Link className="navigation-item" to="standing">Scores</Link>
             </li>
             <li onClick={clickHandler} className="navigation-item">
-                <Link className="navigation-item" to="top-scorers">Top Scorers</Link>
+                <Link className="navigation-item" to="top-scorers">Advertise</Link>
             </li>
-            <li className="navigation-item" onClick={clickHandler}>About Us</li>
-            <li className="navigation-item" onClick={clickHandler}>Contact Us</li>
-            <li className="navigation-item newsletter" onClick={clickHandler}>
+            <li className="navigation-item" onClick={clickHandler}>Mobile App</li>
+            <li className="navigation-item" onClick={clickHandler}>Contact</li>
+            <li className="navigation-item" onClick={clickHandler}>About</li>
+            <li className="navigation-item" onClick={clickHandler}>Blog</li>
+            {/* <li className="navigation-item newsletter" onClick={clickHandler}>
                 <button className="join-us" onClick={modalClick}>Newsletter</button>
-            </li>
+            </li> */}
         </ul>
     )
 }

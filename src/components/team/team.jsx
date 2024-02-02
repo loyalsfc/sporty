@@ -36,7 +36,7 @@ function Team(){
 
     return(
         <div className="league-wrapper flex-1">
-            <h4>League {">"} {team_name}</h4>
+            <h4>Team {">"} {team_name}</h4>
             <div className='league-info-hero'>
                 <Logo league_logo={team_badge} />
                 <div className='league-info-items'>
