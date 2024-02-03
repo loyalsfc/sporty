@@ -1,0 +1,11 @@
+.main-calender-wrapper{
+    position: relative;
+}
+.main-calender{
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100rem;
+    height: 300px;
+}

@@ -3,6 +3,7 @@ import { IoIosSearch } from 'react-icons/io'
 import DateCard from './card/date-card'
 import { CiCalendarDate } from 'react-icons/ci'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import CalenderItem from '../calender/calender';
 
 const twoDaysAgo = new Date();
 twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
@@ -80,10 +81,7 @@ function DateRange() {
                         date={nextTomorrow}  
                         setDate={setDate}
                     />
-                    <li className='calender-wrapper active'>
-                        <span><CiCalendarDate /></span>
-                        View Calender
-                    </li>
+                    <CalenderItem />
                 </ul>
             </div>   
         </>
