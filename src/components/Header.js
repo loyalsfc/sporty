@@ -40,7 +40,7 @@ function Links({classprop,clickHandler,modalClick}){
                 <Link className="navigation-item" to="standing">Scores</Link>
             </li>
             <li onClick={clickHandler} className="navigation-item">
-                <Link className="navigation-item" to="top-scorers">Advertise</Link>
+                <Link className="navigation-item" to="/advertise">Advertise</Link>
             </li>
             <li className="navigation-item" onClick={clickHandler}>Mobile App</li>
             <li className="navigation-item" onClick={clickHandler}>Contact</li>
