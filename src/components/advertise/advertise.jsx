@@ -10,6 +10,7 @@ import cloud from '../../assets/images/advertise/cloud.svg'
 import eye from '../../assets/images/advertise/eye.svg'
 import profit from '../../assets/images/advertise/profit.svg'
 import Card from './card'
+import Footer from '../Footer'
 
 function Advertise() {
     return (
@@ -177,6 +178,7 @@ function Advertise() {
                     <button className='advertise-form-submit'>Submit</button>
                 </form>
             </section>
+            <Footer />
         </div>
     )
 }

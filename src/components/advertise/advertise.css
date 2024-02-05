@@ -52,7 +52,7 @@
     text-align: center;
 }
 .advertise-card-wrapper h5{
-    color: #828282;
+    color: #FFF;
 }
 .advertise-form-wrapper{
     max-width: 1200px;
@@ -65,12 +65,12 @@
 .advertise-contact-label{
     display: block;
     font-size: 0.75rem;
-    color: #828282;
+    color: #FFF;
     margin-bottom: 0.25rem;
 }
 .advertise-contact-input, .advertise-contact-text-area{
     padding: 0.5rem;
-    border: 1px solid #888;
+    border: 1px solid #FFF;
     border-radius: 0.25rem;
     display: block;
     width: 100%;
@@ -82,7 +82,7 @@
 }
 .advertise-ad-formats{
     display: flex;
-    color: #828282;
+    color: #FFF;
     gap: 1rem;
     font-size: 0.75rem;
     padding-top: 0.5rem;

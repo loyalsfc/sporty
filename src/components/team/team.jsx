@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom"
-import blank_portrait from '../../assets/images/blank_portrait.png'
 import { useQuery } from "@tanstack/react-query";
 import { checkImage, formatDate, queryEndpoint } from "../../utls/utils";
 import dummyLogo from '../../assets/images/placeholder_club.png'
@@ -13,7 +11,7 @@ function Team(){
     const activeTab = searchParams.get("tab")
     const { teamId } = useParams()
     const url = `action=get_teams&team_id=${teamId}`
-    const {data, isPending, isError, error} = useQuery({
+    const {data, isPending, isError} = useQuery({
         queryKey: ["team-info", url],
         queryFn: ()=> queryEndpoint(url)
     })

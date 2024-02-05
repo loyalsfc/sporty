@@ -4,7 +4,7 @@ import { queryEndpoint } from '../../../utls/utils'
 import { Link } from 'react-router-dom'
 
 function Matches({url, matchType}) {
-    const {data, isPending, isError, error} = useQuery({
+    const {data, isPending} = useQuery({
         queryKey: ["get-team-matches", url],
         queryFn: ()=> queryEndpoint(url)
     })
