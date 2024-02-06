@@ -11,6 +11,11 @@ import eye from '../../assets/images/advertise/eye.svg'
 import profit from '../../assets/images/advertise/profit.svg'
 import Card from './card'
 import Footer from '../Footer'
+import AdvertiseCard from './advertise-card'
+import wallpaper from "../../assets/images/banners/fullscreen.png"
+import top from "../../assets/images/banners/top.png"
+import bottom from "../../assets/images/banners/bottom.png"
+import side from "../../assets/images/banners/side.png"
 
 function Advertise() {
     return (
@@ -177,6 +182,31 @@ function Advertise() {
 
                     <button className='advertise-form-submit'>Submit</button>
                 </form>
+
+                <div className='advertise-sample'>
+                    <div className='advertise-sample-wrapper'>
+                        <AdvertiseCard
+                            img={wallpaper}
+                            title={"Wallpaper"}
+                            note={"1440 x 900"}
+                        />
+                        <AdvertiseCard
+                            img={side}
+                            title={"Fullside Banner"}
+                            note={"300 x 547"}
+                        />
+                        <AdvertiseCard
+                            img={top}
+                            title={"Top Banner"}
+                            note={"1332 x 80"}
+                        />
+                        <AdvertiseCard
+                            img={bottom}
+                            title={"Bottom Banner"}
+                            note={"1332 x 80"}
+                        />
+                    </div>
+                </div>
             </section>
             <Footer />
         </div>
