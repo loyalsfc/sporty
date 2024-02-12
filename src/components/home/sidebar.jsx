@@ -39,7 +39,7 @@ const topContries = [
 
 function Sidebar() {
     const {countryId} = useParams();
-    console.log(countryId);
+    
     const {isPending, isError, data, error} = useQuery({ 
         queryKey: ['countries', "action=get_countries"], 
         queryFn: ()=> queryEndpoint("action=get_countries") 
@@ -51,7 +51,7 @@ function Sidebar() {
         )
     }
 
-    if(isError){
+    if(isError || !Array.isArray(data)){
         return <p>An error occured</p>
     }
 
