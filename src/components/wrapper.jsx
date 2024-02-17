@@ -8,13 +8,13 @@ function Wrapper({Main}) {
         <div className=''>
             <Header/>
             <div className='home-page-wrapper'>
-                <aside className='country_sidebar_wrapper'>
+                <aside className='country_sidebar_wrapper country-side-bar-wrapper'>
                     <Sidebar />
                 </aside>
                 <main className='main-container'>
                     <Main />
                 </main>
-                <aside className='country_sidebar_wrapper'>
+                <aside className='country_sidebar_wrapper news-side-bar-wrapper'>
                     <News />
                 </aside>
             </div>

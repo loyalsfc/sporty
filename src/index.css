@@ -694,11 +694,13 @@ span.close{
   text-overflow: ellipsis;
 }
 .loader-wrapper{
+  background-color: transparent;
   height: 100%;
   width: 100%;
   display: grid;
   place-content: center;
   position: relative;
+  padding: 5rem 0;
 }
 .loader{
   height: 2.5rem;

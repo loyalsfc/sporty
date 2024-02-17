@@ -38,6 +38,10 @@ function DateRange() {
                     <input id='search-match' placeholder='' className='match-search-input' />
                     <label htmlFor="search-match" className='match-search-placeholder'>Search for matches</label>
                 </div>
+                <div className='matches-search-mobile'>
+                    <IoIosSearch />
+                    <input id='search-match' placeholder='Search for matches' className='match-search-input' />
+                </div>
                 <div className='matches-filter'>
                     <select name="matches-filter" id="matches-filter">
                         <option value="all">All Matches</option>

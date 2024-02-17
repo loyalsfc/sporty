@@ -17,7 +17,7 @@ function DateCard({day, date, index, active, setDate}){
     
     return (
         <li onClick={handleClick} className={`date-card ${index === active ? "active" : ""}`}>
-            <span>{day === "calc" ? formattedday : day}</span>
+            <span className='formatted-date'>{day === "calc" ? formattedday : day}</span>
             <span>{formattedDate}</span>
         </li>
     )

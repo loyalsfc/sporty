@@ -24,7 +24,7 @@ function CalenderItem() {
         <li ref={calenderRef} className='main-calender-wrapper'>
             <button onClick={()=> setShowCalender(prevState => !prevState)} className='calender-wrapper active'>
                 <span><CiCalendarDate /></span>
-                View Calender
+                <p className='formatted-date'>View Calender</p>
             </button>
             {showCalender && <div className='main-calender'>
                 <Calender />

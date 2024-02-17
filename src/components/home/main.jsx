@@ -7,7 +7,7 @@ import DateRange from './date-range';
 
 function Main() {
     return (
-        <main className='main-container'>
+        <>
             <div>
                 <img src={heroImage} className='hero-image'/>
             </div>
@@ -19,7 +19,7 @@ function Main() {
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     )
 }
 

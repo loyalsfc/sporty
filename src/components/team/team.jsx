@@ -24,8 +24,6 @@ function Team(){
         return <div className="flex-1"></div>
     };
 
-    console.log(data)
-
     const {team_country, team_name, team_key, team_founded, team_badge, coaches, venue, players} = data[0]
 
     const setActiveTab = (tab) => {
