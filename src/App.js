@@ -13,6 +13,7 @@ import LiveMatches from './components/live-matches/live-matches';
 import Match from './components/matches/Match';
 import Advertise from './components/advertise/advertise';
 import MobileApp from './components/mobile-app/mobile-app';
+import ContactUs from './components/contact-us/contact-us';
 
 const queryClient = new QueryClient()
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/' element={<Wrapper Main={Main}/>} />
         <Route path='/advertise' element={<Advertise/>} />
         <Route path="/mobile-app" element={<MobileApp/>}/>
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path='/:countryId' element={<Wrapper Main={CountryCompetitions}/>} />
         <Route path='/:countryId/:leagueId' element={<Wrapper Main={CompetitionPage}/>} />
         <Route path='/:countryId/:leagueId/matches/:matchId' element={<Wrapper Main={Match}/>} />

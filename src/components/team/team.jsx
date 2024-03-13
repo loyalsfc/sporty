@@ -24,7 +24,7 @@ function Team(){
         return <div className="flex-1"></div>
     };
 
-    const {team_country, team_name, team_key, team_founded, team_badge, coaches, venue, players} = data[0]
+    const {team_country, team_name, team_founded, team_badge, coaches, venue, players} = data[0]
 
     const setActiveTab = (tab) => {
         setSearchParams({"tab": tab})
@@ -105,7 +105,7 @@ function Logo({league_logo}){
         checkImage(league_logo, dummyLogo, setLeagueLogo)
     },[league_logo])
 
-    return <img className='league-logo' src={leagueLogo} height={200}/>
+    return <img className='league-logo' alt="Logo" src={leagueLogo} height={200}/>
 }
 
 export default Team

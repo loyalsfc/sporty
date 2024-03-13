@@ -54,7 +54,12 @@ function Links({classprop,clickHandler,modalClick}){
             >
                 <Link to="/mobile-app" className="navigation-item">Mobile App</Link>
             </li>
-            <li className="navigation-item" onClick={clickHandler}>Contact</li>
+            <li 
+                className="navigation-item" 
+                onClick={clickHandler}
+            >
+                 <Link to="/contact-us" className="navigation-item">Contact Us</Link>
+            </li>
             <li className="navigation-item" onClick={clickHandler}>About</li>
             <li className="navigation-item" onClick={clickHandler}>Blog</li>
             {/* <li className="navigation-item newsletter" onClick={clickHandler}>
