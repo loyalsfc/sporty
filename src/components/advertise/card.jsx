@@ -6,7 +6,7 @@ function Card({img, title, note}) {
             <img
                 src={img}
             />
-            <h5>{title}</h5>
+            <h4>{title}</h4>
             <p>{note}</p>
         </li>
     )

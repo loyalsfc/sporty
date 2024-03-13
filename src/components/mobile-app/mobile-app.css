@@ -1,6 +1,10 @@
+.max-w-7xl{
+    max-width: 1024px;
+}
 .mobile-simulator-wrapper{
     position: relative;
-    padding-left: 250px;
+    padding-left: 100px;
+    display: none;
 }
 .mobile-notification-simulator{
     position: absolute;
@@ -8,7 +12,6 @@
     color: #2C2C2C;
     border-radius: 1rem;
     padding: 1rem;
-    padding-right: 4rem;
     font-weight: 600;
     font-size: 14px;
     box-shadow: 2px 10px 16px 0px rgba(0,0,0,0.5);
@@ -41,10 +44,38 @@
 }
 .go-mobile-storelogo{
     display: flex;
-    justify-content: space-between;
     transition: all;
+    gap: 0.5rem;
+    flex-direction: column;
 }
 .go-mobile-storelogo div:hover{
     transform: scale(1.1);
     cursor: pointer;
+}
+.go-mobile-storelogo img{
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 350px) { 
+    .mobile-simulator-wrapper{
+        display: block;
+    }
+    .go-mobile-storelogo{
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+}
+@media (min-width: 768px) { 
+    .mobile-notification-simulator{
+        padding-right: 4rem;
+    }
+}
+@media (min-width: 895px) { 
+    .mobile-simulator-wrapper{
+        padding-left: 250px;
+    }
+    .mobile-notification-simulator{
+        padding-right: 4rem;
+    }
 }

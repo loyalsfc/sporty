@@ -28,9 +28,8 @@ function Advertise() {
                     <button className='partner-with-us'>Partner With Us</button>
                 </article>
 
-                <div>
+                <div className='advertse-hero-image'>
                     <img 
-                        className='advertse-hero-image'
                         src={homepage}
                     />
                 </div>

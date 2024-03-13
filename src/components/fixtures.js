@@ -20,7 +20,7 @@ function Fixtures({isLive, countryId}) {
         }
     }
     const url = `action=get_events&from=${fromDate}&to=${toDate}${isLive ? "&match_live=1" : ""}${countryId ? `&country_id=${countryId}` : ""}`
-    const {isPending, isError, data, error} = useQuery({ 
+    const {isPending, isError, data} = useQuery({ 
         queryKey: ['livematches', url], 
         queryFn: ()=>queryEndpoint(url)
     })
