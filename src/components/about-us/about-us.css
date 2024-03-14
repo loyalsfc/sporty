@@ -1,0 +1,222 @@
+.contact-wrapper{
+    text-align: center;
+    padding: 6rem 2rem 1.5rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-image: url("../../assets/images/news1.png");
+    z-index: 1;
+}
+.contact-wrapper-overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.about-us-title{
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.about-us-note{
+    font-weight: 600;
+    font-size: 18px;
+}
+.about-us-read-more{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    transition: all;
+    margin-top: 3.5rem;
+    justify-items: center;
+    gap: 1rem;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 0;
+}
+.about-us-read-more:hover{
+    transform: scale(1.05);
+}
+.about-us-mission-wrapper{
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
+.about-us-mission-title{
+    font-size: 2.5rem;
+    color: #5EB700;
+    font-weight: bold;
+}
+.about-us-mission-container{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    max-width: 56rem;
+    margin: auto;
+    padding-top: 2rem;
+    gap: 2.5rem;
+}
+.about-us-mission-item{
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.about-us-mission-item-title{
+    font-size: 30px;
+    font-weight: 600;
+    color: #5EB700;
+}
+.font-medium{
+    font-weight: 500;
+}
+.about-us-note-section{
+    background-image: url("../../assets/images/hero.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 4rem 1rem;
+    z-index: 1;
+}
+.about-us-note-main{
+    text-align: center;
+    line-height: 2;
+    margin-left: auto;
+    color: #FFF;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.about-us-partners{
+    padding: 4rem 1rem;
+}
+.about-us-partners-title{
+    font-size: 2.25rem;
+    color: #5EB700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.about-us-partners-list{
+    display: flex; 
+    justify-content: space-around;
+}
+.about-us-testimonial-wrapper{
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 3.5rem 1rem;
+}
+.h-full {
+    height: 100%;
+}
+.flex {
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+.about-us-testimonial-card-note{
+    background-color: #FFF;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    font-size: 15px;
+    font-weight: bold;
+    color: #222;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.about-us-testimonial-card-note::after{
+    content: '';
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #FFF;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 1.75rem;
+    bottom: -0.75rem; 
+}
+.about-us-testimonial-ratings{
+    color: #5EB700;
+    font-size: 18px;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: auto;
+}
+.pt-4{
+    padding-top: 1rem;
+}
+.about-us-testimonial-name{
+    color: #5EB700;
+    font-weight: 600;
+    line-height: 0;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+@media screen and (min-width: 640px) { 
+    .about-us-mission-container{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+    }
+    .about-us-mission-item{
+        gap: 1rem;
+    }
+}
+.about-us-testimonial-underline{
+    width: 5rem;
+    height: 2px;
+    margin: 0 auto 1.5rem;
+    background-color: #5EB700;
+}
+.about-us-testimonial-note{
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+}
+.about-us-testimonial-card{
+    width: 100%;
+    padding: 0.5rem;
+}
+.about-us-testimonial-container{
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+@media screen and (min-width: 768px) { 
+    .about-us-mission-wrapper{
+        padding: 2rem;
+    }
+    .about-us-note-section{
+        padding: 7rem 2rem;
+    }
+    .about-us-note-main{
+        width: 60%;
+        text-align: right;
+        margin-right: 2.5rem;
+    }
+    .about-us-partners{
+        padding: 4rem 2rem;
+    }
+    .about-us-testimonial-wrapper{
+        padding: 3.5rem 2rem;
+    }   
+    .about-us-testimonial-card{
+        width: 33%;
+    }
+    .about-us-testimonial-container{
+        gap: 0;
+        flex-wrap: nowrap;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .about-us-note-main{
+        width: 40%;
+    }
+    .about-us-testimonial-card{
+        padding: 1rem;
+    }
+}

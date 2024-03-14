@@ -14,6 +14,7 @@ import Match from './components/matches/Match';
 import Advertise from './components/advertise/advertise';
 import MobileApp from './components/mobile-app/mobile-app';
 import ContactUs from './components/contact-us/contact-us';
+import AboutUs from './components/about-us/about-us';
 
 const queryClient = new QueryClient()
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/advertise' element={<Advertise/>} />
         <Route path="/mobile-app" element={<MobileApp/>}/>
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path='/:countryId' element={<Wrapper Main={CountryCompetitions}/>} />
         <Route path='/:countryId/:leagueId' element={<Wrapper Main={CompetitionPage}/>} />
         <Route path='/:countryId/:leagueId/matches/:matchId' element={<Wrapper Main={Match}/>} />
