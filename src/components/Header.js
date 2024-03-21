@@ -40,7 +40,7 @@ function Links({classprop,clickHandler,modalClick}){
                 onClick={clickHandler} 
                 className="navigation-item"
             >
-                <Link className="navigation-item" to="standing">Scores</Link>
+                <Link className="navigation-item" to="/">Scores</Link>
             </li>
             <li 
                 onClick={clickHandler} 

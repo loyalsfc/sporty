@@ -70,17 +70,30 @@ function MatchFeatures({country_fixtures}) {
             {Object.entries(groupByLeague()).map((item, index) => {
                 const [competitionName, competitionMatches] = item;
                 if(competitionMatches.length === 0 || competitionName.includes("Non League")) return;
-                const countryId = data.find(item => item.country_name === country)?.country_id
+                const countryId = data.find(item => item.country_name === country)?.country_id;
+                const matchDate = new Date(competitionMatches[0].match_date);
                 return (
                     <div key={index} className='league-fixture-wrapper'>
                         <div>
                             <h4 className="league_name_heading">
-                                <div>
-                                    <Link to={`/${countryId}`} className='text-white'> {country} </Link> 
-                                    - 
-                                    <Link to={`/${countryId}/${competitionMatches[0].league_id}`} className='text-white'> {competitionName} </Link>
+                                <div className='league-name-country'>
+                                    <Link 
+                                        to={`/${countryId}`} 
+                                        className='text-white league-country-name'
+                                    > 
+                                        {country} 
+                                    </Link> 
+                                    <span className='name-separator'>-</span>
+                                    <Link 
+                                        to={`/${countryId}/${competitionMatches[0].league_id}`} 
+                                        className='text-white'
+                                    > 
+                                        {competitionName} 
+                                    </Link>
                                 </div>
-                                <span>{new Date(competitionMatches[0].match_date).toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}</span>
+                                <span>
+                                    {matchDate.toLocaleDateString("en-US", {year: "numeric"}) === new Date().getFullYear ? matchDate.toLocaleDateString("en-US", {month: "short", day: "numeric"}) : matchDate.toLocaleDateString("en-US", {year: "numeric", month: "short", day: "numeric"})}
+                                </span>
                             </h4>
                         </div>
                         <ul>
@@ -97,9 +110,15 @@ function MatchFeatures({country_fixtures}) {
                                             {match_status === "Postponed" && <span className='match-status'>Posp.</span>}
                                             {match_status === "After Pen." && <span className='match-status'>Pen.</span>}
                                             {match_status === "After ET" && <span className='match-status'>AET.</span>}
-                                            <span className='match-teams home-team'>{item.match_hometeam_name}</span> 
-                                            <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
-                                            <span className='match-teams'>{item.match_awayteam_name}</span>
+                                            <div className='score-card-team'>
+                                                <span className='match-teams home-team'>{item.match_hometeam_name}</span>
+                                                <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
+                                                <span className='match-teams'>{item.match_awayteam_name}</span>
+                                            </div>
+                                            <div className='match-score-mobile'>
+                                                <span>{item.match_hometeam_score}</span>
+                                                <span>{item.match_awayteam_score}</span>
+                                            </div>
                                         </Link>
                                     </li>
                                 )

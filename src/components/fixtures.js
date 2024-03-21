@@ -69,11 +69,9 @@ function Fixtures({isLive, countryId}) {
         return sortedObject
     }
 
-    console.log(sortContries())
-
     return (
         <div className='scores-wrapper'>
-            <div className='container mx-auto'>
+            <div className='container mx-auto no-padding'>
                 <ul>
                     {sortContries().map((item, index) => {
                         return <MatchFeatures key={index} country_fixtures={item} />

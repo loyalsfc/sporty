@@ -27,7 +27,7 @@ code {
 .home-page-wrapper{
   display: flex;
   height: 100vh;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #303030;
 }
 .bg-primary{
@@ -360,9 +360,6 @@ table td, table th {
 }
 table tr:nth-child(even){
   background-color: #2C2C2C;
-}
-table tr:hover {
-  /* background-color: #ddd; */
 }
 table th {
   padding: 1rem 0;
@@ -725,6 +722,27 @@ span.close{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+.league-name-country{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.name-separator{
+  display: none;
+}
+.league-country-name{
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+.score-card-team{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+}
+.match-score-mobile{
+  display: flex;
+  flex-direction: column;
+}
 @keyframes spin {
     0%{rotate: 0deg;}
     100%{rotate: 360deg;}
@@ -740,6 +758,51 @@ span.close{
    }
    .footer-wrapper{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-page-wrapper{
+    padding: 1rem;
+  }
+  .league-name-country{
+    flex-direction: row;
+  }
+  .name-separator{
+    display: inline-block;
+    padding: 0 0.25rem;
+  }
+  .league-country-name{
+    font-size: 0.875rem;
+    opacity: 1;
+  }
+  .match-status{
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+  }
+  .score-card {
+    justify-content: center;
+  }
+  .match-teams.home-team{
+    text-align: right;
+  }
+  .match-teams:last-child{
+    text-align: left;
+  }
+  .score-card-team{
+    flex-direction: row;
+    padding: 1rem 0;
+  }
+  .match-score{
+    display: block;
+  } 
+  .match-score-mobile{
+    display: none;
+  }
+  .live-match{
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
   }
 }
 @media screen and (min-width: 768px) { 
@@ -760,7 +823,11 @@ span.close{
     max-width: 1200px;
   }
 }
-
+@media screen and (max-width: 400px) {
+  .no-padding{
+    padding: 0;
+  }
+}
 @media screen and (max-width: 768px){
   .d-sm{
     display: block;
@@ -837,21 +904,22 @@ span.close{
   flex-direction: column;
 }
 .score-card{
-  padding: 1rem 0;
+  padding: 1rem;
   color: #FFF;
   font-weight: 500;
   width: 100%;
   text-align: center;
   list-style-type: none;
   display: flex;
-  justify-content: center;
   position: relative;
+  gap: 1rem;
+  align-items: center;
 }
 .score-card-wrapper:nth-child(even){
   background: #222;
 }
 .match-score{
-  display: block;
+  display: none;
   padding: 0 1rem;
   width: 80px;
 }
@@ -859,27 +927,11 @@ span.close{
   display: block;
   flex: 1;
 }
-.match-teams.home-team{
-  text-align: right;
-}
-.match-teams:last-child{
-  text-align: left;
-}
 .live-match{
   height: 0.75rem;
   width: 0.75rem;
   background-color: #00FF00;
   border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-}
-.match-status{
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
 }
 .league_name_heading{
   border-radius: 10px 10px 0px 0px;
@@ -888,6 +940,16 @@ span.close{
   font-size: 14px;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+}
+.league_name_heading > div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+.league_name_heading > span {
+  width: fit-content;
+  white-space: nowrap;
 }
 .text-white {
   color: #FFF;
