@@ -739,9 +739,20 @@ span.close{
   width: 100%;
   text-align: left;
 }
+.match-score{
+  display: none;
+  padding: 0 1rem;
+  width: 80px;
+  text-align: center;
+}
 .match-score-mobile{
   display: flex;
   flex-direction: column;
+}
+.match-status {
+  width: 2.75rem;
+  flex-shrink: 0;
+  text-align: left;
 }
 @keyframes spin {
     0%{rotate: 0deg;}
@@ -770,6 +781,7 @@ span.close{
     padding: 0 0.25rem;
   }
   .league-country-name{
+    text-transform: capitalize;
     font-size: 0.875rem;
     opacity: 1;
   }
@@ -917,11 +929,6 @@ span.close{
 }
 .score-card-wrapper:nth-child(even){
   background: #222;
-}
-.match-score{
-  display: none;
-  padding: 0 1rem;
-  width: 80px;
 }
 .match-teams{
   display: block;

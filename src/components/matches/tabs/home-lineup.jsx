@@ -17,7 +17,6 @@ function HomeLineup({system, starting_lineups, arrMethod, cards, goalscorer, sub
         return formatted;
     }, [system, starting_lineups])
 
-    // console.log(formattedLineupToSystem);
     const height = (100 / (eachSystem.length + 1)) + "%";
     
     return (
@@ -27,7 +26,6 @@ function HomeLineup({system, starting_lineups, arrMethod, cards, goalscorer, sub
                     return (
                         <li key={index} className={`pitch-home-player-positions`} style={{height}}>
                             {item.map((player, playerIndex) => {
-                                // console.log(cards.some(card => card.home_player_id === player.player_key || card.away_player_id === player.player_key));
                                 return(
                                     <div key={playerIndex} className='lineups'>
                                         <div className='pitch-player-number'>

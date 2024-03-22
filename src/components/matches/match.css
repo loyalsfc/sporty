@@ -115,3 +115,11 @@
 .player-with-card.flex-start{
     justify-content: flex-start;
 }
+.match-info h4{
+    font-size: 0.75rem;
+}
+@media (min-width: 640px) { 
+    .match-info h4{
+        font-size: 1rem;
+    }
+}
