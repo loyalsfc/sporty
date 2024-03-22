@@ -67,12 +67,12 @@ function Lineup({lineup, match_hometeam_system, match_awayteam_system, home_team
                                     <span className='substitution-time'>{item.time}</span>
                                     <div className='substituted-players-wrapper'>
                                         <span className='substituted-player'>
-                                            <span className='pitch-player-out'><FaArrowAltCircleDown /></span>
-                                            <span>{item.substitution.split(" | ")[0]}</span>
+                                            <span className='sub-player-out'><FaArrowAltCircleDown /></span>
+                                            <span className='name'>{item.substitution.split(" | ")[0]}</span>
                                         </span>
                                         <span className='substituted-player'>
-                                            <span className='pitch-player-in'><FaArrowAltCircleUp /></span>
-                                            <span>{item.substitution.split(" | ")[1]}</span>
+                                            <span className='sub-player-in'><FaArrowAltCircleUp /></span>
+                                            <span className='name'>{item.substitution.split(" | ")[1]}</span>
                                         </span>
                                     </div>
                                 </li>
@@ -86,12 +86,12 @@ function Lineup({lineup, match_hometeam_system, match_awayteam_system, home_team
                                     <span className='substitution-time'>{item.time}</span>
                                     <div className='substituted-players-wrapper'>
                                         <span className='substituted-player'>
-                                            <span className='pitch-player-out'><FaArrowAltCircleDown /></span>
-                                            <span>{item.substitution.split(" | ")[0]}</span>
+                                            <span className='sub-player-out'><FaArrowAltCircleDown /></span>
+                                            <span className='name'>{item.substitution.split(" | ")[0]}</span>
                                         </span>
                                         <span className='substituted-player'>
-                                            <span className='pitch-player-in'><FaArrowAltCircleUp /></span>
-                                            <span>{item.substitution.split(" | ")[1]}</span>
+                                            <span className='sub-player-in'><FaArrowAltCircleUp /></span>
+                                            <span className='name'>{item.substitution.split(" | ")[1]}</span>
                                         </span>
                                     </div>
                                 </li>
@@ -107,8 +107,16 @@ function Lineup({lineup, match_hometeam_system, match_awayteam_system, home_team
                         {lineup.home.substitutes.map((item, index) => {
                             return(
                                 <li key={index} className='substition-item subs'>
-                                    <span className={normalGoals.some(scorer => (scorer.home_scorer_id === item.player_key || scorer.away_scorer_id === item.player_key) && (!scorer.home_scorer.includes("(o.g.)") || !scorer.away_scorer.includes("(o.g.)" )) ) ? "substituted-player-goals" : "invisible"}><IoMdFootball /></span>
-                                    <span className={substitutions.home.some(substitute => substitute.substitution_player_id.includes(item.player_key)) ? 'pitch-player-in' : "invisible"}><FaArrowAltCircleUp /></span>
+                                    <span 
+                                        className={normalGoals.some(scorer => (scorer.home_scorer_id === item.player_key || scorer.away_scorer_id === item.player_key) && (!scorer.home_scorer.includes("(o.g.)") || !scorer.away_scorer.includes("(o.g.)" )) ) ? "substituted-player-goals" : "substituted-player-goals invisible"}
+                                    >
+                                        <IoMdFootball />
+                                    </span>
+                                    <span 
+                                        className={substitutions.home.some(substitute => substitute.substitution_player_id.includes(item.player_key)) ? 'sub-player-in' : "sub-player-in invisible"}
+                                    >
+                                        <FaArrowAltCircleUp />
+                                    </span>
                                     {item.lineup_player}
                                 </li>
                             )
@@ -118,8 +126,16 @@ function Lineup({lineup, match_hometeam_system, match_awayteam_system, home_team
                         {lineup.away.substitutes.map((item, index) => {
                             return(
                                 <li key={index} className='substition-item subs'>
-                                    <span className={normalGoals.some(scorer => (scorer.home_scorer_id === item.player_key || scorer.away_scorer_id === item.player_key) && (!scorer.home_scorer.includes("(o.g.)") || !scorer.away_scorer.includes("(o.g.)" )) ) ? "substituted-player-goals" : "invisible"}><IoMdFootball /></span>
-                                    <span className={substitutions.away.some(substitute => substitute.substitution_player_id.includes(item.player_key)) ? 'pitch-player-in' : "invisible"}><FaArrowAltCircleUp /></span>
+                                    <span 
+                                        className={normalGoals.some(scorer => (scorer.home_scorer_id === item.player_key || scorer.away_scorer_id === item.player_key) && (!scorer.home_scorer.includes("(o.g.)") || !scorer.away_scorer.includes("(o.g.)" )) ) ? "substituted-player-goals" : "substituted-player-goals invisible"}
+                                    >
+                                        <IoMdFootball />
+                                    </span>
+                                    <span 
+                                        className={substitutions.away.some(substitute => substitute.substitution_player_id.includes(item.player_key)) ? 'sub-player-in' : "sub-player-in invisible"}
+                                    >
+                                        <FaArrowAltCircleUp />
+                                    </span>
                                     {item.lineup_player}
                                 </li>
                             )

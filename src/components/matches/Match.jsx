@@ -29,11 +29,11 @@ function Match() {
             <div className='match-card-wrapper'>
                 <div className='match-info'>
                     <div className='club-detail'>
-                        <img className='' height={100} src={dummyLogo} />
+                        <img className='club-detail-logo' src={dummyLogo} />
                         <p>loading</p>
                     </div>
                     <div className='club-detail'>
-                        <img className='' height={100} src={dummyLogo} />
+                        <img className='club-detail-logo' src={dummyLogo} />
                         <p>loading</p>
                     </div>
                 </div>
@@ -54,60 +54,65 @@ function Match() {
                                             
     return (
         <>
-                <div className='match-card-wrapper'>
-                    <div className='match-info'>
-                        <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} teamId={match_hometeam_id} />
-                        <div>
-                            {(match_status === "" || match_status === "Cancelled" || match_status === "Postponed") && 
-                                <MatchInfo 
-                                    league_name={league_name + " " + match_round} 
-                                    match_status={match_status} 
-                                    match_stadium={match_stadium}
-                                    match_time={match_time}
-                                    match_date={match_date}
-                                />
-                            }
-                            {(match_status === "Finished" || match_status === "Half Time" || match_status === "After Pen." || match_status === "After ET") && 
-                                <Matchscore 
-                                    league_name={league_name + " " + match_round} 
-                                    home_score={match_hometeam_score} 
-                                    away_score={match_awayteam_score}
-                                    match_status={match_status}
-                                    home_team_pk={match_hometeam_penalty_score}
-                                    away_team_pk={match_awayteam_penalty_score}
-                                />
-                            }
-                            {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && match_status !== "After Pen." && <div>
-                                <h4>{league_name}</h4>
-                                <div className='match-details-score'><p>{match_hometeam_score}</p>:<p>{match_awayteam_score}</p></div>
-                                <span className='match-details-status live-match-anim'>{match_status}'</span>
-                            </div>}
-                        </div>
-                        <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} teamId={match_awayteam_id} />
+            <div className='match-card-wrapper'>
+                <div className='match-info'>
+                    <TeamDetail club_badge={team_home_badge} team_name={match_hometeam_name} teamId={match_hometeam_id} />
+                    <div>
+                        {(match_status === "" || match_status === "Cancelled" || match_status === "Postponed") && 
+                            <MatchInfo 
+                                league_name={league_name + " " + match_round} 
+                                match_status={match_status} 
+                                match_stadium={match_stadium}
+                                match_time={match_time}
+                                match_date={match_date}
+                            />
+                        }
+                        {(match_status === "Finished" || match_status === "Half Time" || match_status === "After Pen." || match_status === "After ET") && 
+                            <Matchscore 
+                                league_name={league_name + " " + match_round} 
+                                home_score={match_hometeam_score} 
+                                away_score={match_awayteam_score}
+                                match_status={match_status}
+                                home_team_pk={match_hometeam_penalty_score}
+                                away_team_pk={match_awayteam_penalty_score}
+                            />
+                        }
+                        {match_live === "1" && match_status !== "Finished" && match_status !== "Half Time" && match_status !== "After Pen." && <div>
+                            <h4>{league_name}</h4>
+                            <div className='match-details-score'><p>{match_hometeam_score}</p>:<p>{match_awayteam_score}</p></div>
+                            <span className='match-details-status live-match-anim'>{match_status}'</span>
+                        </div>}
                     </div>
-                    <div className='match-buttons-wrapper'>
-                        <button onClick={()=>setActiveTab("info")} className={`match-buttons ${activeTab === "info" && 'active'}`}>Match Info</button>
-                        {lineup.home.starting_lineups.length > 0 && <button onClick={()=>setActiveTab("lineup")} className={`match-buttons ${activeTab === "lineup" && 'active'}`}>Line Up</button>}
-                        <button onClick={()=>setActiveTab("stats")} className={`match-buttons ${activeTab === "stats" && 'active'}`}>Stats</button>
-                        <button onClick={()=>setActiveTab("h2h")} className={`match-buttons ${activeTab === "h2h" && 'active'}`}>H2H</button>
-                    </div>
+                    <TeamDetail club_badge={team_away_badge} team_name={match_awayteam_name} teamId={match_awayteam_id} />
                 </div>
+                <div className='match-buttons-wrapper'>
+                    <button onClick={()=>setActiveTab("info")} className={`match-buttons ${activeTab === "info" && 'active'}`}>Match Info</button>
+                    {lineup.home.starting_lineups.length > 0 && <button onClick={()=>setActiveTab("lineup")} className={`match-buttons ${activeTab === "lineup" && 'active'}`}>Line Up</button>}
+                    <button onClick={()=>setActiveTab("stats")} className={`match-buttons ${activeTab === "stats" && 'active'}`}>Stats</button>
+                    <button onClick={()=>setActiveTab("h2h")} className={`match-buttons ${activeTab === "h2h" && 'active'}`}>H2H</button>
+                </div>
+            </div>
 
-                <div className='match-info-wrapper'>
-                    {activeTab === "info" && <Info matchStatus={match_status} scorers={goalscorer} substitutions={substitutions} cards={cards} />}
-                    {activeTab === "lineup" && <Lineup 
-                        lineup={lineup} 
-                        match_hometeam_system={match_hometeam_system} 
-                        match_awayteam_system={match_awayteam_system} 
-                        home_team={match_hometeam_name}
-                        away_team={match_awayteam_name}
-                        cards={cards}
-                        goalscorer={goalscorer}
-                        substitutions={substitutions}
-                    />}
-                    {activeTab === "stats" && <Stats stats={statistics}/>}
-                    {activeTab === "h2h" && <H2H homeId={match_hometeam_id} awayId={match_awayteam_id}/>}
-                </div>
+            <div className='match-info-wrapper'>
+                {activeTab === "info" && <Info 
+                    matchStatus={match_status} 
+                    scorers={goalscorer} 
+                    substitutions={substitutions} 
+                    cards={cards} 
+                />}
+                {activeTab === "lineup" && <Lineup 
+                    lineup={lineup} 
+                    match_hometeam_system={match_hometeam_system} 
+                    match_awayteam_system={match_awayteam_system} 
+                    home_team={match_hometeam_name}
+                    away_team={match_awayteam_name}
+                    cards={cards}
+                    goalscorer={goalscorer}
+                    substitutions={substitutions}
+                />}
+                {activeTab === "stats" && <Stats stats={statistics}/>}
+                {activeTab === "h2h" && <H2H homeId={match_hometeam_id} awayId={match_awayteam_id}/>}
+            </div>
         </>
     )
 }

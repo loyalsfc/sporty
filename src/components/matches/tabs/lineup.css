@@ -1,5 +1,5 @@
 .pitch-container{
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem;
     background-color: #27730a;
 }
 .pitch-wrapper-border{
@@ -161,11 +161,20 @@
     left: -0.25rem;
     top: -.25rem;
 }
-.pitch-player-out, .pitch-player-in, .pitch-player-owngoal{
+.pitch-player-out, .pitch-player-owngoal{
     display: block;
     height: 15px;
     width: 15px;
     border-radius: 50%;
+    background-color: #D22B2B;
+}
+.sub-player-in, .sub-player-out{
+    height: 0.75rem;
+    width: 0.75rem;
+    display: block;
+    border-radius: 50%;
+}
+.sub-player-out{
     background-color: #D22B2B;
 }
 .pitch-player-in{
@@ -195,6 +204,9 @@
     display: flex;
     gap: 0.25rem;
 }
+.substituted-player > .name{
+    white-space: nowrap;
+}
 .substitution-time{
     width: 1.5rem;
 }
@@ -207,7 +219,7 @@
     background-image: repeating-linear-gradient(180deg,#222,#222 46px,#2C2C2C 0,#2C2C2C 92px);
 }
 .substitute-container{
-    background-image: repeating-linear-gradient(180deg,#222,#222 33px,#2C2C2C 0,#2C2C2C 66px);
+    background-image: repeating-linear-gradient(180deg,#222,#222 31px,#2C2C2C 0,#2C2C2C 62px);
 }
 .substition-item.subs{
     gap: 0.5rem;
@@ -218,7 +230,8 @@
 .substituted-player-goals{
     display: grid;
     place-content: center;
-    font-size: 18px;
+    font-size: 14px;
+    width: 1rem;
 }
 .statistics-wrapper{
     background-color: #222;
@@ -335,7 +348,7 @@
         background-image: repeating-linear-gradient(180deg,#222,#222 72px,#2C2C2C 0,#2C2C2C 144px);
     }
     .substitute-container{
-        background-image: repeating-linear-gradient(180deg,#222,#222 53px,#2C2C2C 0,#2C2C2C 106px);       
+        background-image: repeating-linear-gradient(180deg,#222,#222 52px,#2C2C2C 0,#2C2C2C 104px);       
     }
     .substitution-time{
         width: 2.5rem;
@@ -343,5 +356,16 @@
     .substituted-player{
         display: flex;
         gap: 0.75rem;
+    }
+    .pitch-player-in{
+        height: 15px;
+        width: 15px;
+    }
+    .substituted-player-goals{
+        font-size: 18px;
+        width: 1.25rem;
+    }
+    .pitch-container{
+        padding: 0.75rem 1.5rem;
     }
 }

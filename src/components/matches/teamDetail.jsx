@@ -24,7 +24,7 @@ function TeamDetail({club_badge, team_name, teamId}) {
 
     return (
         <Link to={`/teams/${teamId}`} className='club-detail'>
-            <img className='' height={100} src={clubImage} />
+            <img className='club-detail-logo' src={clubImage} />
             <p>{team_name}</p>
         </Link>
     )

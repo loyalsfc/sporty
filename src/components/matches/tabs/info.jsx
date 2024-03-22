@@ -18,12 +18,12 @@ function Info({matchStatus,scorers, cards}) {
                             */}
                             {!item?.card ? <>
                                 <p className='match-event-player-name'>
-                                    <span>{item?.home_scorer} {item?.home_scorer && item?.info === "Penalty" && "(Pen.)"}</span>
+                                    <span className='match-event-scorer'>{item?.home_scorer} {item?.home_scorer && item?.info === "Penalty" && "(Pen.)"}</span>
                                     <span className='match-event-assist'>{item?.home_assist}</span>
                                 </p>
                                 <span className='match-event-score'>{item?.score}</span>
                                 <span className='match-event-player-name'>
-                                    <span>{item?.away_scorer} {item?.away_scorer && item?.info === "Penalty" && "(Pen)"}</span>
+                                    <span className='match-event-scorer'>{item?.away_scorer} {item?.away_scorer && item?.info === "Penalty" && "(Pen)"}</span>
                                     <span className='match-event-assist'>{item?.away_assist}</span>
                                 </span>
                             </>:<>
