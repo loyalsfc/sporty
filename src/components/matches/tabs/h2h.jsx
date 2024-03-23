@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function H2H({homeId, awayId}) {
     const query = `action=get_H2H&firstTeamId=${homeId}&secondTeamId=${awayId}`
-    const {data, isLoading, error, isError} = useQuery({
+    const {data, isLoading, isError} = useQuery({
         queryKey: ["h2h", query],
         queryFn: () => queryEndpoint(query)
     })
@@ -35,10 +35,16 @@ function H2H({homeId, awayId}) {
                                         {item.match_status === "Postponed" && <span className='match-status'>Posp.</span>}
                                         {item.match_status === "After Pen." && <span className='match-status'>Pen.</span>}
                                         {item.match_status === "After ET" && <span className='match-status'>AET.</span>}
-                                        <span className='match-teams home-team'>{item.match_hometeam_name}</span> 
-                                        <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
-                                        <span className='match-teams'>{item.match_awayteam_name}</span>
-                                    </Link>
+                                        <div className='score-card-team'>
+                                            <span className='match-teams home-team'>{item.match_hometeam_name}</span>
+                                            <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
+                                            <span className='match-teams'>{item.match_awayteam_name}</span>
+                                        </div>
+                                        <div className='match-score-mobile'>
+                                            <span>{item.match_hometeam_score}</span>
+                                            <span>{item.match_awayteam_score}</span>
+                                        </div>
+                                        </Link>
                                 </div>
                             </li>
                         )

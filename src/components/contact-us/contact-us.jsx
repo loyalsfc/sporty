@@ -63,7 +63,7 @@ function ContactUs() {
                     <button className='partner-with-us'>Send Message</button>
                 </form>
 
-                <div className='advertise-sample-wrapper'>
+                <div className='advertise-sample-wrapper contacts'>
                     <AdvertiseCard
                         img={facebook}
                         title="Facebook"

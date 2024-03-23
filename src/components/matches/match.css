@@ -74,7 +74,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     align-items: center;
 }
 .match-info-item:nth-child(even){
@@ -84,7 +84,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 1rem;
+    left: 0.25rem;
+    font-size: 0.75rem;
 }
 .match-event-player-name{
     flex: 1;
@@ -103,7 +104,7 @@
 }
 .match-event-score{
     display: block;
-    width: 75px;
+    width: 50px;
     text-align: center;
 }
 .match-info-wrapper{
@@ -118,6 +119,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
+    font-size: 0.875rem;
 }
 .player-with-card.flex-start{
     justify-content: flex-start;
@@ -135,5 +137,18 @@
     }
     .match-event-scorer{
         font-size: 1rem;
+    }
+    .match-info-item{
+        padding: 1rem;
+    }
+    .player-with-card{
+        font-size: 1rem;
+    }
+    .match-event-item{
+        left: 1rem;
+        font-size: 1rem;
+    }
+    .match-event-score{
+        width: 75px;
     }
 }

@@ -55,7 +55,7 @@ nav{
   position: fixed;
   top: 0;
   left: -100%;
-  z-index: 1;
+  z-index: 1000;
   transition: linear 0.2s;
   display: flex;
   align-items: center;
@@ -754,6 +754,19 @@ span.close{
   flex-shrink: 0;
   text-align: left;
 }
+.score-card{
+  padding: 1rem;
+  color: #FFF;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+  display: flex;
+  position: relative;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.875rem;
+}
 @keyframes spin {
     0%{rotate: 0deg;}
     100%{rotate: 360deg;}
@@ -793,6 +806,7 @@ span.close{
   }
   .score-card {
     justify-content: center;
+    font-size: 1rem;
   }
   .match-teams.home-team{
     text-align: right;
@@ -914,18 +928,6 @@ span.close{
 .scores-wrapper ul{
   display: flex;
   flex-direction: column;
-}
-.score-card{
-  padding: 1rem;
-  color: #FFF;
-  font-weight: 500;
-  width: 100%;
-  text-align: center;
-  list-style-type: none;
-  display: flex;
-  position: relative;
-  gap: 1rem;
-  align-items: center;
 }
 .score-card-wrapper:nth-child(even){
   background: #222;

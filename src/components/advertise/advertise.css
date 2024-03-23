@@ -119,6 +119,9 @@
     width: 100%;
     padding-top: 2rem;
 }
+.advertise-sample-wrapper.contacts{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .advertise-sample-card{
     background-color: #222;
     text-align: center;
