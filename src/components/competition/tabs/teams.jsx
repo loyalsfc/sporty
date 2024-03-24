@@ -12,7 +12,9 @@ function Teams({leagueId}) {
         queryFn: () => queryEndpoint(url)
     })
 
-    if(isPending) return;
+    if(isPending) {
+        return <div className='loader-wrapper'><p className='loader' /></div>
+    };
 
     return (
         <div>

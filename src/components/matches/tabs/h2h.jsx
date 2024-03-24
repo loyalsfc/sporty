@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { queryEndpoint } from '../../../utls/utils'
 import { Link } from 'react-router-dom'
+import FixtureCard from '../../fixtures/fixture-card'
 
 function H2H({homeId, awayId}) {
     const query = `action=get_H2H&firstTeamId=${homeId}&secondTeamId=${awayId}`
@@ -29,22 +30,7 @@ function H2H({homeId, awayId}) {
                             <li key={item.match_id} className='h2h-card-wrapper'>
                                 <span className='h2h-date'>{new Date(item.match_date).toLocaleDateString("en-US", {day: "numeric", month: "long", year: "numeric", weekday: "long"})}</span>
                                 <div>
-                                    <Link  className='score-card' to={`/${item.country_id}/${item.league_id}/matches/${item.match_id}?date=${item.match_date}`}>
-                                        {item.match_status === "Finished" && <span className='match-status'>FT</span>}
-                                        {item.match_status === "Cancelled" && <span className='match-status'>Canc.</span>}
-                                        {item.match_status === "Postponed" && <span className='match-status'>Posp.</span>}
-                                        {item.match_status === "After Pen." && <span className='match-status'>Pen.</span>}
-                                        {item.match_status === "After ET" && <span className='match-status'>AET.</span>}
-                                        <div className='score-card-team'>
-                                            <span className='match-teams home-team'>{item.match_hometeam_name}</span>
-                                            <span className='match-score'>{item.match_hometeam_score} - {item.match_awayteam_score}</span> 
-                                            <span className='match-teams'>{item.match_awayteam_name}</span>
-                                        </div>
-                                        <div className='match-score-mobile'>
-                                            <span>{item.match_hometeam_score}</span>
-                                            <span>{item.match_awayteam_score}</span>
-                                        </div>
-                                        </Link>
+                                    <FixtureCard item={item} />
                                 </div>
                             </li>
                         )

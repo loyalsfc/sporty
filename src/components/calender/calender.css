@@ -1,5 +1,6 @@
 .main-calender-wrapper{
     position: relative;
+    z-index: 1;
 }
 .main-calender{
     position: absolute;

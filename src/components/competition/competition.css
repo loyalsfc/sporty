@@ -1,6 +1,4 @@
 .league-wrapper{
-    /* background-color: #222; */
-    padding: 0 1rem;
     border-radius: 0.25rem;
     height: 100%;
     display: flex;
@@ -9,13 +7,14 @@
 .league-info-hero{
     display: flex;
     padding: 1rem 1rem 1rem 0;
-    gap: 3rem;
+    gap: 1.5rem;
     align-items: flex-start;
 }
 .league-logo{
     box-shadow: 0px 11px 31px 0px rgba(55, 7, 61, 0.40);
     display: block;
     border-radius: 0.5rem;
+    height: 150px;
 }
 .league-info-item{
     display: flex;
@@ -27,7 +26,7 @@
     color: #C3CC5A;   
 }
 .league-tab-button{
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 0.5rem;
     border: none;
     background-color: #2C2C2C;
     color: #FFF;
@@ -64,12 +63,12 @@
 }
 .team-page-wrapper{
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 1px;
     margin-bottom: 2rem;
 }
 .team-wrapper{
-    padding: 0.75rem;
+    padding: 0.5rem;
 }
 .team-content{
     box-shadow: 0px 0px 4px 0px rgba(233, 233, 233, 0.50);
@@ -79,11 +78,39 @@
     width: 100%;
     display: grid;
     place-content: center;
-    padding: 0.75rem;
+    padding: 0.25rem;
 }
 .team-content-badge{
     display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
+}
+@media (min-width: 250px) {
+    .team-page-wrapper{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (min-width: 640px) {
+    .league-wrapper{
+        padding: 0 1rem;
+    }
+    .team-page-wrapper{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .team-content{
+        padding: 0.75rem;
+    }
+    .team-wrapper{
+        padding: 0.75rem;
+    }
+    .league-tab-button{
+        padding: 0.75rem 1.25rem;
+    }
+    .league-logo{
+        height: 200px;
+    }
+    .league-info-hero{
+        gap: 3rem;
+    }
 }

@@ -513,12 +513,6 @@ table th {
   background: unset;
   border: unset;
 }
-.player-club a {
-  color: #070b18;
-}
-.player-club a:hover{
-  text-decoration: underline;
-}
 .player-statistics-container .player-image-wrapper{
   overflow: hidden;
   padding: 3rem 1rem 0;
@@ -531,6 +525,7 @@ table th {
 .player-image-wrapper img {
   height: 40vh;
   width: 100%;
+  flex-shrink: 0;
 }
 .player-statistics-body{
   display: flex;
@@ -564,8 +559,7 @@ table th {
 .h4 {
   padding: 0.7rem;
   border-bottom: 0.5px solid #ddd;
-  border-top: 3px solid #933556;
-  color: #070b18
+  border-top: 3px solid #00FF00;
 }
 .player-statistics-body .player-stat > p, .apperance > p{
   padding: 0.5rem;
@@ -767,6 +761,10 @@ span.close{
   align-items: center;
   font-size: 0.875rem;
 }
+.player-name-wrapper h1 {
+  font-size: 2rem;
+  padding: 0.5rem 0 0;
+}
 @keyframes spin {
     0%{rotate: 0deg;}
     100%{rotate: 360deg;}
@@ -834,6 +832,9 @@ span.close{
 @media screen and (min-width: 768px) { 
   .container{
     max-width: 768px;
+  }
+  .player-name-wrapper h1 {
+    font-size: 5rem;
   }
 }
 @media screen and (min-width: 1024px) {

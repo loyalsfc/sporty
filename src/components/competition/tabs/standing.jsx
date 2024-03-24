@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DummyTable from "../../DummyTable";
 
-function Standing({leagueId, standing}){
+function Standing({standing}){
     return(
         <div className="standing">
             {standing[0].stage_name === "Group Stage" ? <GroupStage standing={standing} /> : <StandingTable title={'Team'} standing={standing} />}

@@ -20,18 +20,18 @@ function CompetitionPage() {
         queryFn: ()=> queryEndpoint(url)
     })
 
-    const {data: standing, isPending: isStandingPending, isError:isStandingError, error: sandingError} = useQuery({
+    const {data: standing, isPending: isStandingPending} = useQuery({
         queryKey: ["get-league-standing", `action=get_standings&league_id=${leagueId}`],
         queryFn: ()=> queryEndpoint(`action=get_standings&league_id=${leagueId}`)
     })
 
     const topScorerUrl = `action=get_topscorers&league_id=${leagueId}`
-    const {data: topScorer, isPending: isTopScorerPending, error: isTopScorerError} = useQuery({
+    const {data: topScorer, isPending: isTopScorerPending} = useQuery({
         queryKey:["top-scorer", topScorerUrl],
         queryFn: ()=> queryEndpoint(topScorerUrl)
     })
 
-    if(isPending || isStandingPending ){
+    if(isPending || isStandingPending || isTopScorerPending){
         return <div className='loader-wrapper'><p className='loader' /></div>
     }
 
@@ -49,7 +49,7 @@ function CompetitionPage() {
         <div className="league-wrapper">
             <h4>League {">"} {league_name}</h4>
             <div className='league-info-hero'>
-                <Logo />
+                <Logo league_logo={league_logo} />
                 <div className='league-info-items'>
                     <p className='league-info-item'>
                         <span>League:</span> 
@@ -130,7 +130,7 @@ function Logo({league_logo}){
         checkImage(league_logo, dummyLogo, setLeagueLogo)
     },[league_logo])
 
-    return <img className='league-logo' src={leagueLogo} height={200}/>
+    return <img className='league-logo' src={leagueLogo}/>
 }
 
 export default CompetitionPage

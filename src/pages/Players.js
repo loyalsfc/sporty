@@ -9,31 +9,25 @@ import { checkImage, queryEndpoint } from "../utls/utils";
 function PlayerStatistics(){
     const { playerKey } = useParams();
     const url = `action=get_players&player_id=${playerKey}`;
-    const {data, isPending} = useQuery({
-        queryKey: ["player starts", url],
-        queryFn: ()=> queryEndpoint(url)
+    const {data, isPending, error} = useQuery({
+        queryKey: ["player-stats", url],
+        queryFn: ()=> queryEndpoint(url)    
     })
     const [playerImage, setPlayerImage] = useState(blank_portrait);
 
     useEffect(()=>{
-        if(data){
+        if(data?.length){
             checkImage(data[0]?.player_image, blank_portrait, setPlayerImage);
         }
     },[data])
 
     if(isPending){
-        return <Statistics />
+        return <Statistics 
+            image = {playerImage}
+        />
     }
 
-    console.log(data)
-
-    // const playerInfo = data.pop()?.map(stat => {
-    //     return (
-            
-    //     )
-    // })
-    console.log(data)
-    const stat = data.pop();
+    const stat = data[0];
     console.log(stat)
 
     return(
@@ -96,7 +90,15 @@ function Statistics(props){
             <div className="container mx-auto">
                 <div className="player-statistics-body sm-flex-column">
                     <div className="player-stat player-statistics-details sm-w-100">
-                        <p className="player-club">Club <span><Link to={`../clubs/${props.team_id}`}>{props.team}</Link></span></p>
+                        <p className="player-club">
+                            Club 
+                            <Link 
+                                to={`../clubs/${props.team_id}`}
+                                className="text-white"
+                            >
+                                {props.team}
+                            </Link>
+                        </p>
                         <p>Position <span>{props.position}</span></p>
                         <p>Age <span>{props.age}</span></p>
                         <p>Date of birth <span>{props.dob}</span></p>

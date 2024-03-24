@@ -67,7 +67,7 @@ function Calender() {
                     const itemDate = new Date(date.getFullYear(), date.getMonth(), item);
                     if(item < 1) return <span key={item} className='calender-column'></span>
                     return <Link 
-                        to={`/?date=${formatDate(date)}`} 
+                        to={`/?date=${formatDate(itemDate)}`} 
                         className={`calender-column ${itemDate.toDateString() === todayDate.toDateString() && "active"}`} 
                         key={item}
                     >

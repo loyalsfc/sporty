@@ -4,13 +4,13 @@ import { queryEndpoint } from '../../../utls/utils'
 import MatchFeatures from './competitionMatches'
 
 function Result({url, countryName, title, countryId, competitionName}) {
-    const {data, isPending, isError, error} = useQuery({
+    const {data, isPending} = useQuery({
         queryKey: ["get-league", url],
         queryFn: ()=> queryEndpoint(url)
     })
 
     if(isPending){
-        return <div className='loader-wrapper'><p className='loading'/></div>
+        return <div className='loader-wrapper'><p className='loader' /></div>
     }
 
     if(!Array.isArray(data)){

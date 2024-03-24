@@ -27,7 +27,7 @@ function SquadList({players}) {
                 return(
                     <div key={index}>
                         <h4 className="league_name_heading">{playerType}</h4>
-                        <ul className='squad_list_wrapper'>
+                        <ul className='squad_list_wrapper'  >
                             {players?.map(player =>{
                                 return <Squad
                                     key={player.player_key} 

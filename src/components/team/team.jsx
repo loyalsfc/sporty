@@ -17,11 +17,15 @@ function Team(){
     })
 
     if(isError){
-        return <div className="flex-1"></div>
+        return <div className="flex-1">
+            An error occured
+        </div>
     }
 
     if(isPending){
-        return <div className="flex-1"></div>
+        return <div className="flex-1">
+            <div className='loader-wrapper'><p className='loader' /></div>
+        </div>
     };
 
     const {team_country, team_name, team_founded, team_badge, coaches, venue, players} = data[0]
