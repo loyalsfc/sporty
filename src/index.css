@@ -66,6 +66,7 @@ nav{
   margin: 2rem;
   font-size: 1.4rem;
   font-weight: bold;
+  text-align: center;
 }
 .fa-xmark{
   position: absolute;
@@ -85,10 +86,8 @@ nav{
 .navigation-item a{
   color: #f1f2f3;
 }
-.navigation-item:hover{
+.navigation-item:hover a{
   color: #C3CC5A;
-  padding-bottom: 0.7rem;
-  border-bottom: 1.5px solid #C3CC5A;
 }
 .join-us{
   padding: 0.5rem 1.25rem;
@@ -749,7 +748,7 @@ span.close{
   text-align: left;
 }
 .score-card{
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   color: #FFF;
   font-weight: 500;
   width: 100%;
@@ -775,11 +774,15 @@ span.close{
   }
 }
 @media screen and (min-width: 640px) { 
-   .container{
+  .container{
     max-width: 640px;
    }
-   .footer-wrapper{
+  .footer-wrapper{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .navigation-item:hover{
+    padding-bottom: 0.7rem;
+    border-bottom: 1.5px solid #C3CC5A;
   }
   .home-page-wrapper{
     padding: 1rem;
@@ -805,6 +808,8 @@ span.close{
   .score-card {
     justify-content: center;
     font-size: 1rem;
+    padding: 0;
+
   }
   .match-teams.home-team{
     text-align: right;
@@ -942,6 +947,7 @@ span.close{
   width: 0.75rem;
   background-color: #00FF00;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 .league_name_heading{
   border-radius: 10px 10px 0px 0px;

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { formatDate } from '../../../utls/utils'
 
 function Calender() {
+    const [searchParams] = useSearchParams()
+    const dateParams = searchParams.get("date")
     const todayDate = new Date();
     const [date, setDate] = useState(todayDate)
 
@@ -64,7 +66,7 @@ function Calender() {
                 <span className='calender-column'>Fr</span>
                 <span className='calender-column'>Sa</span>
                 {dateArrays.map(item => {
-                    const itemDate = new Date(date.getFullYear(), date.getMonth(), item);
+                    const itemDate = new Date(date.getFullYear(), date.getMonth(), item)
                     if(item < 1) return <span key={item} className='calender-column'></span>
                     return <Link 
                         to={`/?date=${formatDate(itemDate)}`} 
@@ -74,7 +76,7 @@ function Calender() {
                         {item}
                     </Link>
                 })}
-            </div>
+            </div>;jlbhkb
         </div>
     )
 }

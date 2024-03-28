@@ -40,33 +40,38 @@ function Links({classprop,clickHandler,modalClick}){
                 onClick={clickHandler} 
                 className="navigation-item"
             >
-                <Link className="navigation-item" to="/">Scores</Link>
+                <Link to="/">Scores</Link>
             </li>
             <li 
                 onClick={clickHandler} 
                 className="navigation-item"
             >
-                <Link className="navigation-item" to="/advertise">Advertise</Link>
+                <Link to="/advertise">Advertise</Link>
             </li>
             <li 
                 className="navigation-item" 
                 onClick={clickHandler}
             >
-                <Link to="/mobile-app" className="navigation-item">Mobile App</Link>
+                <Link to="/mobile-app">Mobile App</Link>
             </li>
             <li 
                 className="navigation-item" 
                 onClick={clickHandler}
             >
-                <Link to="/contact-us" className="navigation-item">Contact Us</Link>
+                <Link to="/contact-us">Contact Us</Link>
             </li>
             <li 
                 className="navigation-item" 
                 onClick={clickHandler}
             >
-                <Link to="/about-us" className="navigation-item">About Us</Link>
+                <Link to="/about-us">About Us</Link>
             </li>
-            <li className="navigation-item" onClick={clickHandler}>Blog</li>
+            <li 
+                className="navigation-item" 
+                onClick={clickHandler}
+            >
+                <Link to={""}>Blog</Link>
+            </li>
             {/* <li className="navigation-item newsletter" onClick={clickHandler}>
                 <button className="join-us" onClick={modalClick}>Newsletter</button>
             </li> */}
